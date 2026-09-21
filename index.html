@@ -36,7 +36,10 @@ button{font-family:inherit;color:inherit;cursor:pointer}
 [data-rv]{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
 [data-rv].v{opacity:1;transform:none}
 
-/* عناصر الكاتب */
+/* أدوات الكاتب — مخفية تمامًا إلا لو فتحتي المكتب */
+.admin-only{display:none !important}
+body.admin .admin-only{display:flex !important}
+
 .abar{display:none;background:var(--ink);color:var(--paper);font:500 10px var(--mono);letter-spacing:.18em;text-transform:uppercase;justify-content:center;align-items:center;gap:20px;padding:7px 16px;position:relative;z-index:60}
 body.admin .abar{display:flex}
 .abar b{color:#E8B44A}
@@ -47,14 +50,13 @@ body.admin .abar{display:flex}
 .nav-in{display:flex;align-items:center;gap:22px;height:58px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:11px;font:700 12px var(--mono);letter-spacing:.22em}
 .brand .ba{font:400 13px var(--ar);letter-spacing:0;color:var(--faint)}
-.brand-mark{width:26px;height:26px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:700 9.5px var(--mono);letter-spacing:.05em;overflow:hidden;flex:none}
+.brand-mark{width:26px;height:26px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:700 9.5px var(--mono);letter-spacing:.05em;overflow:hidden;flex:none;cursor:default}
 .brand-mark img{width:100%;height:100%;object-fit:cover}
 .nav-links{margin-left:auto;display:flex;gap:20px;flex-wrap:wrap;align-items:center}
 .nl{font:500 10.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;padding:6px 1px;border-bottom:2px solid transparent;color:var(--ink2);background:none;border-top:none;border-left:none;border-right:none}
 .nl .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none;opacity:.75;margin-inline-start:4px}
 .nl.on,.nl:hover{color:var(--ink);border-bottom-color:var(--red)}
 .nl.wlink{color:var(--red)}
-.nl.wlink:hover,.nl.wlink.on{border-bottom-color:var(--red)}
 
 /* ── الواجهة ── */
 .mast{padding:82px 0 48px;border-bottom:1px solid var(--ink)}
@@ -234,7 +236,7 @@ textarea.field{font-size:17px}
 .tbtn:hover{background:var(--ink);color:var(--paper)}
 .tbtn.danger:hover{background:var(--red);border-color:var(--red)}
 .nextfile{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--ink);padding-top:26px;gap:16px;flex-wrap:wrap}
-.nextfile .t{font:600 24px var(--serif)}
+.nextfile a.t{font:600 24px var(--serif)}
 .nextfile a:hover .t{color:var(--red)}
 
 /* ── Hall ── */
@@ -302,12 +304,12 @@ textarea.field{font-size:17px}
 .spark i:last-child{background:var(--red)}
 
 /* ── Gate + Studio ── */
-.gate{max-width:500px;margin:90px auto 110px;border:1px solid var(--ink);background:var(--paper2);padding:52px 46px 44px;text-align:center;position:relative}
+.gate{max-width:520px;margin:90px auto 110px;border:1px solid var(--ink);background:var(--paper2);padding:52px 46px 44px;text-align:center;position:relative}
 .gate::before{content:'';position:absolute;inset:9px;border:1px dashed rgba(34,27,18,.3);pointer-events:none}
 .gate h1{font:600 36px var(--serif);text-transform:uppercase;margin:22px 0 4px}
 .gate h1 .a{font:400 26px var(--ar);text-transform:none;color:var(--faint);display:block;margin-top:4px}
 .gate .gsub{font:400 16px/2 var(--ar);color:var(--ink2);margin-bottom:26px}
-.gate .gsub en,.gate .gsub .en{font:italic 500 15px var(--serif)}
+.gate .gsub .en{font:italic 500 15px var(--serif)}
 .gate .field{font-family:var(--mono);font-size:15px;letter-spacing:.3em;text-align:center}
 .gate .gerr{color:var(--red);font:500 11px var(--mono);letter-spacing:.1em;margin-top:12px;display:none}
 .gate .gerr .a{font:400 13px var(--ar);letter-spacing:0}
@@ -324,7 +326,7 @@ textarea.field{font-size:17px}
 .howto{border:1px dashed var(--red);background:rgba(158,43,20,.04);padding:22px 26px;margin-bottom:38px}
 .howto h5{font:700 11px var(--mono);letter-spacing:.24em;color:var(--red);text-transform:uppercase;margin-bottom:12px}
 .howto h5 .a{font:400 14px var(--ar);letter-spacing:0;text-transform:none}
-.howto ol{font:400 16px/2.3 var(--ar);color:var(--ink2);padding-right:4px;list-style:none;counter-reset:st}
+.howto ol{font:400 16px/2.3 var(--ar);color:var(--ink2);list-style:none;counter-reset:st;padding:0}
 .howto li{counter-increment:st}
 .howto li::before{content:counter(st,arabic-indic) ' — ';color:var(--red);font-weight:700}
 .howto b{font-weight:700;color:var(--ink)}
@@ -356,6 +358,9 @@ input[type=color].swatch{padding:0;background:none}
 .mono-hint{font:500 9px var(--mono);letter-spacing:.14em;color:var(--faint);margin-top:8px;text-transform:uppercase}
 .edfoot{display:flex;gap:12px;align-items:center;margin-top:30px;flex-wrap:wrap}
 .setgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px}
+.prow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.prow .field{flex:1 1 140px;font-family:var(--mono);font-size:14px;letter-spacing:.15em}
+.perr{color:var(--red);font:400 13px var(--ar);margin-top:8px;display:none}
 
 .toasts{position:fixed;bottom:24px;right:24px;z-index:100;display:flex;flex-direction:column;gap:10px}
 .toast{background:var(--ink);color:var(--paper);font:400 13px/1.6 var(--ar);padding:15px 18px;display:flex;gap:16px;align-items:center;animation:tin .3s both;max-width:380px}
@@ -386,19 +391,19 @@ footer{border-top:1px solid var(--ink);margin-top:44px;padding:36px 0 48px}
 </head>
 <body>
 
-<div class="abar"><span><b>WRITER MODE</b> — أدوات الكاتبة مفتوحة</span>
+<div class="abar"><span><b>WRITER MODE</b> — أدواتك مفتوحة، والزوار مش شايفين حاجة من دي</span>
   <button data-go="#/studio">STUDIO · الاستوديو</button>
-  <button data-act="exit">LOCK · اقفلي</button>
+  <button data-act="exit">LOCK · اقفلي كل حاجة</button>
 </div>
 
 <nav class="nav"><div class="wrap nav-in">
-  <a class="brand" href="#/"><span class="brand-mark" id="brandMark">WA</span><span>THE WRITER'S ARCHIVE <span class="ba">أرشيف الكاتبة</span></span></a>
+  <a class="brand" href="#/"><span class="brand-mark" id="brandMark" title="">WA</span><span>THE WRITER'S ARCHIVE <span class="ba">أرشيف الكاتبة</span></span></a>
   <div class="nav-links">
     <button class="nl" data-nav="home" data-go="#/">Index <span class="a">الفهرس</span></button>
     <button class="nl" data-nav="hall" data-go="#/hall">Hall <span class="a">القاعة</span></button>
     <button class="nl" data-nav="drop" data-go="#/drop">Daily Drop <span class="a">الجرسنة</span></button>
-    <button class="nl wlink" data-nav="studio" data-go="#/studio">✒ Studio <span class="a">اكتبي هنا</span></button>
-    <button class="nl" data-nav="dashboard" data-go="#/dashboard">Desk <span class="a">المكتب</span></button>
+    <button class="nl wlink admin-only" data-nav="studio" data-go="#/studio">✒ Studio <span class="a">اكتبي هنا</span></button>
+    <button class="nl admin-only" data-nav="dashboard" data-go="#/dashboard">Desk <span class="a">المكتب</span></button>
   </div>
 </div></nav>
 
@@ -406,7 +411,7 @@ footer{border-top:1px solid var(--ink);margin-top:44px;padding:36px 0 48px}
 
 <footer><div class="wrap fin">
   <span>The Writer's Archive <span class="a">كل الملفات ملك كاتبتها</span></span>
-  <span><a href="#/hall">Hall</a> · <a href="#/drop">Drop</a> · <a href="#/studio">✒ <span class="a">استوديو الكاتبة</span></a></span>
+  <span><a href="#/hall">Hall</a> · <a href="#/drop">Daily Drop</a></span>
   <span>This archive keeps no cookies. <span class="a">بيحفظ رسايلك بس.</span></span>
 </div></footer>
 
@@ -414,10 +419,10 @@ footer{border-top:1px solid var(--ink);margin-top:44px;padding:36px 0 48px}
 
 <script>
 /* ════════════════════════════════════════════
-   الإعدادات — عدّلي من هنا
+   الإعدادات
    ════════════════════════════════════════════ */
 const WRITER   = { name:'Noor Kamar', nameAr:'نور قمر', short:'N. KAMAR' };
-const PASSCODE = 'archive2024';   /* ← كلمة سر الاستوديو. غيّريها هنا */
+const DEFAULT_PASS = 'archive2024';   /* ← كلمة السر الأولى. بعد أول دخول غيّريها من الاستوديو نفسه */
 const SUBSCRIBERS = 846;
 
 const SECTIONS = [
@@ -545,7 +550,7 @@ const PAST_DROPS = [
 ];
 
 /* ════════════════════════════════════════════
-   تخزين محمي — لو البيئة مانعه، الموقع يفضل شغال
+   تخزين محمي
    ════════════════════════════════════════════ */
 const store = {
   get(k,d){ try{ const v=JSON.parse(localStorage.getItem('wa_'+k)); return v===null||v===undefined?d:v }catch(e){ return d } },
@@ -568,6 +573,10 @@ let NOTES  = store.get('notes', null) || JSON.parse(JSON.stringify(SEED_NOTES));
 let DROP   = store.get('drop', {text:SEED[6].quote, no:'084', file:7, last:''});
 let LOGO   = store.get('logo', '');
 const saveNotes=()=>store.set('notes',NOTES);
+
+/* كلمة السر: بتتقرأ من الحفظ (لو غيّريتيها) أو الافتراضية */
+const currentPass = ()=> store.get('passcode', DEFAULT_PASS);
+const passIsDefault = ()=> currentPass()===DEFAULT_PASS;
 
 const F   = id => FILES.find(f=>f.id===+id);
 const fV  = f  => f.views + (VD[f.id]||0);
@@ -793,7 +802,7 @@ function renderHome(){
       </div>
       <div class="pc-r">
         ${postmarkSVG()}
-        <div><div class="cd" id="cd">--:--:--</div><div class="cd-l">Next drop · 8:00 PM — القايمة الجاية الساعة ٨ مساءً</div></div>
+        <div><div class="cd" id="cd">--:--:--</div><div class="cd-l">Next drop · 8:00 PM — الجايّة الساعة ٨ مساءً</div></div>
         <div style="font:500 10px var(--mono);letter-spacing:.14em;color:var(--faint)">${SUBSCRIBERS} SUBSCRIBERS · بالبريد كل يوم</div>
       </div>
     </div>
@@ -817,7 +826,7 @@ function renderHall(){
   app.innerHTML=`<div class="wrap hall">
     <h1>The Hall of Stories</h1>
     <div class="hsub">Ranked by the numbers — not by competition.</div>
-    <div class="hsuba">القاعة دي بتعرض أعمالك مرتّبة حسب أرقامها — قراءة وإعجاب وتقييم. عرض للأرقام، مش منافسة.</div>
+    <div class="hsuba">أعمالك مرتّبة حسب أرقامها — قراءة وإعجاب وتقييم. عرض للأرقام، مش منافسة.</div>
     <div class="hall-grid">
       <div class="hcol"><div class="rank-head">Most Viewed <span class="a">الأكثر قراءة</span></div>${rows(mostV,f=>fmtK(fV(f)),f=>fV(f)+' views')}</div>
       <div class="hcol"><div class="rank-head">Most Liked <span class="a">الأكثر إعجابًا</span></div>${rows(mostL,f=>fmtK(fL(f)),f=>fL(f)+' likes')}</div>
@@ -955,8 +964,8 @@ function renderStory(id){
     </div>
 
     <div class="nextfile">
-      <div><div class="endline" style="margin-bottom:8px;text-align:left">Next file <span class="a">الملف اللي بعده في نفس القسم</span></div>
-        <a href="#/story/${nextFile.id}" class="t" style="font:600 24px var(--serif)">${esc(nextFile.title)} ${icon('right',18)}</a></div>
+      <div><div class="endline" style="margin-bottom:8px;text-align:left">Next file <span class="a">الملف اللي بعده</span></div>
+        <a href="#/story/${nextFile.id}" class="t" dir="auto">${esc(nextFile.title)} ${icon('right',18)}</a></div>
       <a class="btn ghost" href="#/">${icon('left',13)} Return <span class="a">رجوع</span></a>
     </div>
   </div>`;
@@ -1036,7 +1045,7 @@ function bindAdminTools(f){
 }
 
 /* ════════════════════════════════════════════
-   الباب الخاص
+   الباب الخاص — المدخل الوحيد للصفحات السرية
    ════════════════════════════════════════════ */
 function renderGate(){
   document.title = "المدخل الخاص — Private entrance";
@@ -1044,17 +1053,20 @@ function renderGate(){
   app.innerHTML=`<div class="gate" id="gateBox">
     <span class="stamp" style="font-size:13px">Staff only · للكاتبة فقط</span>
     <h1>The Private Desk<span class="a">المكتب الخاص</span></h1>
-    <div class="gsub">المدخل ده خاص بيكِ انتي بس — <b>هنا بتكتبي رواياتك وبتعدّلي فيها، وكل اللي بتكتبيه بيظهر للقراء فورًا في الأرشيف.</b><br><span class="en">Readers: the archive is already open for you — this door leads to the writing room.</span></div>
+    <div class="gsub">المدخل ده مخفي عن الزوار تمامًا — مفيش زرار يوصل له. <b>هنا بتكتبي رواياتك، وكل اللي بتكتبيه بيظهر للقراء فورًا في الأرشيف.</b><br><span class="en">Readers never see this door — it opens only with your passcode.</span></div>
     <input class="field" id="gatePass" type="password" placeholder="• • • • • • • •" autocomplete="off">
     <div class="gerr" id="gateErr">كلمة السر غلط — القفل لسه مقفول. <span class="en">Wrong passcode.</span></div>
     <div style="margin-top:22px"><button class="btn" id="gateGo">Unlock the desk <span class="a">افتحي المكتب</span> ${icon('right',13)}</button></div>
-    <div class="ghint">Demo passcode: ${PASSCODE} — <span class="a">غيّريها من أول سطور الجافاسكربت</span> (const PASSCODE)</div>
+    ${passIsDefault()
+      ? `<div class="ghint">كلمة السر الحالية: <b>${DEFAULT_PASS}</b> — <span class="a">بعد أول دخول غيّريها من الاستوديو «الإعدادات»، والتلميح ده هيختفي لوحده</span></div>`
+      : `<div class="ghint">المدخل محمي بكلمة سرك الخاصة. <span class="a">لو نسيتيها: امسحي بيانات الموقع من المتصفح وترجع لكلمة السر الأولى.</span></div>`}
     <div style="margin-top:18px"><a href="#/" style="font:500 10px var(--mono);letter-spacing:.18em;color:var(--faint)">← RETURN · رجوع للأرشيف</a></div>
   </div>`;
   const tryOpen=()=>{
-    if($('#gatePass').value===PASSCODE){
+    if($('#gatePass').value===currentPass()){
       SS.set('wa_admin','1'); document.body.classList.add('admin');
-      toast('المكتب بقى ملكك ✒'); route();
+      toast('المكتب بقى ملكك ✒ — وزرار الاستوديو ظهر فوق في الناف بار.');
+      route();
     } else {
       $('#gateErr').style.display='block';
       const g=$('#gateBox'); g.classList.remove('shake'); void g.offsetWidth; g.classList.add('shake');
@@ -1099,6 +1111,9 @@ function renderStudio(){
         <li>اختاري القسم والشكل (كتاب / منسوخة / اقتباس / شعر / مسودة)، وارفعي <b>صورة الغلاف</b> لو حابة.</li>
         <li>اضغطي <b>«احفظي في الأرشيف»</b> — والملف يظهر فورًا في الصفحة الرئيسية للزوار، بكارت الأرشيف بتاعه.</li>
       </ol>
+      <div style="margin-top:14px;font:400 14px/2 var(--ar);color:var(--ink2);border-top:1px dotted var(--rule);padding-top:12px">
+        🔒 <b>الخصوصية:</b> الزوار مش شايفين زرار الاستوديو خالص. انتي بتيجيله بـ <b>Ctrl+Shift+K</b> أو <b>٣ ضغطات على مربع اللوجو</b> أو تكتبي <b>#/studio</b> في آخر الرابط — وكله بعد كلمة السر. ولما تخلصي اضغطي <b>LOCK</b> فوق فكل حاجة تختفي.
+      </div>
     </div>
 
     <div class="panel" style="margin-bottom:34px">
@@ -1115,13 +1130,22 @@ function renderStudio(){
 
     <div class="setgrid">
       <div class="panel">
-        <h5>Storage <span class="a">الحفظ</span></h5>
-        <p>كل اللي بتكتبيه بيتحفظ في متصفحك — بيفضل موجود بعد الـ refresh وفي الزيارة الجاية. لما تنقلي للنسخة الحقيقية (Next.js + PostgreSQL) نفس الشغل بيبقى على سيرفر وقاعدة بيانات.</p>
-        <button class="sbtn red" data-act="reset">Reset · رجّعي الملفات الأصلية</button>
+        <h5>Change passcode <span class="a">غيّري كلمة السر</span></h5>
+        <p>كلمة السر الأولى كانت <b style="font-family:var(--mono);font-style:normal">${DEFAULT_PASS}</b> — غيّريها دلوقتي عشان يبقى المدخل سرك انتي بس. التلميح في صفحة الدخول هيختفي تلقائيًا.</p>
+        <div class="prow">
+          <input class="field" id="oldPass" type="password" placeholder="الحالية">
+          <input class="field" id="newPass" type="password" placeholder="الجديدة (٤ حروف على الأقل)">
+          <button class="sbtn" id="passBtn">Change <span class="a">غيّري</span></button>
+        </div>
+        <div class="perr" id="passErr"></div>
+        ${passIsDefault()
+          ? `<div class="mono-hint" style="color:var(--red)">⚠ STILL USING THE DEFAULT PASSCODE — غيّريها</div>`
+          : `<div class="mono-hint" style="color:#2F5B33">✓ PASSCODE CHANGED — المدخل بقى سرك</div>`}
       </div>
       <div class="panel">
-        <h5>Security <span class="a">الحماية</span></h5>
-        <p>الباب محمي بكلمة سر تجريبية — غيّريها من أول سطر في الجافاسكربت: <b style="font-style:normal;font-family:var(--mono)">const PASSCODE</b>. في الإنتاج: حساب حقيقي بـ Auth.js والصفحات دي محمية بالسيرفر نفسه.</p>
+        <h5>Storage & reset <span class="a">الحفظ والتصفير</span></h5>
+        <p>كل اللي بتكتبيه بيتحفظ في متصفحك — بيفضل موجود بعد الـ refresh وفي الزيارة الجاية. لما تنقلي للنسخة الحقيقية (Next.js + PostgreSQL) نفس الشغل بيبقى على سيرفر وقاعدة بيانات.</p>
+        <button class="sbtn red" data-act="reset">Reset · رجّعي الملفات الأصلية</button>
       </div>
     </div>
   </div>`;
@@ -1136,6 +1160,15 @@ function renderStudio(){
   const logoIn=$('#logoFile');
   logoIn.addEventListener('change',()=>{ const file=logoIn.files[0]; if(!file) return;
     fileToDataURL(file,140,url=>{ LOGO=url; store.set('logo',LOGO); paintBrand(); renderStudio(); toast('اللوجو اتسجّل — الأرشيف لبسه.') });
+  });
+  $('#passBtn').addEventListener('click',()=>{
+    const err=$('#passErr'); err.style.display='none';
+    if($('#oldPass').value!==currentPass()){ err.textContent='كلمة السر الحالية غلط.'; err.style.display='block'; return }
+    const np=$('#newPass').value.trim();
+    if(np.length<4){ err.textContent='الجديدة لازم ٤ حروف أو أكتر.'; err.style.display='block'; return }
+    store.set('passcode',np);
+    toast('كلمة السر اتغيرت — افتكريها كويس، ومحدش تاني يعرفها.');
+    renderStudio();
   });
   const resetBtn=app.querySelector('[data-act="reset"]');
   resetBtn.addEventListener('click',()=>{
@@ -1474,8 +1507,7 @@ function bindChart(){
 }
 
 /* ════════════════════════════════════════════
-   أدوات عامة + التنقل + الراوتر
-   كل اللينكات الداخلية بتمر من هنا — مفيش لينك بيفتح صفحة فاضية
+   أدوات عامة + المداخل السرية + الراوتر
    ════════════════════════════════════════════ */
 function countUps(){
   document.querySelectorAll('.ms .n').forEach(el=>{
@@ -1497,7 +1529,6 @@ let rvObs=null;
 function bindReveal(){
   rvObs=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('v'); rvObs.unobserve(e.target) } }),{threshold:.12});
   document.querySelectorAll('[data-rv]').forEach(el=>rvObs.observe(el));
-  /* شبكة أمان: لو الـ observer مشتغلش في بيئة المعاينة، كل حاجة تظهر بعد ثانية ونص */
   setTimeout(()=>document.querySelectorAll('[data-rv]:not(.v)').forEach(el=>el.classList.add('v')),1500);
 }
 function observeOnce(el,fn){ if(!el) return; const o=new IntersectionObserver(es=>{ if(es[0].isIntersecting){ fn(); o.disconnect() } },{threshold:.4}); o.observe(el) }
@@ -1509,10 +1540,28 @@ function paintBrand(){
 }
 function exitDesk(){
   SS.del('wa_admin'); document.body.classList.remove('admin');
-  toast('المكتب اتقفل — دلوقتي بتتصفحي كقارئة عادية.');
+  toast('اتقفل كل حاجة — الزوار مش هيشوفوا ولا زرار.');
   if(location.hash.includes('studio')||location.hash.includes('dashboard')) go('#/'); else route();
 }
 
+/* المدخل السري #1: ٣ ضغطات متتابعة على مربع اللوجو */
+let brandClicks=0, brandTimer=null;
+document.getElementById('brandMark').addEventListener('click',e=>{
+  e.preventDefault(); e.stopPropagation();
+  brandClicks++;
+  clearTimeout(brandTimer);
+  brandTimer=setTimeout(()=>brandClicks=0,900);
+  if(brandClicks>=3){ brandClicks=0; go('#/studio') }
+});
+
+/* المدخل السري #2: Ctrl+Shift+K في أي وقت */
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey && e.shiftKey && (e.key==='K'||e.key==='k')){
+    e.preventDefault(); go('#/studio');
+  }
+});
+
+/* تنقل مركزي — كل اللينكات الداخلية بتمر من هنا */
 document.addEventListener('click', e=>{
   if(e.target.closest('[data-act="exit"]')){ exitDesk(); return }
   const g=e.target.closest('[data-goto]');

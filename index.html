@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Writer's Archive — a collection of stories, thoughts & words</title>
+<title>The Writer's Archive — أرشيف الكاتبة</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -22,64 +22,70 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opa
 body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   background:radial-gradient(ellipse at 50% 30%,transparent 55%,rgba(30,23,14,.13))}
 ::selection{background:rgba(158,43,20,.2)}
-a{color:inherit;text-decoration:none}
-button{font-family:inherit;color:inherit}
+a{color:inherit;text-decoration:none;cursor:pointer}
+button{font-family:inherit;color:inherit;cursor:pointer}
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
 .ar-t{font-family:var(--ar);font-style:normal}
 .dots{flex:1;border-bottom:2px dotted rgba(34,27,18,.35);margin:0 14px;transform:translateY(-5px)}
-.btn{font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:13px 22px;border:1px solid var(--ink);cursor:pointer;transition:background .2s,border-color .2s;display:inline-flex;align-items:center;gap:8px}
+.btn{font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:13px 22px;border:1px solid var(--ink);transition:background .2s,border-color .2s;display:inline-flex;align-items:center;gap:9px}
 .btn:hover{background:var(--red);border-color:var(--red)}
+.btn .a{font:400 13px var(--ar);letter-spacing:0;text-transform:none}
 .btn.ghost{background:transparent;color:var(--ink)}
 .btn.ghost:hover{background:var(--ink);color:var(--paper)}
 .stamp{display:inline-block;border:2.5px solid var(--red);color:var(--red);font:700 12px var(--mono);letter-spacing:.24em;text-transform:uppercase;padding:7px 13px;transform:rotate(-7deg);mix-blend-mode:multiply;opacity:.88;white-space:nowrap}
 [data-rv]{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
 [data-rv].v{opacity:1;transform:none}
 
-/* عناصر الكاتب — مخفية عن الزوار */
-.admin-only{display:none !important}
-body.admin .admin-only{display:flex !important}
-body.admin span.admin-only,body.admin a.admin-only{display:inline-block !important}
-
+/* عناصر الكاتب */
 .abar{display:none;background:var(--ink);color:var(--paper);font:500 10px var(--mono);letter-spacing:.18em;text-transform:uppercase;justify-content:center;align-items:center;gap:20px;padding:7px 16px;position:relative;z-index:60}
 body.admin .abar{display:flex}
 .abar b{color:#E8B44A}
-.abar button{background:none;border:1px solid rgba(239,231,210,.45);color:var(--paper);font:600 9px var(--mono);letter-spacing:.14em;padding:4px 10px;cursor:pointer}
+.abar button{background:none;border:1px solid rgba(239,231,210,.45);color:var(--paper);font:600 9px var(--mono);letter-spacing:.14em;padding:4px 10px}
 .abar button:hover{background:var(--red);border-color:var(--red)}
 
 .nav{position:sticky;top:0;z-index:50;background:rgba(237,230,212,.93);backdrop-filter:blur(7px);border-bottom:1px solid var(--rule)}
-.nav-in{display:flex;align-items:center;gap:26px;height:58px;flex-wrap:wrap}
+.nav-in{display:flex;align-items:center;gap:22px;height:58px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:11px;font:700 12px var(--mono);letter-spacing:.22em}
-.brand-mark{width:26px;height:26px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:700 9.5px var(--mono);letter-spacing:.05em;overflow:hidden}
+.brand .ba{font:400 13px var(--ar);letter-spacing:0;color:var(--faint)}
+.brand-mark{width:26px;height:26px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:700 9.5px var(--mono);letter-spacing:.05em;overflow:hidden;flex:none}
 .brand-mark img{width:100%;height:100%;object-fit:cover}
-.nav-links{margin-left:auto;display:flex;gap:24px;flex-wrap:wrap;align-items:center}
-.nl{font:500 10.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;padding:6px 1px;border-bottom:2px solid transparent;color:var(--ink2);cursor:pointer;background:none;border-top:none;border-left:none;border-right:none}
+.nav-links{margin-left:auto;display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+.nl{font:500 10.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;padding:6px 1px;border-bottom:2px solid transparent;color:var(--ink2);background:none;border-top:none;border-left:none;border-right:none}
+.nl .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none;opacity:.75;margin-inline-start:4px}
 .nl.on,.nl:hover{color:var(--ink);border-bottom-color:var(--red)}
 .nl.wlink{color:var(--red)}
+.nl.wlink:hover,.nl.wlink.on{border-bottom-color:var(--red)}
 
+/* ── الواجهة ── */
 .mast{padding:82px 0 48px;border-bottom:1px solid var(--ink)}
 .mast-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font:500 10px var(--mono);letter-spacing:.22em;color:var(--faint);text-transform:uppercase;margin-bottom:36px}
 .over{font:italic 500 clamp(20px,3vw,30px) var(--serif);color:var(--ink2)}
 .mast h1{font:600 clamp(58px,11vw,134px)/.95 var(--serif);text-transform:uppercase;letter-spacing:.02em;margin:2px 0 14px}
 .mast .sub{font:italic 500 clamp(18px,2.4vw,23px) var(--serif);color:var(--ink2)}
+.mast .suba{font:400 clamp(16px,2vw,21px) var(--ar);color:var(--faint);margin-top:8px}
 .mast-stats{display:flex;flex-wrap:wrap;gap:20px 52px;margin-top:46px}
 .ms .n{font:600 30px var(--mono);letter-spacing:-.02em}
 .ms .l{font:500 9.5px var(--mono);letter-spacing:.2em;color:var(--faint);text-transform:uppercase;margin-top:7px}
+.ms .l .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none}
 
 .toc{padding:40px 0 42px;border-bottom:1px solid var(--rule)}
 .toc-head{font:600 10px var(--mono);letter-spacing:.28em;color:var(--faint);text-transform:uppercase;margin-bottom:10px}
-.toc-row{display:flex;align-items:baseline;width:100%;padding:12px 0;background:none;border:none;cursor:pointer;text-align:left}
+.toc-head .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none}
+.toc-row{display:flex;align-items:baseline;width:100%;padding:12px 0;background:none;border:none;text-align:left}
 .toc-row .rn{font:500 11px var(--mono);color:var(--red);width:34px;letter-spacing:.1em}
 .toc-row .t{font:600 24px var(--serif)}
+.toc-row .ta{font:400 15px var(--ar);color:var(--faint);margin-inline-start:10px}
 .toc-row .c{font:500 10px var(--mono);letter-spacing:.18em;color:var(--faint);white-space:nowrap}
-.toc-row:hover .t{color:var(--red)}
+.toc-row:hover .t,.toc-row:hover .ta{color:var(--red)}
 
-.shead{display:flex;align-items:baseline;gap:18px;margin:66px 0 8px;padding-bottom:14px;border-bottom:1px solid var(--ink);flex-wrap:wrap}
+.shead{display:flex;align-items:baseline;gap:14px;margin:66px 0 8px;padding-bottom:14px;border-bottom:1px solid var(--ink);flex-wrap:wrap}
 .snum{font:500 11px var(--mono);letter-spacing:.2em;color:var(--red)}
 .shead h2{font:600 clamp(30px,4.6vw,42px) var(--serif);text-transform:uppercase;letter-spacing:.04em}
+.shead .sar{font:400 16px var(--ar);color:var(--faint)}
 .sdesc{margin-left:auto;font:italic 500 16px var(--serif);color:var(--ink2)}
 .shelf{display:flex;flex-wrap:wrap;gap:46px 42px;align-items:flex-end;padding:34px 8px 0}
 .shelf.floor{border-bottom:2px solid var(--ink);padding-bottom:26px}
-.bcard{display:block;cursor:pointer}
+.bcard{display:block}
 .book{position:relative;perspective:1200px}
 .bpages{position:absolute;inset:10px -3px 6px 12px;background:repeating-linear-gradient(90deg,#F4EDDB 0 3px,#DFD5BB 3px 4px);box-shadow:inset -3px 0 5px rgba(34,27,18,.3)}
 .bcover{position:absolute;inset:0;background:var(--bc,#35473F);color:#EFE7D2;padding:18px 18px 16px 22px;display:flex;flex-direction:column;transform-origin:left center;transition:transform .55s cubic-bezier(.22,.8,.24,1);box-shadow:0 18px 30px -16px rgba(34,27,18,.55)}
@@ -90,6 +96,7 @@ body.admin .abar{display:flex}
 .bcover .sp{position:absolute;left:10px;top:0;bottom:0;width:1px;background:rgba(0,0,0,.3);box-shadow:2px 0 0 rgba(239,231,210,.14)}
 .press{font:500 8.5px var(--mono);letter-spacing:.24em;opacity:.8;text-transform:uppercase}
 .bcover h3{font:600 26px/1.14 var(--serif);margin:auto 0;text-transform:uppercase;letter-spacing:.02em}
+.bcover h3.ar-t{text-transform:none}
 .bauthor{font:500 9px var(--mono);letter-spacing:.26em;opacity:.85;text-align:right}
 .card-meta{margin-top:15px;font:500 10px var(--mono);letter-spacing:.14em;color:var(--ink2);display:flex;justify-content:space-between;gap:8px;align-items:center}
 .card-stats{display:flex;gap:16px;margin-top:8px;font:500 11px var(--mono);color:var(--ink2)}
@@ -97,7 +104,7 @@ body.admin .abar{display:flex}
 .bcard:hover .card-meta .rt{color:var(--red)}
 .mthumb{width:20px;height:20px;object-fit:cover;border:1px solid var(--rule);margin-right:7px;vertical-align:-5px}
 
-.pcard{position:relative;background:#F9F3E4;border:1px solid rgba(34,27,18,.28);box-shadow:0 14px 24px -14px rgba(34,27,18,.45);cursor:pointer;transition:transform .4s}
+.pcard{position:relative;background:#F9F3E4;border:1px solid rgba(34,27,18,.28);box-shadow:0 14px 24px -14px rgba(34,27,18,.45);transition:transform .4s}
 .pcard:hover{transform:rotate(0) translateY(-5px) !important}
 .fold{position:absolute;top:-1px;right:-1px;width:26px;height:26px;background:linear-gradient(225deg,var(--paper) 0 49%,#E6DCC3 50% 100%);border-left:1px solid rgba(34,27,18,.22);border-bottom:1px solid rgba(34,27,18,.22)}
 .manu{width:252px;height:318px;padding:22px 20px 18px;background-image:repeating-linear-gradient(transparent 0 25px,rgba(34,27,18,.12) 25px 26px)}
@@ -122,7 +129,8 @@ body.admin .abar{display:flex}
 .ledger-sec{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin:72px 0 10px;padding-top:44px;border-top:1px solid var(--ink)}
 .rank-head{font:600 11px var(--mono);letter-spacing:.26em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:10px}
 .rank-head .rno{color:var(--red)}
-.rankrow{display:flex;align-items:baseline;width:100%;padding:13px 0;background:none;border:none;cursor:pointer;text-align:left;border-bottom:1px dotted rgba(34,27,18,.25)}
+.rank-head .a{font:400 13px var(--ar);letter-spacing:0;text-transform:none;color:var(--faint)}
+.rankrow{display:flex;align-items:baseline;width:100%;padding:13px 0;background:none;border:none;text-align:left;border-bottom:1px dotted rgba(34,27,18,.25)}
 .rankrow .rk{font:600 26px var(--serif);color:rgba(34,27,18,.28);width:44px}
 .rankrow .rt{font:600 19px var(--serif)}
 .rankrow .rt:hover{color:var(--red)}
@@ -130,7 +138,7 @@ body.admin .abar{display:flex}
 .rankrow .sub{display:block;font:500 9px var(--mono);letter-spacing:.18em;color:var(--faint);margin-top:3px;text-transform:uppercase}
 
 .recent{margin:64px 0 0;padding:36px 0 44px;border-top:1px solid var(--rule)}
-.recent .row{display:flex;align-items:baseline;width:100%;padding:11px 0;background:none;border:none;cursor:pointer;text-align:left}
+.recent .row{display:flex;align-items:baseline;width:100%;padding:11px 0;background:none;border:none;text-align:left}
 .recent .dt{font:500 10px var(--mono);letter-spacing:.16em;color:var(--faint);width:110px;text-transform:uppercase}
 .recent .t{font:600 19px var(--serif)}
 .recent .t:hover{color:var(--red)}
@@ -139,6 +147,7 @@ body.admin .abar{display:flex}
 .drop-card{border:1px solid var(--ink);display:grid;grid-template-columns:1.55fr 1fr;margin:56px 0 30px;background:var(--paper2)}
 .pc-l{padding:46px 48px}
 .pc-tag{font:700 10px var(--mono);letter-spacing:.26em;color:var(--red);text-transform:uppercase}
+.pc-tag .a{font:400 13px var(--ar);letter-spacing:0;text-transform:none}
 .dropq{font:italic 600 clamp(23px,3.2vw,32px)/1.5 var(--serif);margin:20px 0 8px}
 .dropq.ar-t{line-height:1.85;font-size:clamp(21px,2.8vw,29px)}
 .pc-src{font:500 10px var(--mono);letter-spacing:.18em;color:var(--faint);text-transform:uppercase;margin-bottom:26px}
@@ -147,34 +156,39 @@ body.admin .abar{display:flex}
 .cd{font:600 20px var(--mono);letter-spacing:.06em}
 .cd-l{font:500 9px var(--mono);letter-spacing:.22em;color:var(--faint);text-transform:uppercase;margin-top:-10px}
 .pastd{margin:34px 0 0}
-.pastd .row{display:flex;align-items:baseline;width:100%;padding:12px 0;background:none;border:none;cursor:pointer;text-align:left;border-bottom:1px dotted rgba(34,27,18,.25)}
+.pastd .row{display:flex;align-items:baseline;width:100%;padding:12px 0;background:none;border:none;text-align:left;border-bottom:1px dotted rgba(34,27,18,.25)}
 .pastd .no{font:600 12px var(--mono);color:var(--red);width:72px}
 .pastd .q{font:italic 500 17px var(--serif)}
 .pastd .q:hover{color:var(--red)}
 .pastd .d{font:500 9.5px var(--mono);color:var(--faint);letter-spacing:.12em;white-space:nowrap}
 .footnote{font:500 9.5px var(--mono);letter-spacing:.12em;color:var(--faint);margin-top:18px;text-transform:uppercase}
+.footnote .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none}
 
-/* صفحة القصة */
+/* ── صفحة العمل ── */
 .art{max-width:760px;margin:0 auto;padding:58px 0 84px}
 .crumb{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font:500 10px var(--mono);letter-spacing:.2em;color:var(--faint);text-transform:uppercase}
 .crumb a:hover{color:var(--red)}
-.chip{border:1px solid var(--ink);padding:5px 11px;font:600 9.5px var(--mono);letter-spacing:.22em;text-transform:uppercase;margin-right:10px}
+.crumb .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none}
+.chip{border:1px solid var(--ink);padding:5px 11px;font:600 9.5px var(--mono);letter-spacing:.22em;text-transform:uppercase;margin-right:10px;display:inline-block}
 .art h1{font:600 clamp(40px,7vw,66px)/1.05 var(--serif);margin:20px 0 10px}
 .byline{font:italic 500 20px var(--serif);color:var(--ink2)}
+.byline .a{font:400 19px var(--ar)}
 .accept{font:500 10px var(--mono);letter-spacing:.16em;color:var(--faint);margin-top:16px;text-transform:uppercase}
 .art-cover{float:right;width:190px;margin:8px 0 20px 28px;border:1px solid var(--ink);padding:8px;background:var(--paper2)}
 .art-cover img{display:block;width:100%;height:auto}
 .art-cover figcaption{font:500 8px var(--mono);letter-spacing:.18em;color:var(--faint);margin-top:7px;text-transform:uppercase}
-.statbar{display:flex;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:32px 0 46px;flex-wrap:wrap;clear:both}
+.statbar{display:flex;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:32px 0 12px;flex-wrap:wrap;clear:both}
 .statbar>div{flex:1 1 140px;display:flex;align-items:center;gap:11px;padding:17px 18px;font:600 13.5px var(--mono)}
 .statbar>div+div{border-left:1px solid var(--rule)}
 .statlab{font:500 9px var(--mono);letter-spacing:.18em;color:var(--faint);text-transform:uppercase;display:block;margin-top:4px;font-weight:500}
-.likebtn{background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:11px;font:600 13.5px var(--mono);padding:0}
+.statlab .a{font:400 11px var(--ar);letter-spacing:0;text-transform:none}
+.likebtn{background:none;border:none;display:flex;align-items:center;gap:11px;font:600 13.5px var(--mono);padding:0}
 .likebtn:hover{color:var(--red)}
 .likebtn.liked{color:var(--red)}
 .likebtn.liked svg{animation:pop .35s}
 @keyframes pop{40%{transform:scale(1.4)}}
-.once{font:500 9px var(--mono);letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin:-30px 0 40px}
+.once{font:500 9px var(--mono);letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin:0 0 40px}
+.once .a{font:400 11px var(--ar);letter-spacing:0;text-transform:none}
 .prose{font:500 21px/1.95 var(--serif)}
 .prose p{margin:0 0 30px}
 .prose.en p.dp::first-letter{float:left;font-size:78px;line-height:.78;padding:8px 14px 0 0;font-weight:600}
@@ -186,21 +200,25 @@ body.admin .abar{display:flex}
 .prose .lna{display:block;font:400 19px/1.9 var(--ar);color:var(--ink2)}
 .endfile{margin:60px 0 8px;text-align:center}
 .endline{font:500 10px var(--mono);letter-spacing:.34em;color:var(--faint);text-transform:uppercase}
+.endline .a{font:400 13px var(--ar);letter-spacing:.1em;text-transform:none}
 .bigstamp{margin-top:26px;font-size:15px;padding:13px 24px;border-width:3px;opacity:0}
 .bigstamp.in{animation:stampIn .55s cubic-bezier(.2,1.4,.3,1) both}
 @keyframes stampIn{0%{transform:rotate(-16deg) scale(2.4);opacity:0}55%{transform:rotate(-7deg) scale(.94);opacity:1}100%{transform:rotate(-7deg) scale(1);opacity:.92}}
 .rate{border-top:1px solid var(--ink);padding:36px 0;margin-top:24px}
 .rate h4,.notes-sec h4{font:600 11px var(--mono);letter-spacing:.26em;text-transform:uppercase;margin-bottom:16px}
+.rate h4 .a,.notes-sec h4 .a{font:400 14px var(--ar);letter-spacing:0;text-transform:none;color:var(--faint)}
 .stars{display:flex;gap:5px}
-.starb{background:none;border:none;cursor:pointer;padding:2px;line-height:0}
+.starb{background:none;border:none;padding:2px;line-height:0}
 .starb:hover{transform:scale(1.12)}
 .rate-out{font:500 12px var(--mono);letter-spacing:.06em;margin-top:16px;color:var(--ink2)}
 .rate-out b{color:var(--red)}
 .sealed-note{font:italic 500 17px var(--serif);color:var(--ink2);border-left:3px solid var(--red);padding-left:16px}
+.sealed-note .a{font:400 17px var(--ar);font-style:normal}
 .notes-sec{border-top:1px solid var(--ink);padding:36px 0}
 .nform{margin:6px 0 30px}
 .nform label,.elabel{font:500 9.5px var(--mono);letter-spacing:.18em;color:var(--faint);text-transform:uppercase;display:block;margin:16px 0 7px}
-.field{width:100%;background:#F9F3E4;border:1px solid rgba(34,27,18,.38);padding:13px 15px;font:400 17px/1.7 var(--ar);resize:vertical;font-family:var(--serif)}
+.nform label .a,.elabel .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none}
+.field{width:100%;background:#F9F3E4;border:1px solid rgba(34,27,18,.38);padding:13px 15px;font:400 17px/1.7 var(--ar);resize:vertical;font-family:var(--ar)}
 textarea.field{font-size:17px}
 .field:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 1px var(--red)}
 .ferr{color:var(--red);font:500 11px var(--mono);letter-spacing:.08em;margin-top:8px;display:none}
@@ -212,41 +230,50 @@ textarea.field{font-size:17px}
 .note.hid{opacity:.45;border-style:dashed}
 .ntools{position:absolute;top:10px;right:10px;display:flex;gap:6px;opacity:0;transition:opacity .2s}
 .note:hover .ntools{opacity:1}
-.tbtn{border:1px solid var(--rule);background:transparent;font:600 8.5px var(--mono);letter-spacing:.12em;padding:4px 8px;cursor:pointer}
+.tbtn{border:1px solid var(--rule);background:transparent;font:600 8.5px var(--mono);letter-spacing:.12em;padding:4px 8px}
 .tbtn:hover{background:var(--ink);color:var(--paper)}
 .tbtn.danger:hover{background:var(--red);border-color:var(--red)}
 .nextfile{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--ink);padding-top:26px;gap:16px;flex-wrap:wrap}
 .nextfile .t{font:600 24px var(--serif)}
-.nextfile:hover .t{color:var(--red)}
+.nextfile a:hover .t{color:var(--red)}
 
+/* ── Hall ── */
 .hall{padding:64px 0 90px}
 .hall h1{font:600 clamp(40px,6.5vw,64px) var(--serif);text-transform:uppercase}
-.hall .hsub{font:italic 500 20px var(--serif);color:var(--ink2);margin:10px 0 50px}
+.hall .hsub{font:italic 500 20px var(--serif);color:var(--ink2);margin:10px 0 12px}
+.hall .hsuba{font:400 17px var(--ar);color:var(--faint);margin-bottom:44px}
 .hall-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
 .hcol{border-top:2px solid var(--ink);padding-top:18px}
-.hcol .hr{display:flex;align-items:baseline;width:100%;padding:12px 0;background:none;border:none;cursor:pointer;text-align:left;border-bottom:1px dotted rgba(34,27,18,.25)}
+.hcol .hr{display:flex;align-items:baseline;width:100%;padding:12px 0;background:none;border:none;text-align:left;border-bottom:1px dotted rgba(34,27,18,.25)}
 .hcol .rk{font:600 24px var(--serif);color:rgba(34,27,18,.25);width:40px}
 .hcol .rt{font:600 17px var(--serif);line-height:1.25}
 .hcol .rt:hover{color:var(--red)}
 .hcol .rv{font:600 12.5px var(--mono);white-space:nowrap}
 .hcol .hs{font:500 9px var(--mono);letter-spacing:.16em;color:var(--faint);text-transform:uppercase;display:block;margin-top:3px}
 .hnote{font:italic 500 16px var(--serif);color:var(--ink2);margin-top:44px;border-left:3px solid var(--red);padding-left:18px}
+.hnote .a{font:400 16px var(--ar);font-style:normal}
 
+/* ── Desk ── */
 .dash{padding:60px 0 90px}
 .dash h1{font:600 clamp(38px,5.5vw,56px) var(--serif);text-transform:uppercase}
+.dash h1 .a{font:400 clamp(24px,3vw,34px) var(--ar);text-transform:none;color:var(--faint)}
 .dash .dsub{font:500 10px var(--mono);letter-spacing:.2em;color:var(--faint);text-transform:uppercase;margin:10px 0 46px}
 .dsub b{color:var(--red)}
 .grid2{display:grid;grid-template-columns:1.45fr 1fr;gap:56px;align-items:start}
 .ledger-row{display:flex;align-items:baseline;padding:16px 0;border-bottom:1px dotted rgba(34,27,18,.32)}
 .ledger-row .ll{font:500 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
+.ledger-row .ll .a{font:400 13px var(--ar);letter-spacing:0;text-transform:none;color:var(--faint);margin-inline-start:6px}
 .ledger-row .ln{font:600 30px var(--mono);letter-spacing:-.02em;white-space:nowrap}
 .wk{border:1px solid var(--ink);padding:26px;background:var(--paper2)}
 .wk h5,.panel h5{font:700 11px var(--mono);letter-spacing:.26em;text-transform:uppercase;margin-bottom:14px}
+.wk h5 .a,.panel h5 .a{font:400 13px var(--ar);letter-spacing:0;text-transform:none;color:var(--faint)}
 .wk .wr{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dotted rgba(34,27,18,.28);font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.wk .wr .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none;color:var(--faint);margin-inline-start:6px}
 .wk .wr:last-child{border:none}
 .up{color:#2F5B33;font-weight:700;display:flex;align-items:center;gap:5px}
 .panel{border:1px solid var(--ink);padding:26px;background:var(--paper2)}
 .panel+.panel{margin-top:26px}
+.panel p{font:400 15px/1.9 var(--ar);color:var(--ink2);margin-bottom:14px}
 .frow{padding:11px 0;border-bottom:1px dotted rgba(34,27,18,.28)}
 .frow:last-child{border:none}
 .frow .fl{display:flex;justify-content:space-between;font:500 10px var(--mono);letter-spacing:.16em;text-transform:uppercase;margin-bottom:7px}
@@ -257,7 +284,7 @@ textarea.field{font-size:17px}
 .chart-head{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:20px}
 .chart-head h5{font:700 11px var(--mono);letter-spacing:.26em;text-transform:uppercase}
 .seg{margin-left:auto;display:flex;border:1px solid var(--ink)}
-.seg button{font:600 10px var(--mono);letter-spacing:.14em;padding:8px 15px;background:transparent;border:none;cursor:pointer}
+.seg button{font:600 10px var(--mono);letter-spacing:.14em;padding:8px 15px;background:transparent;border:none}
 .seg button+button{border-left:1px solid var(--rule)}
 .seg button.on{background:var(--ink);color:var(--paper)}
 .chartwrap{position:relative}
@@ -268,34 +295,49 @@ textarea.field{font-size:17px}
 .trow{display:grid;grid-template-columns:72px 1.7fr .8fr .7fr .8fr .6fr 118px;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(34,27,18,.25);font:500 12px var(--mono);min-width:780px}
 .trow.thead{font:600 9.5px var(--mono);letter-spacing:.18em;color:var(--faint);border-bottom:1px solid var(--ink);text-transform:uppercase}
 .trow .t{font:600 19px var(--serif);letter-spacing:0;font-family:var(--serif)}
-.trow .t:hover{color:var(--red)}
+.trow a:hover .t{color:var(--red)}
 .trow .cid{color:var(--faint);font-size:10.5px;letter-spacing:.12em}
 .spark{display:flex;gap:3px;align-items:flex-end;height:34px}
 .spark i{width:9px;background:rgba(34,27,18,.35)}
 .spark i:last-child{background:var(--red)}
 
-/* ── الباب السري + الستوديو ── */
-.gate{max-width:470px;margin:90px auto 110px;border:1px solid var(--ink);background:var(--paper2);padding:52px 46px 44px;text-align:center;position:relative}
+/* ── Gate + Studio ── */
+.gate{max-width:500px;margin:90px auto 110px;border:1px solid var(--ink);background:var(--paper2);padding:52px 46px 44px;text-align:center;position:relative}
 .gate::before{content:'';position:absolute;inset:9px;border:1px dashed rgba(34,27,18,.3);pointer-events:none}
-.gate h1{font:600 38px var(--serif);text-transform:uppercase;margin:22px 0 8px}
-.gate .gsub{font:italic 500 17px var(--serif);color:var(--ink2);margin-bottom:30px}
+.gate h1{font:600 36px var(--serif);text-transform:uppercase;margin:22px 0 4px}
+.gate h1 .a{font:400 26px var(--ar);text-transform:none;color:var(--faint);display:block;margin-top:4px}
+.gate .gsub{font:400 16px/2 var(--ar);color:var(--ink2);margin-bottom:26px}
+.gate .gsub en,.gate .gsub .en{font:italic 500 15px var(--serif)}
 .gate .field{font-family:var(--mono);font-size:15px;letter-spacing:.3em;text-align:center}
 .gate .gerr{color:var(--red);font:500 11px var(--mono);letter-spacing:.1em;margin-top:12px;display:none}
+.gate .gerr .a{font:400 13px var(--ar);letter-spacing:0}
 .gate .ghint{font:500 9px var(--mono);letter-spacing:.14em;color:var(--faint);margin-top:26px;text-transform:uppercase}
+.gate .ghint .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none}
 .shake{animation:shake .4s}
 @keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
 
 .studio{padding:60px 0 100px}
-.studio h1{font:600 clamp(38px,5.5vw,56px) var(--serif);text-transform:uppercase}
+.studio h1{font:600 clamp(34px,5vw,50px) var(--serif);text-transform:uppercase}
+.studio h1 .a{font:400 clamp(22px,2.8vw,30px) var(--ar);text-transform:none;color:var(--faint)}
 .studio .dsub{font:500 10px var(--mono);letter-spacing:.2em;color:var(--faint);text-transform:uppercase;margin:10px 0 42px}
 .dsub b{color:var(--red)}
+.howto{border:1px dashed var(--red);background:rgba(158,43,20,.04);padding:22px 26px;margin-bottom:38px}
+.howto h5{font:700 11px var(--mono);letter-spacing:.24em;color:var(--red);text-transform:uppercase;margin-bottom:12px}
+.howto h5 .a{font:400 14px var(--ar);letter-spacing:0;text-transform:none}
+.howto ol{font:400 16px/2.3 var(--ar);color:var(--ink2);padding-right:4px;list-style:none;counter-reset:st}
+.howto li{counter-increment:st}
+.howto li::before{content:counter(st,arabic-indic) ' — ';color:var(--red);font-weight:700}
+.howto b{font-weight:700;color:var(--ink)}
+.howto .en{font:italic 500 14px var(--serif)}
 .srow{display:grid;grid-template-columns:86px 1fr auto;gap:18px;align-items:center;padding:16px 0;border-bottom:1px dotted rgba(34,27,18,.3)}
 .srow .cid{font:500 10.5px var(--mono);letter-spacing:.12em;color:var(--faint)}
 .srow .t{font:600 21px var(--serif)}
-.srow .t:hover{color:var(--red)}
+.srow a.t:hover{color:var(--red)}
 .srow .sub{font:500 9px var(--mono);letter-spacing:.16em;color:var(--faint);text-transform:uppercase;margin-top:4px}
+.srow .sub .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none}
 .srow .acts{display:flex;gap:8px;flex-wrap:wrap}
-.sbtn{border:1px solid var(--ink);background:transparent;font:600 9px var(--mono);letter-spacing:.14em;padding:8px 13px;cursor:pointer;text-transform:uppercase}
+.sbtn{border:1px solid var(--ink);background:transparent;font:600 9px var(--mono);letter-spacing:.14em;padding:8px 13px;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px}
+.sbtn .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none}
 .sbtn:hover{background:var(--ink);color:var(--paper)}
 .sbtn.red{border-color:var(--red);color:var(--red)}
 .sbtn.red:hover{background:var(--red);color:var(--paper)}
@@ -304,28 +346,30 @@ textarea.field{font-size:17px}
 .edprev{position:sticky;top:84px;border:1px dashed rgba(34,27,18,.4);padding:30px 22px;background:var(--paper2);display:flex;flex-direction:column;align-items:center;gap:18px;min-height:460px;justify-content:center}
 .edprev .plab{font:600 9px var(--mono);letter-spacing:.26em;color:var(--faint);text-transform:uppercase}
 .swatches{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.swatch{width:24px;height:24px;border:1px solid var(--rule);cursor:pointer;padding:0}
+.swatch{width:24px;height:24px;border:1px solid var(--rule);padding:0}
 .swatch.on{outline:2px solid var(--ink);outline-offset:2px}
-input[type=color].swatch{width:24px;height:24px;padding:0;border:1px solid var(--rule);background:none;cursor:pointer}
-.covbox{display:flex;align-items:center;gap:14px;margin-top:4px}
+input[type=color].swatch{padding:0;background:none}
+.covbox{display:flex;align-items:center;gap:14px;margin-top:4px;flex-wrap:wrap}
 .covbox img{width:54px;height:72px;object-fit:cover;border:1px solid var(--ink)}
-.hint{font:400 13px/1.9 var(--ar);color:var(--ink2);margin-top:8px}
+.hint{font:400 14px/2 var(--ar);color:var(--ink2);margin-top:8px}
+.hint code{font:600 12px var(--mono);background:rgba(34,27,18,.07);padding:1px 6px}
 .mono-hint{font:500 9px var(--mono);letter-spacing:.14em;color:var(--faint);margin-top:8px;text-transform:uppercase}
 .edfoot{display:flex;gap:12px;align-items:center;margin-top:30px;flex-wrap:wrap}
 .setgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px}
-.setgrid .panel p{font:italic 500 15px/1.7 var(--serif);color:var(--ink2);margin-bottom:14px}
 
 .toasts{position:fixed;bottom:24px;right:24px;z-index:100;display:flex;flex-direction:column;gap:10px}
-.toast{background:var(--ink);color:var(--paper);font:500 11px var(--mono);letter-spacing:.06em;padding:15px 18px;display:flex;gap:16px;align-items:center;animation:tin .3s both;max-width:380px}
-.toast button{background:none;border:1px solid rgba(239,231,210,.5);color:var(--paper);font:600 9px var(--mono);letter-spacing:.14em;padding:5px 10px;cursor:pointer}
+.toast{background:var(--ink);color:var(--paper);font:400 13px/1.6 var(--ar);padding:15px 18px;display:flex;gap:16px;align-items:center;animation:tin .3s both;max-width:380px}
+.toast button{background:none;border:1px solid rgba(239,231,210,.5);color:var(--paper);font:600 9px var(--mono);letter-spacing:.14em;padding:5px 10px;flex:none}
 .toast button:hover{background:var(--red);border-color:var(--red)}
 @keyframes tin{from{transform:translateY(14px);opacity:0}}
 footer{border-top:1px solid var(--ink);margin-top:44px;padding:36px 0 48px}
 .fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font:500 9.5px var(--mono);letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
 .fin a:hover{color:var(--red)}
+.fin .a{font:400 12px var(--ar);letter-spacing:0;text-transform:none}
 
 @media(max-width:900px){
-  .grid2,.hall-grid,.ledger-sec,.edgrid,.setgrid{grid-template-columns:1fr;gap:36px}
+  .grid2,.hall-grid,.edgrid,.setgrid{grid-template-columns:1fr;gap:36px}
+  .ledger-sec{grid-template-columns:1fr;gap:36px}
   .edprev{position:static}
   .drop-card{grid-template-columns:1fr}
   .pc-r{border-left:none;border-top:1px dashed rgba(34,27,18,.45)}
@@ -342,27 +386,28 @@ footer{border-top:1px solid var(--ink);margin-top:44px;padding:36px 0 48px}
 </head>
 <body>
 
-<div class="abar"><span><b>WRITER MODE</b> — private tools are unlocked</span><button data-act="exit">LOCK THE DESK</button></div>
+<div class="abar"><span><b>WRITER MODE</b> — أدوات الكاتبة مفتوحة</span>
+  <button data-go="#/studio">STUDIO · الاستوديو</button>
+  <button data-act="exit">LOCK · اقفلي</button>
+</div>
 
 <nav class="nav"><div class="wrap nav-in">
-  <a class="brand" href="#/"><span class="brand-mark" id="brandMark">WA</span><span id="brandName">THE WRITER'S ARCHIVE</span></a>
+  <a class="brand" href="#/"><span class="brand-mark" id="brandMark">WA</span><span>THE WRITER'S ARCHIVE <span class="ba">أرشيف الكاتبة</span></span></a>
   <div class="nav-links">
-    <button class="nl" data-nav="home" data-go="#/">Index</button>
-    <button class="nl" data-nav="hall" data-go="#/hall">Hall of Stories</button>
-    <button class="nl" data-nav="drop" data-go="#/drop">Daily Drop</button>
-    <button class="nl wlink admin-only" data-nav="studio" data-go="#/studio">✒ Studio</button>
-    <button class="nl admin-only" data-nav="dashboard" data-go="#/dashboard">Writer's Desk</button>
+    <button class="nl" data-nav="home" data-go="#/">Index <span class="a">الفهرس</span></button>
+    <button class="nl" data-nav="hall" data-go="#/hall">Hall <span class="a">القاعة</span></button>
+    <button class="nl" data-nav="drop" data-go="#/drop">Daily Drop <span class="a">الجرسنة</span></button>
+    <button class="nl wlink" data-nav="studio" data-go="#/studio">✒ Studio <span class="a">اكتبي هنا</span></button>
+    <button class="nl" data-nav="dashboard" data-go="#/dashboard">Desk <span class="a">المكتب</span></button>
   </div>
 </div></nav>
 
 <main id="app"></main>
 
 <footer><div class="wrap fin">
-  <span>The Writer's Archive — all files belong to their author</span>
-  <span>Set in Cormorant Garamond &amp; IBM Plex Mono</span>
-  <span><a href="#/hall">Hall of Stories</a> · <a href="#/drop">Daily Drop</a></span>
-  <span class="admin-only" style="display:none"><a href="#/studio">✒ Writer access</a></span>
-  <span><a href="#/studio" style="opacity:.55">·</a></span>
+  <span>The Writer's Archive <span class="a">كل الملفات ملك كاتبتها</span></span>
+  <span><a href="#/hall">Hall</a> · <a href="#/drop">Drop</a> · <a href="#/studio">✒ <span class="a">استوديو الكاتبة</span></a></span>
+  <span>This archive keeps no cookies. <span class="a">بيحفظ رسايلك بس.</span></span>
 </div></footer>
 
 <div class="toasts"></div>
@@ -371,21 +416,20 @@ footer{border-top:1px solid var(--ink);margin-top:44px;padding:36px 0 48px}
 /* ════════════════════════════════════════════
    الإعدادات — عدّلي من هنا
    ════════════════════════════════════════════ */
-const WRITER   = { name:'Noor Kamar', short:'N. KAMAR' };
-const PASSCODE = 'archive2024';   /* ← كلمة سر الستوديو. غيّريها هنا */
+const WRITER   = { name:'Noor Kamar', nameAr:'نور قمر', short:'N. KAMAR' };
+const PASSCODE = 'archive2024';   /* ← كلمة سر الاستوديو. غيّريها هنا */
 const SUBSCRIBERS = 846;
 
 const SECTIONS = [
-  {key:'stories', num:'I',   title:'Stories',            code:'FIC', desc:'Novels & short stories — the long files.'},
-  {key:'writings',num:'II',  title:'Short Writings',     code:'ESS', desc:'Fragments, essays & three-a.m. notes.'},
-  {key:'quotes',  num:'III', title:'Quotes',             code:'QUO', desc:'Lines that asked to be kept.'},
-  {key:'poetry',  num:'IV',  title:'Poetry',             code:'VER', desc:'Verse, kept in the back drawer.'},
-  {key:'drafts',  num:'V',   title:'Drafts & Unfinished',code:'DFT', desc:'Files still being written.'}
+  {key:'stories', num:'I',   title:'Stories',            ar:'الروايات والقصص',      code:'FIC', desc:'Novels & short stories — the long files.'},
+  {key:'writings',num:'II',  title:'Short Writings',     ar:'الكتابات القصيرة',     code:'ESS', desc:'Fragments, essays & three-a.m. notes.'},
+  {key:'quotes',  num:'III', title:'Quotes',             ar:'الاقتباسات',           code:'QUO', desc:'Lines that asked to be kept.'},
+  {key:'poetry',  num:'IV',  title:'Poetry',             ar:'الشعر',                code:'VER', desc:'Verse, kept in the back drawer.'},
+  {key:'drafts',  num:'V',   title:'Drafts & Unfinished',ar:'مسودات غير مكتملة',    code:'DFT', desc:'Files still being written.'}
 ];
 const SEC_PREFIX = {stories:'FIC', writings:'ESS', quotes:'QUO', poetry:'VER', drafts:'DFT'};
 const SEC_KIND   = {writings:'manuscript', quotes:'quote', poetry:'poem', drafts:'folder'};
 
-/* الأعمال الأساسية — كل اللي تضيفيه من الستوديو بيتخزن فوقيها */
 const SEED = [
  {id:1, sec:'stories', kind:'novel', catalog:'FIC-001', kindLabel:'NOVEL',
   title:'The Last Letter', lang:'en', added:'2024-03-14', date:'14 Mar 2024',
@@ -393,9 +437,9 @@ const SEED = [
   excerpt:[
    "They found the letter folded twice, exactly the way he folded everything — receipts, maps, apologies. The paper had gone soft at the creases, as if it had been opened and refolded many times before it was ever sent.",
    "My dearest L. By the time you read this, the house will have learned to sound like an empty one. Don't be alarmed by the quiet. I have left the radio in the kitchen tuned to your station, and I have paid the bill through the spring.",
-   "«You once asked me why I never said the important things out loud. I said them, L. I said them to the kettle, to the garden, to the rear window of the 7:15 train. I was a man who practiced in private.",
    "## The tin on the wardrobe",
    "There is a tin on top of the wardrobe. In it: your mother's brooch, the ticket stubs from Brighton, and forty-two years of Tuesdays. Forgive me for counting. A man my age counts the things he is about to leave.",
+   "«You once asked me why I never said the important things out loud. I said them, L. I said them to the kettle, to the garden, to the rear window of the 7:15 train. I was a man who practiced in private.",
    "Do not look for the letter I mention in paragraph three. Some things are ended by being written, not by being read."
   ]},
  {id:2, sec:'stories', kind:'manuscript', catalog:'FIC-002', kindLabel:'SHORT STORY',
@@ -403,6 +447,7 @@ const SEED = [
   views:9842, likes:980, rating:4.8, ratings:212,
   excerpt:[
    "في آخر صيف، تعلمنا أن البيوت لا تنهار دفعة واحدة، بل تُفقد غرفةً كل عام: غرفة الجدّ، ثم الهاتف الأرضي، ثم صوت أمي وهي تنادي لأخي الأصغر من الشرفة.",
+   "## الفصل الأخير",
    "كنتُ أظن أن العودة إلى البيت رحلةٌ في الزمن، حتى اكتشفت أن الزمن هو الذي يعود إلينا، جالسًا على طاولة المطبخ، يفكّ حزام ساعته ويقول: بقيت أربعة عشر يومًا فقط.",
    "«الناس لا يغادرون الأماكن. الأماكن هي التي تُخرجنا بلطف، واحدةً واحدة، حتى نعتقد أننا اخترنا الرحيل.",
    "في ليلة الرحيل، وجدتُ خلف المكتبة صورةً قديمة لنا كلنا، واقفين أمام شجرة لم يعد لها أثر. أحدٌ في الصورة لا يعرف أن الشجرة ستُقتطع، وكلُّنا يبتسم."
@@ -442,7 +487,7 @@ const SEED = [
   ]},
  {id:7, sec:'quotes', kind:'quote', catalog:'QUO-001', kindLabel:'QUOTE',
   title:'هناك أشياء لا تنتهي', lang:'ar', added:'2025-02-11', date:'11 Feb 2025',
-  views:6118, likes:1412, rating:4.9, ratings:302, src:'FROM THE FILE: THE LAST LETTER',
+  views:6118, likes:1412, rating:4.9, ratings:302, src:'من ملف: The Last Letter',
   quote:'هناك أشياء لا تنتهي حين نتركها، بل تبدأ حين نتوقف عن انتظارها.'},
  {id:8, sec:'quotes', kind:'quote', catalog:'QUO-002', kindLabel:'QUOTE',
   title:'Some doors close so softly', lang:'en', added:'2025-05-19', date:'19 May 2025',
@@ -450,7 +495,7 @@ const SEED = [
   quote:'Some doors close so softly you only hear them years later.'},
  {id:9, sec:'quotes', kind:'quote', catalog:'QUO-003', kindLabel:'QUOTE',
   title:'على كل جسرٍ بائس', lang:'ar', added:'2025-08-03', date:'03 Aug 2025',
-  views:1903, likes:245, rating:4.6, ratings:41, src:'FROM THE FILE: الغرفة 204',
+  views:1903, likes:245, rating:4.6, ratings:41, src:'من ملف: الغرفة 204',
   quote:'على كل جسرٍ بائسٍ يمشي عليه، هناك شخصٌ قرر أن يظل إنسانًا.'},
  {id:10, sec:'poetry', kind:'poem', catalog:'VER-001', kindLabel:'POETRY',
   title:'Late Rain — مطر متأخر', lang:'en', added:'2025-03-27', date:'27 Mar 2025',
@@ -482,7 +527,7 @@ const SEED = [
 ];
 
 const SEED_NOTES = [
- {id:'c1', file:1, name:'Anonymous reader', text:'النهاية فضلت في دماغي طول اليوم.', date:'02 Dec 2025', pinned:true, hidden:false},
+ {id:'c1', file:1, name:'قارئة مجهولة', text:'النهاية فضلت في دماغي طول اليوم.', date:'02 Dec 2025', pinned:true, hidden:false},
  {id:'c2', file:1, name:'Malak A.', text:'قرأتها مرتين وخفت أقرأها تالتة. مش عارفة أوقفها إزاي.', date:'28 Nov 2025', pinned:false, hidden:false},
  {id:'c3', file:1, name:'A reader from Cairo', text:'Forty-two years of Tuesdays. I had to put the phone down for a minute.', date:'20 Nov 2025', pinned:false, hidden:true},
  {id:'c4', file:2, name:'Farah', text:'حاسس إني عشت الصيف ده فعلاً. البيت اللي بيفقد غرفة كل عام… ده بيتنا.', date:'14 Nov 2025', pinned:false, hidden:false},
@@ -496,11 +541,11 @@ const PAST_DROPS = [
  {no:'081', q:'الناس لا يغادرون الأماكن. الأماكن هي التي تُخرجنا بلطف.', d:'10 DEC', file:2},
  {no:'080', q:'Leaving quietly is not the same as leaving without sound.', d:'09 DEC', file:4},
  {no:'079', q:'بعض الغرف تحفظك أكثر مما تحفظك الذاكرة.', d:'08 DEC', file:3},
- {no:'078', q:'The ceiling is a cinema for people who can\'t sleep.', d:'07 DEC', file:6}
+ {no:'078', q:"The ceiling is a cinema for people who can't sleep.", d:'07 DEC', file:6}
 ];
 
 /* ════════════════════════════════════════════
-   التخزين المحمي — لو البيئة مانعه، الموقع يفضل شغال
+   تخزين محمي — لو البيئة مانعه، الموقع يفضل شغال
    ════════════════════════════════════════════ */
 const store = {
   get(k,d){ try{ const v=JSON.parse(localStorage.getItem('wa_'+k)); return v===null||v===undefined?d:v }catch(e){ return d } },
@@ -512,10 +557,9 @@ const SS = {
   del(k){ try{ sessionStorage.removeItem(k) }catch(e){} }
 };
 
-/* الأعمال: الأساسي + كل تعديلاتك من الستوديو */
 let FILES = store.get('files', null) || JSON.parse(JSON.stringify(SEED));
 const saveFiles = ()=>{ const ok=store.set('files',FILES);
-  if(!ok) toast('Kept for this session only — storage is full. Try a smaller cover image.'); return ok };
+  if(!ok) toast('اتحفظ للجلسة دي بس — المساحة اتملت. جرّبي صورة غلاف أصغر.'); return ok };
 
 const VD   = store.get('vd', {});
 const LIKED= new Set(store.get('likes', []));
@@ -543,7 +587,7 @@ function countView(id){
 }
 
 /* ════════════════════════════════════════════
-   أدوات مساعدة
+   أدوات
    ════════════════════════════════════════════ */
 const $  = s=>document.querySelector(s);
 const app = $('#app');
@@ -554,13 +598,13 @@ const fmtK = n => n>=1000 ? (n/1000).toFixed(1).replace(/\.0$/,'')+'K' : ''+n;
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 function rng(seed){ let s=(seed>>>0)||1; return ()=>{ s=(Math.imul(s,1664525)+1013904223)>>>0; return s/4294967296 } }
 const nextId = ()=>Math.max(0,...FILES.map(f=>f.id))+1;
-const autoCatalog = (sec,id)=> SEC_PREFIX[sec]+'-'+String(id).padStart(3,'0');
+const autoCatalog = (sec,id)=> (SEC_PREFIX[sec]||'FIC')+'-'+String(id).padStart(3,'0');
 const kindLabelOf = k => ({novel:'NOVEL', manuscript:'SHORT STORY', quote:'QUOTE', poem:'POETRY', folder:'DRAFT — UNFINISHED'})[k]||'FILE';
+const secOf = f => SECTIONS.find(s=>s.key===f.sec) || {title:f.sec||'', ar:''};
 const parseBody = t => t.split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean);
 const parsePoem = t => t.split('\n').map(s=>s.trim()).filter(Boolean)
   .map(l=>{ const i=l.indexOf('::'); return i<0? [l,''] : [l.slice(0,i).trim(), l.slice(i+2).trim()] });
 
-/* صورة → dataURL مصغّرة (عشان التخزين) */
 function fileToDataURL(file, max, cb){
   const img=new Image(), r=new FileReader();
   r.onload=()=>{ img.onload=()=>{
@@ -610,7 +654,7 @@ const niceMax = v => { const p=Math.pow(10,Math.floor(Math.log10(v))); const m=v
 const fk = v => v>=1000 ? (v/1000).toFixed(v>=10000?0:1)+'K' : ''+Math.round(v);
 
 /* ════════════════════════════════════════════
-   كروت الأرشيف — الجسم البصري لكل نوع
+   كروت الأرشيف
    ════════════════════════════════════════════ */
 function cardStats(f){
   const r=fR(f);
@@ -645,7 +689,7 @@ function cardInner(f){
       <span class="fold"></span>
       <span class="kind">${f.kindLabel} · ${f.catalog}</span>
       <h3><span class="undl ${arCls}">${esc(f.title)}</span></h3>
-      <div class="peek">${esc((f.excerpt&&f.excerpt[0]||'')).replace(/^## /,'').slice(0,86)}…</div>
+      <div class="peek">${esc(((f.excerpt&&f.excerpt[0])||'').replace(/^## /,'')).slice(0,86)}…</div>
     </div>`;
   if(f.kind==='quote') return `
     <div class="pcard slip" style="transform:rotate(1.1deg)">
@@ -668,29 +712,26 @@ function cardInner(f){
     </div>`;
   return '';
 }
-function cardHTML(f){
-  return `<a class="bcard" href="#/story/${f.id}" data-rv>${cardInner(f)}${cardMeta(f)}${cardStats(f)}</a>`;
-}
+const cardHTML = f => `<a class="bcard" href="#/story/${f.id}" data-rv>${cardInner(f)}${cardMeta(f)}${cardStats(f)}</a>`;
 
 /* ════════════════════════════════════════════
    الصفحة الرئيسية
    ════════════════════════════════════════════ */
 function renderHome(){
-  document.title = "The Writer's Archive";
-  const dropQ = DROP.text;
-  const isAr = /[\u0600-\u06FF]/.test(dropQ);
+  document.title = "The Writer's Archive — أرشيف الكاتبة";
+  const isAr = /[\u0600-\u06FF]/.test(DROP.text);
   const df = F(DROP.file);
   const toc = SECTIONS.map(s=>{
     const n=FILES.filter(f=>f.sec===s.key).length;
     return `<button class="toc-row" data-goto="sec-${s.key}">
-      <span class="rn">${s.num}</span><span class="t">${s.title}</span><span class="dots"></span>
-      <span class="c">${n} FILE${n===1?'':'S'} — ${s.code}</span></button>`;
+      <span class="rn">${s.num}</span><span class="t">${s.title}</span><span class="ta">${s.ar}</span><span class="dots"></span>
+      <span class="c">${n} FILES — ${s.code}</span></button>`;
   }).join('');
 
   const secs = SECTIONS.map(s=>{
     const files=FILES.filter(f=>f.sec===s.key);
     return `<section id="sec-${s.key}" class="wrap">
-      <div class="shead" data-rv><span class="snum">${s.num}</span><h2>${s.title}</h2><span class="sdesc">${s.desc}</span></div>
+      <div class="shead" data-rv><span class="snum">${s.num}</span><h2>${s.title}</h2><span class="sar">${s.ar}</span><span class="sdesc">${s.desc}</span></div>
       <div class="shelf ${s.key==='stories'?'floor':''}">${files.map(cardHTML).join('')}</div>
     </section>`;
   }).join('');
@@ -709,32 +750,33 @@ function renderHome(){
 
   app.innerHTML = `
   <header class="wrap mast">
-    <div class="mast-top"><span>Private collection</span><span>Reading open — interaction by invitation</span><span>Cat. No. WR-084</span></div>
+    <div class="mast-top"><span>Private collection · أرشيف خاص</span><span>Reading open · القراءة مفتوحة للجميع</span><span>Cat. No. WR-084</span></div>
     <div class="over">The Writer's</div>
     <h1>Archive</h1>
     <div class="sub">A collection of stories, thoughts &amp; words.</div>
+    <div class="suba">مجموعة روايات وخواطر وكلمات — كل قطعة هنا ملف ليها رقمها وحكايتها.</div>
     <div class="mast-stats">
-      <div class="ms"><div class="n" data-n="${TOTALS.views}">0</div><div class="l">Views recorded</div></div>
-      <div class="ms"><div class="n" data-n="${TOTALS.likes}">0</div><div class="l">Likes</div></div>
-      <div class="ms"><div class="n" data-n="${TOTALS.ratings}">0</div><div class="l">Ratings</div></div>
-      <div class="ms"><div class="n" data-n="${SUBSCRIBERS}">0</div><div class="l">Subscribers</div></div>
-      <div class="ms"><div class="n" data-n="${FILES.length}">0</div><div class="l">Files</div></div>
+      <div class="ms"><div class="n" data-n="${TOTALS.views}">0</div><div class="l">Views <span class="a">قراءة</span></div></div>
+      <div class="ms"><div class="n" data-n="${TOTALS.likes}">0</div><div class="l">Likes <span class="a">إعجاب</span></div></div>
+      <div class="ms"><div class="n" data-n="${TOTALS.ratings}">0</div><div class="l">Ratings <span class="a">تقييم</span></div></div>
+      <div class="ms"><div class="n" data-n="${SUBSCRIBERS}">0</div><div class="l">Subscribers <span class="a">مشترك</span></div></div>
+      <div class="ms"><div class="n" data-n="${FILES.length}">0</div><div class="l">Files <span class="a">ملف</span></div></div>
     </div>
   </header>
 
   <div class="wrap toc">
-    <div class="toc-head">— Table of contents —</div>
+    <div class="toc-head">— Table of contents <span class="a">فهرس الأرشيف</span> —</div>
     ${toc}
   </div>
   ${secs}
 
   <section class="wrap ledger-sec" data-rv>
-    <div><div class="rank-head"><span class="rno">♥</span>Most Loved</div>${rankRows(mostLoved,f=>fmtK(fL(f))+' likes')}</div>
-    <div><div class="rank-head"><span class="rno">◉</span>Most Read</div>${rankRows(mostRead,f=>fmtK(fV(f))+' views')}</div>
+    <div><div class="rank-head"><span class="rno">♥</span>Most Loved <span class="a">الأكثر إعجابًا</span></div>${rankRows(mostLoved,f=>fmtK(fL(f))+' likes')}</div>
+    <div><div class="rank-head"><span class="rno">◉</span>Most Read <span class="a">الأكثر قراءة</span></div>${rankRows(mostRead,f=>fmtK(fV(f))+' views')}</div>
   </section>
 
   <section class="wrap recent" data-rv>
-    <div class="toc-head">— Recently added —</div>
+    <div class="toc-head">— Recently added <span class="a">أحدث الإضافات</span> —</div>
     ${recent.map(f=>`<button class="row" data-go="#/story/${f.id}">
       <span class="dt">${f.date}</span><span class="t ${f.lang==='ar'?'ar-t':''}">${esc(f.title)}</span><span class="dots"></span>
       <span class="c" style="font:500 10px var(--mono);letter-spacing:.16em;color:var(--faint)">${f.catalog}</span>
@@ -744,15 +786,15 @@ function renderHome(){
   <section class="wrap">
     <div class="drop-card" data-rv>
       <div class="pc-l">
-        <span class="pc-tag">Daily Drop — No. ${DROP.no}</span>
-        <div class="dropq ${isAr?'ar-t':''}">«${esc(dropQ)}»</div>
-        <div class="pc-src">${df?`— from ${df.catalog} · ${esc(df.title)}`:''}</div>
-        ${df?`<a class="btn" href="#/story/${df.id}">Read the full piece ${icon('right',13)}</a>`:''}
+        <span class="pc-tag">Daily Drop <span class="a">الجرسنة اليومية</span> — No. ${DROP.no}</span>
+        <div class="dropq ${isAr?'ar-t':''}">«${esc(DROP.text)}»</div>
+        <div class="pc-src">${df?`— ${df.catalog} · ${esc(df.title)}`:''}</div>
+        ${df?`<a class="btn" href="#/story/${df.id}">Read the full piece <span class="a">اقري الملف كامل</span> ${icon('right',13)}</a>`:''}
       </div>
       <div class="pc-r">
         ${postmarkSVG()}
-        <div><div class="cd" id="cd">--:--:--</div><div class="cd-l">Next drop — 8:00 PM</div></div>
-        <div style="font:500 10px var(--mono);letter-spacing:.14em;color:var(--faint)">${SUBSCRIBERS} SUBSCRIBERS RECEIVE IT BY EMAIL</div>
+        <div><div class="cd" id="cd">--:--:--</div><div class="cd-l">Next drop · 8:00 PM — القايمة الجاية الساعة ٨ مساءً</div></div>
+        <div style="font:500 10px var(--mono);letter-spacing:.14em;color:var(--faint)">${SUBSCRIBERS} SUBSCRIBERS · بالبريد كل يوم</div>
       </div>
     </div>
   </section>`;
@@ -763,7 +805,7 @@ function renderHome(){
    Hall of Stories
    ════════════════════════════════════════════ */
 function renderHall(){
-  document.title = 'Hall of Stories — The Writer\'s Archive';
+  document.title = 'Hall of Stories — قاعة القصص';
   const rated=FILES.filter(f=>!f.sealed && fR(f).n>0);
   const mostV=[...FILES].sort((a,b)=>fV(b)-fV(a)).slice(0,5);
   const mostL=[...FILES].sort((a,b)=>fL(b)-fL(a)).slice(0,5);
@@ -775,12 +817,13 @@ function renderHall(){
   app.innerHTML=`<div class="wrap hall">
     <h1>The Hall of Stories</h1>
     <div class="hsub">Ranked by the numbers — not by competition.</div>
+    <div class="hsuba">القاعة دي بتعرض أعمالك مرتّبة حسب أرقامها — قراءة وإعجاب وتقييم. عرض للأرقام، مش منافسة.</div>
     <div class="hall-grid">
-      <div class="hcol"><div class="rank-head">Most Viewed</div>${rows(mostV,f=>fmtK(fV(f)),f=>fV(f)+' views')}</div>
-      <div class="hcol"><div class="rank-head">Most Liked</div>${rows(mostL,f=>fmtK(fL(f)),f=>fL(f)+' likes')}</div>
-      <div class="hcol"><div class="rank-head">Highest Rated</div>${rows(mostR,f=>'★ '+fR(f).avg.toFixed(1),f=>fR(f).n+' ratings')}</div>
+      <div class="hcol"><div class="rank-head">Most Viewed <span class="a">الأكثر قراءة</span></div>${rows(mostV,f=>fmtK(fV(f)),f=>fV(f)+' views')}</div>
+      <div class="hcol"><div class="rank-head">Most Liked <span class="a">الأكثر إعجابًا</span></div>${rows(mostL,f=>fmtK(fL(f)),f=>fL(f)+' likes')}</div>
+      <div class="hcol"><div class="rank-head">Highest Rated <span class="a">الأعلى تقييمًا</span></div>${rows(mostR,f=>'★ '+fR(f).avg.toFixed(1),f=>fR(f).n+' ratings')}</div>
     </div>
-    <p class="hnote">Rating appears here as an average, never as a contest — a file is measured, not defeated.</p>
+    <p class="hnote">التقييم هنا متوسط قراءات، مش مسابقة — <span class="en">a file is measured, not defeated.</span></p>
   </div>`;
   setNav('hall');
 }
@@ -789,34 +832,35 @@ function renderHall(){
    Daily Drop
    ════════════════════════════════════════════ */
 function renderDrop(){
-  document.title = 'Daily Drop — The Writer\'s Archive';
+  document.title = 'Daily Drop — الجرسنة اليومية';
   const isAr=/[\u0600-\u06FF]/.test(DROP.text);
   const df=F(DROP.file);
   app.innerHTML=`<div class="wrap" style="padding-top:64px;padding-bottom:90px">
-    <div class="crumb"><span>ARCHIVE / DAILY DROP</span><span>${SUBSCRIBERS} SUBSCRIBERS</span></div>
+    <div class="crumb"><span>ARCHIVE / DAILY DROP <span class="a">الجرسنة اليومية</span></span><span>${SUBSCRIBERS} SUBSCRIBERS</span></div>
     <h1 style="font:600 clamp(40px,6.5vw,64px) var(--serif);text-transform:uppercase;margin-top:22px">Daily Drop</h1>
     <div class="hsub" style="font:italic 500 20px var(--serif);color:var(--ink2);margin-top:8px">Every day, at eight in the evening, one line leaves the archive.</div>
+    <div style="font:400 17px var(--ar);color:var(--faint);margin-bottom:44px">كل يوم الساعة ٨ مساءً، سطر واحد من كتاباتك بيوصل لكل المشتركين — ولو مقتطف من ملف، يقدروا يفتحوا الأصل.</div>
 
     <div class="drop-card">
       <div class="pc-l">
-        <span class="pc-tag">Today's Drop — No. ${DROP.no}</span>
+        <span class="pc-tag">Today's Drop <span class="a">جرسنة النهارده</span> — No. ${DROP.no}</span>
         <div class="dropq ${isAr?'ar-t':''}">«${esc(DROP.text)}»</div>
-        <div class="pc-src">${df?`— from ${df.catalog} · ${esc(df.title)}`:''}</div>
-        ${df?`<a class="btn" href="#/story/${df.id}">Read the full piece ${icon('right',13)}</a>`:''}
+        <div class="pc-src">${df?`— ${df.catalog} · ${esc(df.title)}`:''}</div>
+        ${df?`<a class="btn" href="#/story/${df.id}">Read the full piece <span class="a">اقري الملف كامل</span> ${icon('right',13)}</a>`:''}
       </div>
       <div class="pc-r">
         ${postmarkSVG()}
-        <div><div class="cd" id="cd">--:--:--</div><div class="cd-l">Drops in — 8:00 PM sharp</div></div>
+        <div><div class="cd" id="cd">--:--:--</div><div class="cd-l">Drops in — الساعة ٨ مساءً بالظبط</div></div>
       </div>
     </div>
 
     <div class="pastd">
-      <div class="toc-head">— Past drops —</div>
+      <div class="toc-head">— Past drops <span class="a">الجرسنين اللي فاتوا</span> —</div>
       ${PAST_DROPS.map(d=>`<button class="row" data-go="#/story/${d.file}">
         <span class="no">No. ${d.no}</span><span class="q ${/[\u0600-\u06FF]/.test(d.q)?'ar-t':''}">«${esc(d.q)}»</span>
         <span class="dots"></span><span class="d">${d.d}</span></button>`).join('')}
     </div>
-    <div class="footnote">Email delivery requires a backend (Resend / SMTP) — here, the drop is scheduled locally for preview.</div>
+    <div class="footnote">Email delivery needs a backend (Resend / SMTP) — <span class="a">هنا الجرسنة مجدولة محليًا للمعاينة.</span></div>
   </div>`;
   setNav('drop'); startCountdown('cd');
 }
@@ -832,17 +876,17 @@ function postmarkSVG(){
 }
 
 /* ════════════════════════════════════════════
-   صفحة القصة
+   صفحة العمل
    ════════════════════════════════════════════ */
 function renderStory(id){
   const f=F(id); if(!f){ renderHome(); return }
   countView(id);
-  document.title = f.title+" — The Writer's Archive";
-  const sec=SECTIONS.find(s=>s.key===f.sec)||SECTIONS[0];
+  document.title = f.title+" — أرشيف الكاتبة";
+  const sec=secOf(f);
   const r=fR(f); const liked=LIKED.has(f.id);
   const isAr=f.lang==='ar';
   const secFiles=FILES.filter(x=>x.sec===f.sec);
-  const nextFile=secFiles[(secFiles.findIndex(x=>x.id===f.id)+1)%Math.max(1,secFiles.length)]||f;
+  const nextFile=secFiles.length?secFiles[(secFiles.findIndex(x=>x.id===f.id)+1)%secFiles.length]:f;
 
   const prose = (f.excerpt||[]).map((p,i)=>{
     if(p.startsWith('## ')) return `<h3 class="chh" dir="auto">${esc(p.slice(3))}</h3>`;
@@ -852,74 +896,74 @@ function renderStory(id){
   const poemBody = (f.poem||[]).map(l=>`<span class="ln">${esc(l[0])}</span><span class="lna">${esc(l[1])}</span>`).join('');
 
   const statRating = f.sealed
-    ? `<div><span style="color:var(--red)">SEALED</span><span class="statlab">Rating closed</span></div>`
-    : `<div>${starIcon(17,true)} ${r.avg.toFixed(1)}<span class="statlab">${fmt(r.n)} ratings</span></div>`;
+    ? `<div><span style="color:var(--red)">SEALED</span><span class="statlab">Rating closed <span class="a">التقييم مقفول</span></span></div>`
+    : `<div>${starIcon(17,true)} ${r.avg.toFixed(1)}<span class="statlab">${fmt(r.n)} ratings <span class="a">تقييم</span></span></div>`;
 
   const rateSection = f.sealed
-    ? `<div class="rate"><h4>Rate this story</h4><p class="sealed-note">This file is still being written — its rating is sealed until completion.</p></div>`
-    : `<div class="rate"><h4>Rate this story</h4>
+    ? `<div class="rate"><h4>Rate this story <span class="a">قيّمي العمل</span></h4><p class="sealed-note">الملف ده لسه بيتكتب — تقييمه مقفول لحد ما يخلص. <span class="en">This file is still being written.</span></p></div>`
+    : `<div class="rate"><h4>Rate this story <span class="a">قيّمي العمل من ١ لـ ٥</span></h4>
         <div class="stars" id="stars">${starsHTML(UR[f.id]||0)}</div>
         <div class="rate-out" id="rateOut">${UR[f.id]
-          ? `You rated ${'★'.repeat(UR[f.id])}${'☆'.repeat(5-UR[f.id])} — the file now stands at <b>${r.avg.toFixed(1)}</b> · ${fmt(r.n)} ratings`
-          : 'Your rating is added to every other reader\'s, and the average recalculates instantly.'}</div>
+          ? `You rated ${'★'.repeat(UR[f.id])}${'☆'.repeat(5-UR[f.id])} — the file stands at <b>${r.avg.toFixed(1)}</b> · ${fmt(r.n)} ratings`
+          : 'تقييمك بيتجمع مع تقييمات باقي القراء — والمتوسط بيتحسب لحظيًا.'}</div>
        </div>`;
 
   const notes=NOTES.filter(n=>n.file===f.id && (!n.hidden || isAdmin()))
     .sort((a,b)=>(b.pinned-a.pinned));
   const notesHTML = notes.length ? notes.map(noteHTML).join('')
-    : `<p style="font:italic 500 17px var(--serif);color:var(--ink2)">No notes in the margins yet — yours would be the first.</p>`;
+    : `<p style="font:400 17px var(--ar);color:var(--ink2)">لسه مفيش ملاحظات في الهوامش — رسالتك تكون أول واحدة.</p>`;
 
   app.innerHTML=`<div class="wrap art">
     <div class="crumb">
       <span><a href="#/">ARCHIVE</a> / ${sec.title.toUpperCase()} / ${f.catalog}</span>
-      <a href="#/" style="display:flex;align-items:center;gap:7px">${icon('left',13)} BACK TO INDEX</a>
+      <a href="#/">${icon('left',13)} BACK · <span class="a">رجوع للفهرس</span></a>
     </div>
-    ${f.cover?`<figure class="art-cover"><img src="${f.cover}" alt="Cover of ${esc(f.title)}"><figcaption>FILE COVER · ${f.catalog}</figcaption></figure>`:''}
+    ${f.cover?`<figure class="art-cover"><img src="${f.cover}" alt="غلاف ${esc(f.title)}"><figcaption>FILE COVER · ${f.catalog}</figcaption></figure>`:''}
     <div style="margin-top:26px"><span class="chip">${f.kindLabel}</span><span class="chip" style="border-color:var(--red);color:var(--red)">${f.catalog}</span></div>
     <h1 dir="auto">${esc(f.title)}</h1>
-    <div class="byline">Written by ${WRITER.name}</div>
-    <div class="accept">Accepted into the archive · ${f.date} · Last revised ${f.date}</div>
+    <div class="byline">Written by ${WRITER.name} <span class="a">· بقلم ${WRITER.nameAr}</span></div>
+    <div class="accept">Accepted into the archive · ${f.date}</div>
 
     <div class="statbar">
-      <div>${icon('eye',18)} ${fmt(fV(f))}<span class="statlab">Views</span></div>
-      <div><button class="likebtn ${liked?'liked':''}" id="likeBtn">${icon('heart',18,liked)} ${liked?'Liked':'Like'} · <span id="likeN">${fmt(fL(f))}</span></button><span class="statlab">Reader's mark</span></div>
+      <div>${icon('eye',18)} ${fmt(fV(f))}<span class="statlab">Views <span class="a">قراءة</span></span></div>
+      <div><button class="likebtn ${liked?'liked':''}" id="likeBtn">${icon('heart',18,liked)} ${liked?'Liked · أعجبتك':'Like · إعجاب'} · <span id="likeN">${fmt(fL(f))}</span></button><span class="statlab">Reader's mark <span class="a">علامة القارئ</span></span></div>
       ${statRating}
     </div>
-    <div class="once">Views are counted once per reader — refresh freely.</div>
+    <div class="once">Views are counted once per reader — refresh freely. <span class="a">المشاهدة بتتحسب مرة واحدة لكل قارئ — اعملي refresh براحتك.</span></div>
 
     <div class="prose ${isAr?'':'en'}">${f.poem?poemBody:prose}</div>
 
     <div class="endfile" id="endfile">
-      <div class="endline">— You have reached the end of this file —</div>
+      <div class="endline">— You have reached the end of this file <span class="a">وصلتِ لآخر الملف</span> —</div>
       <span class="stamp bigstamp" id="readStamp">Read · Archive · ${new Date().getFullYear()}</span>
     </div>
 
     ${rateSection}
 
     <div class="notes-sec">
-      <h4>Leave a note for the writer</h4>
+      <h4>Leave a note for the writer <span class="a">اتركي رسالة للكاتبة</span></h4>
       <div class="nform">
-        <label for="nName">Sign as (optional)</label>
-        <input class="field" id="nName" placeholder="Anonymous reader" style="font-family:var(--mono);font-size:13px">
-        <label for="nText">Your note</label>
+        <label for="nName">Sign as <span class="a">وقّعي باسم (اختياري)</span></label>
+        <input class="field" id="nName" placeholder="قارئ مجهول" style="font-family:var(--mono);font-size:13px">
+        <label for="nText">Your note <span class="a">رسالتك</span></label>
         <textarea class="field" id="nText" rows="3" placeholder="اكتب سطرًا صغيرًا يبقى في الهوامش…"></textarea>
-        <div class="ferr" id="nErr">Write at least a few words — the margins deserve them.</div>
-        <div style="margin-top:16px"><button class="btn" id="nSend">Leave it in the margins ${icon('pen',13)}</button></div>
+        <div class="ferr" id="nErr">اكتبي كلمتين على الأقل — الهوامش تستاهلها.</div>
+        <div style="margin-top:16px"><button class="btn" id="nSend">Leave it in the margins <span class="a">سيبيها في الهوامش</span> ${icon('pen',13)}</button></div>
       </div>
-      <h4 style="margin-top:8px">Margin notes — <span style="color:var(--faint)">${notes.length}</span></h4>
+      <h4>Margin notes — <span style="color:var(--faint)">${notes.length}</span> <span class="a">ملاحظات الهوامش</span></h4>
       <div id="notesList" data-file="${f.id}">${notesHTML}</div>
     </div>
 
     <div class="nextfile">
-      <div><div class="endline" style="margin-bottom:8px">Next file in this section</div>
-        <a href="#/story/${nextFile.id}" class="t">${esc(nextFile.title)} ${icon('right',18)}</a></div>
-      <a class="btn ghost" href="#/">${icon('left',13)} Return to the index</a>
+      <div><div class="endline" style="margin-bottom:8px;text-align:left">Next file <span class="a">الملف اللي بعده في نفس القسم</span></div>
+        <a href="#/story/${nextFile.id}" class="t" style="font:600 24px var(--serif)">${esc(nextFile.title)} ${icon('right',18)}</a></div>
+      <a class="btn ghost" href="#/">${icon('left',13)} Return <span class="a">رجوع</span></a>
     </div>
   </div>`;
 
   setNav('home');
   bindLike(f); if(!f.sealed) bindStars(f); bindNoteForm(f); bindAdminTools(f);
-  observeOnce($('#endfile'), ()=>$('#readStamp').classList.add('in'));
+  observeOnce($('#endfile'), ()=>{ const s=$('#readStamp'); if(s) s.classList.add('in') });
 }
 
 function starsHTML(v){
@@ -927,7 +971,7 @@ function starsHTML(v){
   return h;
 }
 function bindStars(f){
-  const box=$('#stars'), out=$('#rateOut');
+  const box=$('#stars'), out=$('#rateOut'); if(!box) return;
   const paint=v=>box.querySelectorAll('.starb').forEach((b,i)=>b.innerHTML=starIcon(30,i<v));
   box.addEventListener('mouseover',e=>{ const b=e.target.closest('.starb'); if(b) paint(+b.dataset.v) });
   box.addEventListener('mouseleave',()=>paint(UR[f.id]||0));
@@ -935,26 +979,26 @@ function bindStars(f){
     const b=e.target.closest('.starb'); if(!b) return;
     UR[f.id]=+b.dataset.v; store.set('ur',UR); paint(UR[f.id]);
     const r=fR(f);
-    out.innerHTML=`You rated ${'★'.repeat(UR[f.id])}${'☆'.repeat(5-UR[f.id])} — the file now stands at <b>${r.avg.toFixed(1)}</b> · ${fmt(r.n)} ratings`;
-    toast('Rating filed into the archive.');
+    out.innerHTML=`You rated ${'★'.repeat(UR[f.id])}${'☆'.repeat(5-UR[f.id])} — the file stands at <b>${r.avg.toFixed(1)}</b> · ${fmt(r.n)} ratings`;
+    toast('التقييم اتسجّل في الأرشيف. ★');
   });
 }
 function bindLike(f){
   const btn=$('#likeBtn'); if(!btn) return;
   btn.addEventListener('click',()=>{
     const liked=LIKED.has(f.id);
-    if(liked){ LIKED.delete(f.id); toast('Like withdrawn — the writer will live.') }
-    else { LIKED.add(f.id); toast('Marked with a heart.') }
+    if(liked){ LIKED.delete(f.id); toast('اتسحب الإعجاب — الكاتبة هتستحمل.') }
+    else { LIKED.add(f.id); toast('اتعلام الإعجاب ❤') }
     store.set('likes',[...LIKED]);
     const l=LIKED.has(f.id);
     btn.classList.toggle('liked',l);
-    btn.innerHTML=`${icon('heart',18,l)} ${l?'Liked':'Like'} · <span id="likeN">${fmt(fL(f))}</span>`;
+    btn.innerHTML=`${icon('heart',18,l)} ${l?'Liked · أعجبتك':'Like · إعجاب'} · <span id="likeN">${fmt(fL(f))}</span>`;
   });
 }
 function noteHTML(n){
   return `<div class="note ${n.hidden?'hid':''}" data-cid="${n.id}">
     <div class="when">${n.date}</div>
-    <div class="who">${esc(n.name)}${n.pinned?'<span class="pinflag">Pinned by the writer</span>':''}${n.hidden?'<span class="pinflag" style="color:var(--faint);border-color:var(--rule)">Hidden</span>':''}</div>
+    <div class="who">${esc(n.name)}${n.pinned?'<span class="pinflag">Pinned · مثبّت</span>':''}${n.hidden?'<span class="pinflag" style="color:var(--faint);border-color:var(--rule)">Hidden · مخفي</span>':''}</div>
     <div class="txt" dir="auto">${esc(n.text)}</div>
     ${isAdmin()?`<div class="ntools">
       <button class="tbtn" data-act="pin">${n.pinned?'UNPIN':'PIN'}</button>
@@ -963,15 +1007,16 @@ function noteHTML(n){
   </div>`;
 }
 function bindNoteForm(f){
-  $('#nSend').addEventListener('click',()=>{
+  const send=$('#nSend'); if(!send) return;
+  send.addEventListener('click',()=>{
     const t=$('#nText').value.trim();
     if(t.length<2){ $('#nErr').style.display='block'; return }
     $('#nErr').style.display='none';
     const now=new Date();
-    NOTES.push({id:'c'+Date.now(), file:f.id, name:($('#nName').value.trim()||'Anonymous reader'),
+    NOTES.push({id:'c'+Date.now(), file:f.id, name:($('#nName').value.trim()||'قارئ مجهول'),
       text:t, date:`${now.getDate()} ${MONTHS[now.getMonth()]} ${now.getFullYear()}`, pinned:false, hidden:false});
     saveNotes(); renderStory(f.id);
-    toast('Your note is kept in the margins.');
+    toast('رسالتك اتخزنت في الهوامش ✒');
   });
 }
 function bindAdminTools(f){
@@ -981,35 +1026,35 @@ function bindAdminTools(f){
     const cid=b.closest('.note').dataset.cid;
     const i=NOTES.findIndex(n=>n.id===cid); if(i<0) return;
     const n=NOTES[i];
-    if(b.dataset.act==='pin'){ n.pinned=!n.pinned; saveNotes(); renderStory(f.id); toast(n.pinned?'Note pinned at the top.':'Note unpinned.') }
-    if(b.dataset.act==='hide'){ n.hidden=!n.hidden; saveNotes(); renderStory(f.id); toast(n.hidden?'Note hidden from readers.':'Note visible again.') }
+    if(b.dataset.act==='pin'){ n.pinned=!n.pinned; saveNotes(); renderStory(f.id); toast(n.pinned?'التعليق اتثبّت في الأول.':'اتشال التثبيت.') }
+    if(b.dataset.act==='hide'){ n.hidden=!n.hidden; saveNotes(); renderStory(f.id); toast(n.hidden?'التعليق اتخفي عن القراء.':'التعليق بقى ظاهر تاني.') }
     if(b.dataset.act==='del'){
       const removed=NOTES.splice(i,1)[0]; saveNotes(); renderStory(f.id);
-      toast('Note removed from the archive.',()=>{ NOTES.splice(i,0,removed); saveNotes(); if(location.hash.includes('story')) renderStory(f.id) });
+      toast('التعليق اتشال من الأرشيف.',()=>{ NOTES.splice(i,0,removed); saveNotes(); if(location.hash.includes('story')) renderStory(f.id) });
     }
   });
 }
 
 /* ════════════════════════════════════════════
-   الباب الخاص (Gate)
+   الباب الخاص
    ════════════════════════════════════════════ */
 function renderGate(){
-  document.title = "Private entrance — The Writer's Archive";
+  document.title = "المدخل الخاص — Private entrance";
   setNav('');
   app.innerHTML=`<div class="gate" id="gateBox">
-    <span class="stamp" style="font-size:13px">Staff only</span>
-    <h1>The Private Desk</h1>
-    <div class="gsub">This entrance belongs to the writer. Readers, the archive is already open for you — nothing to see behind this door but numbers and drafts.</div>
+    <span class="stamp" style="font-size:13px">Staff only · للكاتبة فقط</span>
+    <h1>The Private Desk<span class="a">المكتب الخاص</span></h1>
+    <div class="gsub">المدخل ده خاص بيكِ انتي بس — <b>هنا بتكتبي رواياتك وبتعدّلي فيها، وكل اللي بتكتبيه بيظهر للقراء فورًا في الأرشيف.</b><br><span class="en">Readers: the archive is already open for you — this door leads to the writing room.</span></div>
     <input class="field" id="gatePass" type="password" placeholder="• • • • • • • •" autocomplete="off">
-    <div class="gerr" id="gateErr">Wrong passcode — the lock stays locked.</div>
-    <div style="margin-top:22px"><button class="btn" id="gateGo">Unlock the desk ${icon('right',13)}</button></div>
-    <div class="ghint">Demo passcode: ${PASSCODE} — change it in the code (const PASSCODE)</div>
-    <div style="margin-top:18px"><a href="#/" style="font:500 10px var(--mono);letter-spacing:.18em;color:var(--faint)">← RETURN TO THE ARCHIVE</a></div>
+    <div class="gerr" id="gateErr">كلمة السر غلط — القفل لسه مقفول. <span class="en">Wrong passcode.</span></div>
+    <div style="margin-top:22px"><button class="btn" id="gateGo">Unlock the desk <span class="a">افتحي المكتب</span> ${icon('right',13)}</button></div>
+    <div class="ghint">Demo passcode: ${PASSCODE} — <span class="a">غيّريها من أول سطور الجافاسكربت</span> (const PASSCODE)</div>
+    <div style="margin-top:18px"><a href="#/" style="font:500 10px var(--mono);letter-spacing:.18em;color:var(--faint)">← RETURN · رجوع للأرشيف</a></div>
   </div>`;
   const tryOpen=()=>{
     if($('#gatePass').value===PASSCODE){
       SS.set('wa_admin','1'); document.body.classList.add('admin');
-      toast('The desk is yours.'); route();
+      toast('المكتب بقى ملكك ✒'); route();
     } else {
       $('#gateErr').style.display='block';
       const g=$('#gateBox'); g.classList.remove('shake'); void g.offsetWidth; g.classList.add('shake');
@@ -1021,53 +1066,62 @@ function renderGate(){
 }
 
 /* ════════════════════════════════════════════
-   الستوديو — قائمة الملفات + الإعدادات
+   الاستوديو
    ════════════════════════════════════════════ */
 function renderStudio(){
-  document.title = "Studio — The Writer's Archive";
+  document.title = "الاستوديو — Studio";
   setNav('studio');
   const rows=[...FILES].sort((a,b)=>b.id-a.id).map(f=>{
-    const r=fR(f);
+    const r=fR(f), s=secOf(f);
     return `<div class="srow">
       <span class="cid">${f.catalog}</span>
       <div><a href="#/story/${f.id}" class="t" dir="auto">${esc(f.title)}</a>
-        <div class="sub">${f.kindLabel} · ${SECTIONS.find(s=>s.key===f.sec).title} · ${fmt(fV(f))} views · ${fmt(fL(f))} likes${f.sealed?' · SEALED':r?' · ★ '+r.avg.toFixed(1):''}</div></div>
+        <div class="sub">${f.kindLabel} · <span class="a">${s.ar||s.title}</span> · ${fmt(fV(f))} views · ${fmt(fL(f))} likes${f.sealed?' · SEALED':r?' · ★ '+r.avg.toFixed(1):''}</div></div>
       <div class="acts">
-        <a class="sbtn" href="#/story/${f.id}">View</a>
-        <button class="sbtn" data-edit="${f.id}">Edit</button>
-        <button class="sbtn red" data-del="${f.id}">Delete</button>
+        <a class="sbtn" href="#/story/${f.id}">View <span class="a">عرض</span></a>
+        <button class="sbtn" data-edit="${f.id}">Edit <span class="a">تعديل</span></button>
+        <button class="sbtn red" data-del="${f.id}">Delete <span class="a">حذف</span></button>
       </div>
     </div>`;
   }).join('');
 
   app.innerHTML=`<div class="wrap studio">
     <div style="display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap">
-      <div><h1>The Studio</h1>
-      <div class="dsub">Private workshop of <b>${esc(WRITER.name.toUpperCase())}</b> — write, cover, publish. Readers never see this room.</div></div>
-      <div style="margin-left:auto"><a class="btn" href="#/studio/new">${icon('pen',13)} Write a new file</a></div>
+      <div><h1>The Studio <span class="a">استوديو الكاتبة</span></h1>
+      <div class="dsub">Private workshop of <b>${esc(WRITER.name.toUpperCase())}</b> — <span style="text-transform:none;font-family:var(--ar);font-size:13px;letter-spacing:0">اكتبي، غطّفي، انشري. القراء عمرهم ما يشوفوا الغرفة دي.</span></div></div>
+      <div style="margin-left:auto"><a class="btn" href="#/studio/new">${icon('pen',13)} New file <span class="a">اكتبي ملف جديد</span></a></div>
+    </div>
+
+    <div class="howto">
+      <h5>How it works <span class="a">إزاي تنشري رواية في ٣ خطوات</span></h5>
+      <ol>
+        <li>اضغطي <b>«اكتبي ملف جديد»</b> — اكتبي العنوان والنص، وافصلي بين الفقرات بسطر فاضي. عايزة فصول؟ ابدئي السطر بـ <b>## عنوان الفصل</b>.</li>
+        <li>اختاري القسم والشكل (كتاب / منسوخة / اقتباس / شعر / مسودة)، وارفعي <b>صورة الغلاف</b> لو حابة.</li>
+        <li>اضغطي <b>«احفظي في الأرشيف»</b> — والملف يظهر فورًا في الصفحة الرئيسية للزوار، بكارت الأرشيف بتاعه.</li>
+      </ol>
     </div>
 
     <div class="panel" style="margin-bottom:34px">
-      <h5>Archive logo</h5>
-      <p>يرفعي هنا لوجوك — هيظهر مكان «WA» في هيدر الأرشيف كله. (In production: Cloudinary / S3)</p>
+      <h5>Archive logo <span class="a">لوجو الأرشيف</span></h5>
+      <p>ارفعي لوجوك هنا — هيظهر مكان «WA» في هيدر الموقع كله. (في النسخة الحقيقية: Cloudinary / S3)</p>
       <div class="covbox">
         ${LOGO?`<img src="${LOGO}" alt="logo">`:`<span style="font:700 11px var(--mono);border:1px dashed var(--rule);padding:14px 18px">NO LOGO YET</span>`}
-        <label class="btn ghost" for="logoFile" style="cursor:pointer">${LOGO?'Replace logo':'Upload logo'}</label>
+        <label class="btn ghost" for="logoFile" style="cursor:pointer">${LOGO?'Replace · بدّلي':'Upload · ارفعي'}</label>
         <input type="file" id="logoFile" accept="image/*" hidden>
       </div>
     </div>
 
-    ${rows||'<p style="font:italic 500 18px var(--serif);color:var(--ink2)">The archive is empty — write the first file.</p>'}
+    ${rows||'<p style="font:400 18px var(--ar);color:var(--ink2)">الأرشيف فاضي — اكتبي أول ملف.</p>'}
 
     <div class="setgrid">
       <div class="panel">
-        <h5>Storage & data</h5>
-        <p>كل اللي بتكتبيه بيتحفظ في متصفحك (localStorage) — بيفضل موجود بعد الـ refresh. في النسخة الحقيقية ده هبقى PostgreSQL.</p>
-        <button class="sbtn red" data-act="reset">Reset archive to original files</button>
+        <h5>Storage <span class="a">الحفظ</span></h5>
+        <p>كل اللي بتكتبيه بيتحفظ في متصفحك — بيفضل موجود بعد الـ refresh وفي الزيارة الجاية. لما تنقلي للنسخة الحقيقية (Next.js + PostgreSQL) نفس الشغل بيبقى على سيرفر وقاعدة بيانات.</p>
+        <button class="sbtn red" data-act="reset">Reset · رجّعي الملفات الأصلية</button>
       </div>
       <div class="panel">
-        <h5>Security note</h5>
-        <p>الباب محمي بكلمة سر demo — غيّريها من أول سطر في الجافاسكربت: <b style="font-style:normal">const PASSCODE</b>. في الإنتاج: Auth.js بحساب حقيقي.</p>
+        <h5>Security <span class="a">الحماية</span></h5>
+        <p>الباب محمي بكلمة سر تجريبية — غيّريها من أول سطر في الجافاسكربت: <b style="font-style:normal;font-family:var(--mono)">const PASSCODE</b>. في الإنتاج: حساب حقيقي بـ Auth.js والصفحات دي محمية بالسيرفر نفسه.</p>
       </div>
     </div>
   </div>`;
@@ -1077,95 +1131,95 @@ function renderStudio(){
     const id=+b.dataset.del, idx=FILES.findIndex(f=>f.id===id);
     if(idx<0) return;
     const removed=FILES.splice(idx,1)[0]; saveFiles(); renderStudio();
-    toast(`"${removed.title}" was pulled from the archive.`,()=>{ FILES.splice(idx,0,removed); saveFiles(); if(location.hash.includes('studio')) renderStudio() });
+    toast(`«${removed.title}» اتشالت من الأرشيف.`,()=>{ FILES.splice(idx,0,removed); saveFiles(); if(location.hash.includes('studio')) renderStudio() });
   }));
   const logoIn=$('#logoFile');
   logoIn.addEventListener('change',()=>{ const file=logoIn.files[0]; if(!file) return;
-    fileToDataURL(file,140,url=>{ LOGO=url; store.set('logo',LOGO); paintBrand(); renderStudio(); toast('Logo filed — the archive wears it now.') });
+    fileToDataURL(file,140,url=>{ LOGO=url; store.set('logo',LOGO); paintBrand(); renderStudio(); toast('اللوجو اتسجّل — الأرشيف لبسه.') });
   });
   const resetBtn=app.querySelector('[data-act="reset"]');
   resetBtn.addEventListener('click',()=>{
     store.set('files',null); FILES=JSON.parse(JSON.stringify(SEED));
-    toast('Archive reset to its original files.'); go('#/'); setTimeout(route,0);
+    toast('رجّعنا الأرشيف للملفات الأصلية.'); go('#/');
   });
 }
 
 /* ════════════════════════════════════════════
-   محرر الملف — كتابة + غلاف + معاينة حية
+   محرر الملف
    ════════════════════════════════════════════ */
 let pendingCover='';
 function renderEditor(id){
-  document.title = (id?'Edit file':'New file')+" — Studio";
+  document.title = (id?'تعديل ملف':'ملف جديد')+" — Studio";
   setNav('studio');
   const f = id ? (F(id)||{}) : {};
   pendingCover = f.cover||'';
   const sec = f.sec||'stories';
   const kind = f.kind||'novel';
 
-  const secOpts = SECTIONS.map(s=>`<option value="${s.key}" ${s.key===sec?'selected':''}>${s.num} — ${s.title}</option>`).join('');
-  const kindOpts = `<option value="novel" ${kind==='novel'?'selected':''}>Book (رواية — كارت كتاب)</option>
-                    <option value="manuscript" ${kind==='manuscript'?'selected':''}>Manuscript (قصة قصيرة)</option>`;
+  const secOpts = SECTIONS.map(s=>`<option value="${s.key}" ${s.key===sec?'selected':''}>${s.num} — ${s.title} — ${s.ar}</option>`).join('');
+  const kindOpts = `<option value="novel" ${kind==='novel'?'selected':''}>Book — رواية (كارت كتاب)</option>
+                    <option value="manuscript" ${kind==='manuscript'?'selected':''}>Manuscript — قصة قصيرة</option>`;
   const bodyVal = f.kind==='poem' ? (f.poem||[]).map(l=>l[0]+(l[1]?' :: '+l[1]:'')).join('\n') : (f.excerpt||[]).join('\n\n');
 
   app.innerHTML=`<div class="wrap studio">
-    <div class="crumb" style="margin-bottom:6px"><span><a href="#/studio">STUDIO</a> / ${id?'EDIT '+f.catalog:'NEW FILE'}</span>
-      <a href="#/studio" style="display:flex;align-items:center;gap:7px">${icon('left',13)} BACK TO STUDIO</a></div>
-    <h1 style="font:600 clamp(34px,5vw,48px) var(--serif);text-transform:uppercase">${id?'Revise the file':'Write a new file'}</h1>
+    <div class="crumb" style="margin-bottom:6px"><span><a href="#/studio">STUDIO</a> / ${id?'EDIT · تعديل '+f.catalog:'NEW · ملف جديد'}</span>
+      <a href="#/studio">${icon('left',13)} BACK · رجوع</a></div>
+    <h1>${id?'Revise the file <span class="a">عدّلي الملف</span>':'Write a new file <span class="a">اكتبي ملف جديد</span>'}</h1>
 
     <div class="edgrid">
       <div id="edForm">
-        <label class="elabel">Title</label>
-        <input class="field" id="eTitle" value="${esc(f.title||'')}" placeholder="The title of the piece…">
+        <label class="elabel">Title <span class="a">العنوان</span></label>
+        <input class="field" id="eTitle" value="${esc(f.title||'')}" placeholder="عنوان القطعة…" dir="auto">
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
-          <div><label class="elabel">Section</label>
+          <div><label class="elabel">Section <span class="a">القسم</span></label>
             <select class="field" id="eSec">${secOpts}</select></div>
-          <div id="rowKind"><label class="elabel">Card format</label>
+          <div id="rowKind"><label class="elabel">Card format <span class="a">شكل الكارت</span></label>
             <select class="field" id="eKind">${kindOpts}</select></div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
-          <div><label class="elabel">Language</label>
+          <div><label class="elabel">Language <span class="a">اللغة</span></label>
             <select class="field" id="eLang">
               <option value="en" ${(f.lang||'en')==='en'?'selected':''}>English</option>
               <option value="ar" ${f.lang==='ar'?'selected':''}>العربية</option>
             </select></div>
-          <div id="rowSealed" hidden><label class="elabel">State</label>
+          <div id="rowSealed" hidden><label class="elabel">State <span class="a">الحالة</span></label>
             <select class="field" id="eSealed">
-              <option value="no">Open — rated normally</option>
-              <option value="yes" ${f.sealed?'selected':''}>Sealed — unfinished draft</option>
+              <option value="no">Open — مفتوح للتقييم</option>
+              <option value="yes" ${f.sealed?'selected':''}>Sealed — مسودة غير مكتملة</option>
             </select></div>
         </div>
 
-        <div id="rowColor"><label class="elabel">Cover colour (للغلاف الورقي)</label>
+        <div id="rowColor"><label class="elabel">Cover colour <span class="a">لون الغلاف الورقي</span></label>
           <div class="swatches" id="swatches">
-            ${['#35473F','#55372C','#2E3A52','#5C4A1E','#4A2E3C','#3A3A32'].map(c=>`<button class="swatch" data-c="${c}" style="background:${c}" type="button"></button>`).join('')}
-            <input type="color" class="swatch" id="eColor" value="${f.bc||'#35473F'}" title="Custom colour">
+            ${['#35473F','#55372C','#2E3A52','#5C4A1E','#4A2E3C','#3A3A32'].map(c=>`<button class="swatch" data-c="${c}" style="background:${c}" type="button" aria-label="${c}"></button>`).join('')}
+            <input type="color" class="swatch" id="eColor" value="${f.bc||'#35473F'}" title="لون مخصص">
           </div></div>
 
-        <label class="elabel">Cover image (غلاف الرواية — بيتصغّر تلقائيًا)</label>
+        <label class="elabel">Cover image <span class="a">صورة غلاف الرواية — بيتصغّر تلقائيًا</span></label>
         <div class="covbox">
           <span id="covPrev">${pendingCover?`<img src="${pendingCover}" alt="cover">`:`<span style="font:700 10px var(--mono);border:1px dashed var(--rule);padding:16px 20px;display:inline-block">NO IMAGE</span>`}</span>
-          <label class="btn ghost" for="eCoverFile" style="cursor:pointer">Upload cover</label>
+          <label class="btn ghost" for="eCoverFile" style="cursor:pointer">Upload cover <span class="a">ارفعي الغلاف</span></label>
           <input type="file" id="eCoverFile" accept="image/*" hidden>
-          <button class="sbtn red" id="covClear" type="button" ${pendingCover?'':'hidden'}>Remove</button>
+          <button class="sbtn red" id="covClear" type="button" ${pendingCover?'':'hidden'}>Remove <span class="a">شيلي</span></button>
         </div>
 
         <div id="rowQuote" hidden>
-          <label class="elabel">The quote</label>
-          <textarea class="field" id="eQuote" rows="3">${esc(f.quote||'')}</textarea>
-          <label class="elabel">Source line</label>
-          <input class="field" id="eSrc" value="${esc(f.src||'')}" placeholder="FROM THE FILE: …" style="font-family:var(--mono);font-size:12px;letter-spacing:.1em">
+          <label class="elabel">The quote <span class="a">الاقتباس</span></label>
+          <textarea class="field" id="eQuote" rows="3" dir="auto">${esc(f.quote||'')}</textarea>
+          <label class="elabel">Source line <span class="a">المصدر</span></label>
+          <input class="field" id="eSrc" value="${esc(f.src||'')}" placeholder="من ملف: …" dir="auto" style="font-size:14px">
         </div>
 
         <div id="rowBody">
-          <label class="elabel">The writing itself</label>
+          <label class="elabel">The writing itself <span class="a">النص نفسه</span></label>
           <textarea class="field" id="eBody" rows="14" dir="auto">${esc(bodyVal)}</textarea>
-          <div class="hint">افصلي بين الفقرات بسطر فاضي · ابدئي سطر بـ « عشان يبقى اقتباس مميز جوه النص · ابدئي سطر بـ ## عشان تعملي عنوان فصل</div>
+          <div class="hint">افصلي بين الفقرات بسطر فاضي · ابدئي سطر بـ <code>«</code> عشان يبقى اقتباس مميز جوه النص · ابدئي سطر بـ <code>## عنوان</code> عشان تعملي عنوان فصل</div>
           <div id="rowPoemHint" class="mono-hint" hidden>POETRY FORMAT: english line :: arabic line — one couplet per row</div>
         </div>
 
-        <label class="elabel">Archive numbers (أرقام العرض — demo)</label>
+        <label class="elabel">Archive numbers <span class="a">أرقام العرض (demo)</span></label>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
           <input class="field" id="eViews" type="number" min="0" value="${f.views||0}" style="font-family:var(--mono);font-size:14px">
           <input class="field" id="eLikes" type="number" min="0" value="${f.likes||0}" style="font-family:var(--mono);font-size:14px">
@@ -1175,21 +1229,21 @@ function renderEditor(id){
         <div class="mono-hint">VIEWS · LIKES · AVG RATING · RATINGS COUNT</div>
 
         <div class="edfoot">
-          <button class="btn" id="eSave">File it into the archive ${icon('right',13)}</button>
-          <a class="btn ghost" href="#/studio">Cancel</a>
-          ${id?`<a class="btn ghost" href="#/story/${id}">View page</a>`:''}
+          <button class="btn" id="eSave">File it into the archive <span class="a">احفظي في الأرشيف</span> ${icon('right',13)}</button>
+          <a class="btn ghost" href="#/studio">Cancel <span class="a">إلغاء</span></a>
+          ${id?`<a class="btn ghost" href="#/story/${id}">View page <span class="a">شوفي الصفحة</span></a>`:''}
         </div>
+        <div class="hint" style="color:var(--faint)">بعد الحفظ هتلاقي الملف ظاهر فورًا في الصفحة الرئيسية — في قسمه وبكارت الأرشيف بتاعه.</div>
       </div>
 
       <div class="edprev">
-        <span class="plab">Live archive card</span>
+        <span class="plab">Live archive card · معاينة حية</span>
         <div id="prevBox"></div>
         <span class="plab" id="prevMeta"></span>
       </div>
     </div>
   </div>`;
 
-  /* حالات الحقول حسب القسم */
   const syncUI=()=>{
     const s=$('#eSec').value;
     $('#rowKind').hidden   = s!=='stories';
@@ -1207,16 +1261,16 @@ function renderEditor(id){
   };
   function previewObj(){
     const s=$('#eSec').value;
-    const k = s==='stories' ? $('#eKind').value : SEC_KIND[s];
+    const k = s==='stories' ? $('#eKind').value : (SEC_KIND[s]||'folder');
     const o={ id:0, kind:k, sec:s, lang:$('#eLang').value,
-      title:$('#eTitle').value.trim()||'Untitled File',
-      catalog:(f.catalog&&id)?f.catalog:autoCatalog(s,Math.max(0,...FILES.map(x=>x.id))+1),
+      title:$('#eTitle').value.trim()||'ملف بدون عنوان',
+      catalog:(f.catalog&&id)?f.catalog:autoCatalog(s,nextId()),
       bc:$('#eColor').value, bw:196, bh:290, cover:pendingCover||'',
       sealed: s==='drafts' && $('#eSealed').value==='yes' };
     o.kindLabel=kindLabelOf(o.kind);
-    if(k==='quote'){ o.quote=$('#eQuote').value.trim()||'الاقتباس هيظهر هنا…'; o.src=$('#eSrc').value.trim()||'FROM THE FILE —' }
-    else if(k==='poem'){ o.poem=parsePoem($('#eBody').value).slice(0,4); if(!o.poem.length) o.poem=[['A line of verse…','سطر شعر…']] }
-    else { o.excerpt=parseBody($('#eBody').value); if(!o.excerpt.length) o.excerpt=['The first lines of the piece will appear here…'] }
+    if(k==='quote'){ o.quote=$('#eQuote').value.trim()||'الاقتباس هيظهر هنا…'; o.src=$('#eSrc').value.trim()||'من ملف —' }
+    else if(k==='poem'){ o.poem=parsePoem($('#eBody').value).slice(0,4); if(!o.poem.length) o.poem=[['سطر من الشعر…','A line of verse…']] }
+    else { o.excerpt=parseBody($('#eBody').value); if(!o.excerpt.length) o.excerpt=['أول سطور القطعة هيظهروا هنا…'] }
     return o;
   }
 
@@ -1241,19 +1295,19 @@ function renderEditor(id){
 
   $('#eSave').addEventListener('click',()=>{
     const s=$('#eSec').value;
-    const k = s==='stories' ? $('#eKind').value : SEC_KIND[s];
-    let target = id ? F(id) : {id:nextId()};
+    const k = s==='stories' ? $('#eKind').value : (SEC_KIND[s]||'folder');
     const isNew=!id;
+    let target = id ? F(id) : {id:nextId()};
+    if(!target){ toast('الملف مش موجود — يمكن اتحذف.'); return }
     target.sec=s; target.kind=k; target.kindLabel=kindLabelOf(k);
-    target.title=$('#eTitle').value.trim()||'Untitled file';
+    target.title=$('#eTitle').value.trim()||'ملف بدون عنوان';
     target.lang=$('#eLang').value;
     target.bc=k==='novel'?$('#eColor').value:(target.bc||'#35473F');
     target.cover=pendingCover||'';
     target.sealed = s==='drafts' && $('#eSealed').value==='yes';
-    if(k==='quote'){ target.quote=$('#eQuote').value.trim()||'…'; target.src=$('#eSrc').value.trim() }
-    else if(k==='poem'){ target.poem=parsePoem($('#eBody').value); delete target.excerpt }
-    else { target.excerpt=parseBody($('#eBody').value); if(target.kind==='poem') delete target.poem }
-    if(k!=='poem' && target.poem) delete target.poem;
+    if(k==='quote'){ target.quote=$('#eQuote').value.trim()||'…'; target.src=$('#eSrc').value.trim(); if(target.excerpt) delete target.excerpt; if(target.poem) delete target.poem }
+    else if(k==='poem'){ target.poem=parsePoem($('#eBody').value); if(target.excerpt) delete target.excerpt }
+    else { target.excerpt=parseBody($('#eBody').value); if(target.poem) delete target.poem }
     target.views=Math.max(0,+$('#eViews').value||0);
     target.likes=Math.max(0,+$('#eLikes').value||0);
     target.rating=Math.min(5,Math.max(0,+$('#eRate').value||0));
@@ -1266,17 +1320,16 @@ function renderEditor(id){
       FILES.push(target);
     }
     saveFiles();
-    toast(isNew?`"${target.title}" was accepted into the archive.`:`"${target.title}" was revised and refiled.`);
-    go('#/studio'); if(location.hash.includes('studio')) setTimeout(renderStudio,0);
+    toast(isNew?`«${target.title}» اتقبلت في الأرشيف — وظهرت في الصفحة الرئيسية.`:`«${target.title}» اتعدّلت واتحفظت.`);
+    go('#/studio');
   });
 
-  /* restore selected swatch */
   app.querySelectorAll('.swatch[data-c]').forEach(x=>x.classList.toggle('on',x.dataset.c===(f.bc||'')));
   syncUI();
 }
 
 /* ════════════════════════════════════════════
-   Writer's Desk (الإحصائيات)
+   مكتب الكاتب (إحصائيات)
    ════════════════════════════════════════════ */
 function weeklyPct(){
   const sum=a=>a.reduce((x,y)=>x+y,0);
@@ -1284,7 +1337,7 @@ function weeklyPct(){
   return Math.round((wk-pw)/pw*100);
 }
 function renderDash(){
-  document.title = "Writer's Desk — The Writer's Archive";
+  document.title = "مكتب الكاتب — Writer's Desk";
   const pct=weeklyPct();
   const rated=FILES.reduce((a,f)=>a+(f.sealed?0:f.ratings+(UR[f.id]?1:0)),0);
 
@@ -1303,29 +1356,29 @@ function renderDash(){
   }).join('');
 
   app.innerHTML=`<div class="wrap dash">
-    <h1>Writer's Desk</h1>
-    <div class="dsub">Authenticated as <b>${WRITER.name.toUpperCase()}</b> — demo session (real build: Auth.js with roles)</div>
+    <h1>Writer's Desk <span class="a">مكتب الكاتبة</span></h1>
+    <div class="dsub">Authenticated as <b>${esc(WRITER.name.toUpperCase())}</b> — demo session (real build: Auth.js with roles)</div>
 
     <div class="grid2">
       <div>
-        <div class="ledger-row"><span class="ll">Total Stories</span><span class="dots"></span><span class="ln">${FILES.length}</span></div>
-        <div class="ledger-row"><span class="ll">Total Views</span><span class="dots"></span><span class="ln">${fmt(TOTALS.views)}</span></div>
-        <div class="ledger-row"><span class="ll">Total Likes</span><span class="dots"></span><span class="ln">${fmt(TOTALS.likes)}</span></div>
-        <div class="ledger-row"><span class="ll">Total Ratings</span><span class="dots"></span><span class="ln">${fmt(rated)}</span></div>
-        <div class="ledger-row"><span class="ll">Subscribers</span><span class="dots"></span><span class="ln">${fmt(SUBSCRIBERS)}</span></div>
-        <div style="margin-top:26px"><a class="btn ghost" href="#/studio">✒ Open the Studio — write &amp; edit files</a></div>
+        <div class="ledger-row"><span class="ll">Total Files <span class="a">عدد الملفات</span></span><span class="dots"></span><span class="ln">${FILES.length}</span></div>
+        <div class="ledger-row"><span class="ll">Total Views <span class="a">إجمالي القراءات</span></span><span class="dots"></span><span class="ln">${fmt(TOTALS.views)}</span></div>
+        <div class="ledger-row"><span class="ll">Total Likes <span class="a">الإعجابات</span></span><span class="dots"></span><span class="ln">${fmt(TOTALS.likes)}</span></div>
+        <div class="ledger-row"><span class="ll">Total Ratings <span class="a">التقييمات</span></span><span class="dots"></span><span class="ln">${fmt(rated)}</span></div>
+        <div class="ledger-row"><span class="ll">Subscribers <span class="a">المشتركون</span></span><span class="dots"></span><span class="ln">${fmt(SUBSCRIBERS)}</span></div>
+        <div style="margin-top:26px"><a class="btn ghost" href="#/studio">✒ Open the Studio <span class="a">اكتبي وعدّلي ملفاتك</span></a></div>
       </div>
       <div class="wk">
-        <h5>This Week</h5>
-        <div class="wr"><span>Views</span><span class="up">${icon('up',13)} ${Math.abs(pct)}%</span></div>
-        <div class="wr"><span>Likes</span><span class="up">${icon('up',13)} 17%</span></div>
-        <div class="wr"><span>New Notes</span><span class="up">${icon('up',13)} 6</span></div>
-        <div class="wr"><span>Daily Drop Opens</span><span class="up">${icon('up',13)} 11%</span></div>
+        <h5>This Week <span class="a">الأسبوع ده</span></h5>
+        <div class="wr"><span>Views <span class="a">قراءات</span></span><span class="up">${icon('up',13)} ${Math.abs(pct)}%</span></div>
+        <div class="wr"><span>Likes <span class="a">إعجابات</span></span><span class="up">${icon('up',13)} 17%</span></div>
+        <div class="wr"><span>New Notes <span class="a">رسائل جديدة</span></span><span class="up">${icon('up',13)} 6</span></div>
+        <div class="wr"><span>Drop Opens <span class="a">فتح الجرسنة</span></span><span class="up">${icon('up',13)} 11%</span></div>
       </div>
     </div>
 
     <div class="chartbox">
-      <div class="chart-head"><h5>Views over time</h5>
+      <div class="chart-head"><h5>Views over time <span class="a">القراءات على مدار الوقت</span></h5>
         <div class="seg" id="seg">
           <button data-r="7" class="on">7 Days</button><button data-r="30">30 Days</button><button data-r="365">1 Year</button>
         </div>
@@ -1334,24 +1387,24 @@ function renderDash(){
     </div>
 
     <div class="tblwrap"><div class="trow thead">
-      <span>File</span><span>Title</span><span>Views</span><span>Likes</span><span>Rating</span><span>Ratings</span><span>Views this week</span>
+      <span>File</span><span>Title</span><span>Views</span><span>Likes</span><span>Rating</span><span>Ratings</span><span>This week</span>
     </div>${rows}</div>
 
     <div class="grid2" style="margin-top:60px">
       <div class="panel">
-        <h5>Daily Drop — Today (No. ${DROP.no})</h5>
-        <textarea class="field" id="dropText" rows="3" style="font-size:16px">${esc(DROP.text)}</textarea>
+        <h5>Daily Drop <span class="a">جرسنة النهارده</span> — No. ${DROP.no}</h5>
+        <textarea class="field" id="dropText" rows="3" dir="auto" style="font-size:16px">${esc(DROP.text)}</textarea>
         <div style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-          <button class="btn" id="schedBtn">Save &amp; Schedule — 8:00 PM</button>
-          <span style="font:500 10px var(--mono);letter-spacing:.12em;color:var(--faint)">${DROP.last?DROP.last:'NOT SCHEDULED YET'}</span>
+          <button class="btn" id="schedBtn">Schedule <span class="a">جدولي — ٨ مساءً</span></button>
+          <span style="font:500 10px var(--mono);letter-spacing:.12em;color:var(--faint)">${DROP.last?DROP.last:'NOT SCHEDULED'}</span>
         </div>
       </div>
       <div class="panel">
-        <h5>Drop Analytics — last 30 days</h5>
+        <h5>Drop Analytics <span class="a">إحصائيات الإرسال</span> — 30 days</h5>
         ${[['Sent',SUBSCRIBERS,SUBSCRIBERS,''],['Opened',612,SUBSCRIBERS,'72%'],['Clicked',184,SUBSCRIBERS,'22%']].map(x=>`
           <div class="frow"><div class="fl"><span>${x[0]}</span><span>${fmt(x[1])}${x[3]?' · '+x[3]:''}</span></div>
           <div class="fbar"><i class="${x[0]==='Clicked'?'r':''}" style="width:${(x[1]/x[2]*100).toFixed(0)}%"></i></div></div>`).join('')}
-        <div style="font:500 9.5px var(--mono);letter-spacing:.12em;color:var(--faint);margin-top:14px">OPEN RATE &amp; CLICK-THROUGH — PER-RECIPIENT EVENTS IN PRODUCTION</div>
+        <div style="font:500 9.5px var(--mono);letter-spacing:.12em;color:var(--faint);margin-top:14px">OPEN RATE &amp; CLICK-THROUGH — per-recipient events in production</div>
       </div>
     </div>
   </div>`;
@@ -1362,7 +1415,7 @@ function renderDash(){
     DROP.text=$('#dropText').value.trim()||DROP.text;
     DROP.last='SCHEDULED — TONIGHT 8:00 PM · '+SUBSCRIBERS+' SUBSCRIBERS';
     store.set('drop',DROP);
-    toast(`Drop No. ${DROP.no} scheduled — ${SUBSCRIBERS} subscribers will receive it at 8:00 PM.`);
+    toast(`الجرسنة رقم ${DROP.no} اتجدولت — ${SUBSCRIBERS} مشترك هيوصلهم الساعة ٨ مساءً.`);
     renderDash();
   });
 }
@@ -1421,7 +1474,8 @@ function bindChart(){
 }
 
 /* ════════════════════════════════════════════
-   أدوات عامة + التنقل المركزي + الراوتر
+   أدوات عامة + التنقل + الراوتر
+   كل اللينكات الداخلية بتمر من هنا — مفيش لينك بيفتح صفحة فاضية
    ════════════════════════════════════════════ */
 function countUps(){
   document.querySelectorAll('.ms .n').forEach(el=>{
@@ -1443,6 +1497,8 @@ let rvObs=null;
 function bindReveal(){
   rvObs=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('v'); rvObs.unobserve(e.target) } }),{threshold:.12});
   document.querySelectorAll('[data-rv]').forEach(el=>rvObs.observe(el));
+  /* شبكة أمان: لو الـ observer مشتغلش في بيئة المعاينة، كل حاجة تظهر بعد ثانية ونص */
+  setTimeout(()=>document.querySelectorAll('[data-rv]:not(.v)').forEach(el=>el.classList.add('v')),1500);
 }
 function observeOnce(el,fn){ if(!el) return; const o=new IntersectionObserver(es=>{ if(es[0].isIntersecting){ fn(); o.disconnect() } },{threshold:.4}); o.observe(el) }
 function setNav(k){ document.querySelectorAll('.nl').forEach(b=>b.classList.toggle('on',b.dataset.nav===k)) }
@@ -1453,18 +1509,18 @@ function paintBrand(){
 }
 function exitDesk(){
   SS.del('wa_admin'); document.body.classList.remove('admin');
-  toast('The desk is locked — you read as a visitor now.');
+  toast('المكتب اتقفل — دلوقتي بتتصفحي كقارئة عادية.');
   if(location.hash.includes('studio')||location.hash.includes('dashboard')) go('#/'); else route();
 }
 
-/* تنقل مركزي — من غير ولا onclick جوه الـ HTML */
 document.addEventListener('click', e=>{
-  const ex=e.target.closest('[data-act="exit"]');
-  if(ex){ exitDesk(); return }
-  const t=e.target.closest('[data-go]');
-  if(t){ e.preventDefault(); go(t.dataset.go); return }
+  if(e.target.closest('[data-act="exit"]')){ exitDesk(); return }
   const g=e.target.closest('[data-goto]');
-  if(g){ const s=document.getElementById(g.dataset.goto); if(s) s.scrollIntoView({behavior:'smooth'}) }
+  if(g){ const s=document.getElementById(g.dataset.goto); if(s) s.scrollIntoView({behavior:'smooth'}); return }
+  const b=e.target.closest('[data-go]');
+  if(b){ e.preventDefault(); go(b.dataset.go); return }
+  const a=e.target.closest('a[href^="#/"]');
+  if(a){ e.preventDefault(); go(a.getAttribute('href')) }
 });
 
 function cleanup(){ if(tick){clearInterval(tick);tick=null} if(rvObs){rvObs.disconnect();rvObs=null} }
@@ -1487,15 +1543,14 @@ function route(){
   }catch(err){
     app.innerHTML=`<div class="wrap" style="padding:90px 0">
       <span class="stamp">System notice</span>
-      <h1 style="font:600 44px var(--serif);margin:22px 0 12px">This page refused to open</h1>
-      <p style="font:italic 500 18px var(--serif);color:var(--ink2)">Save the file and open it directly in your browser — the archive will behave.</p>
+      <h1 style="font:600 44px var(--serif);margin:22px 0 4px">This page refused to open</h1>
+      <p style="font:400 19px var(--ar);color:var(--ink2)">الصفحة دي رفضت تفتح — احفظي الملف وافتحيه مباشرة في المتصفح وهي تشتغل.</p>
       <p style="font:500 11px var(--mono);color:var(--faint);margin-top:14px">ERROR: ${esc(err && err.message || err)}</p>
     </div>`;
   }
   window.scrollTo(0,0);
 }
 
-/* init */
 if(isAdmin()) document.body.classList.add('admin');
 paintBrand();
 window.addEventListener('hashchange',route);

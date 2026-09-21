@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Writer's Archive — a collection of stories, thoughts & words</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDE6D4; --paper2:#F6F0E1; --ink:#221B12; --ink2:#4A4132; --faint:#8A7E66;
+  --red:#9E2B14; --rule:rgba(34,27,18,.28);
+  --serif:'Cormorant Garamond','Amiri',serif;
+  --mono:'IBM Plex Mono','Amiri',monospace;
+  --ar:'Amiri',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+/* ملمس ورق + إضاءة محيطية خافتة */
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 30%,transparent 55%,rgba(30,23,14,.13))}
+::selection{background:rgba(158,43,20,.2)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+.ar-t{font-family:var(--ar);font-style:normal}
+.dots{flex:1;border-bottom:2px dotted rgba(34,27,18,.35);margin:0 14px;transform:translateY(-5px)}
+.btn{font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:13px 22px;border:1px solid var(--ink);cursor:pointer;transition:background .2s,border-color .2s}
+.btn:hover{background:var(--red);border-color:var(--red)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.stamp{display:inline-block;border:2.5px solid var(--red);color:var(--red);font:700 12px var(--mono);letter-spacing:.24em;text-transform:uppercase;padding:7px 13px;transform:rotate(-7deg);mix-blend-mode:multiply;opacity:.88;white-space:nowrap}
+[data-rv]{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+[data-rv].v{opacity:1;transform:none}
+
+/* ── شريط الكاتب ─────────────────────────── */
+.abar{display:none;background:var(--ink);color:var(--paper);font:500 10px var(--mono);letter-spacing:.18em;text-transform:uppercase;justify-content:center;align-items:center;gap:20px;padding:7px 16px;position:relative;z-index:60}
+body.admin .abar{display:flex}
+.abar b{color:#E8B44A}
+.abar button{background:none;border:1px solid rgba(239,231,210,.45);color:var(--paper);font:600 9px var(--mono);letter-spacing:.14em;padding:4px 10px;cursor:pointer}
+.abar button:hover{background:var(--red);border-color:var(--red)}
+
+/* ── التنقل ─────────────────────────── */
+.nav{position:sticky;top:0;z-index:50;background:rgba(237,230,212,.93);backdrop-filter:blur(7px);border-bottom:1px solid var(--rule)}
+.nav-in{display:flex;align-items:center;gap:26px;height:58px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:11px;font:700 12px var(--mono);letter-spacing:.22em}
+.brand-mark{width:26px;height:26px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:700 9.5px var(--mono);letter-spacing:.05em}
+.nav-links{margin-left:auto;display:flex;gap:24px;flex-wrap:wrap}
+.nl{font:500 10.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;padding:6px 1px;border-bottom:2px solid transparent;color:var(--ink2);cursor:pointer;background:none;border-top:none;border-left:none;border-right:none}
+.nl.on,.nl:hover{color:var(--ink);border-bottom-color:var(--red)}
+
+/* ── الواجهة ─────────────────────────── */
+.mast{padding:82px 0 48px;border-bottom:1px solid var(--ink)}
+.mast-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font:500 10px var(--mono);letter-spacing:.22em;color:var(--faint);text-transform:uppercase;margin-bottom:36px}
+.over{font:italic 500 clamp(20px,3vw,30px) var(--serif);color:var(--ink2)}
+.mast h1{font:600 clamp(58px,11vw,134px)/.95 var(--serif);text-transform:uppercase;letter-spacing:.02em;margin:2px 0 14px}
+.mast .sub{font:italic 500 clamp(18px,2.4vw,23px) var(--serif);color:var(--ink2)}
+.mast-stats{display:flex;flex-wrap:wrap;gap:20px 52px;margin-top:46px}
+.ms .n{font:600 30px var(--mono);letter-spacing:-.02em}
+.ms .l{font:500 9.5px var(--mono);letter-spacing:.2em;color:var(--faint);text-transform:uppercase;margin-top:7px}
+
+.toc{padding:40px 0 42px;border-bottom:1px solid var(--rule)}
+.toc-head{font:600 10px var(--mono);letter-spacing:.28em;color:var(--faint);text-transform:uppercase;margin-bottom:10px}
+.toc-row{display:flex;align-items:baseline;width:100%;padding:12px 0;background:none;border:none;cursor:pointer;text-align:left}
+.toc-row .rn{font:500 11px var(--mono);color:var(--red);width:34px;letter-spacing:.1em}
+.toc-row .t{font:600 24px var(--serif)}
+.toc-row .c{font:500 10px var(--mono);letter-spacing:.18em;color:var(--faint);white-space:nowrap}
+.toc-row:hover .t{color:var(--red)}
+
+.shead{display:flex;align-items:baseline;gap:18px;margin:66px 0 8px;padding-bottom:14px;border-bottom:1px solid var(--ink);flex-wrap:wrap}
+.snum{font:500 11px var(--mono);letter-spacing:.2em;color:var(--red)}
+.shead h2{font:600 clamp(30px,4.6vw,42px) var(--serif);text-transform:uppercase;letter-spacing:.04em}
+.sdesc{margin-left:auto;font:italic 500 16px var(--serif);color:var(--ink2)}
+.shelf{display:flex;flex-wrap:wrap;gap:46px 42px;align-items:flex-end;padding:34px 8px 0}
+.shelf.floor{border-bottom:2px solid var(--ink);padding-bottom:26px}
+.bcard{display:block;cursor:pointer}
+.book{position:relative;perspective:1200px}
+.bpages{position:absolute;inset:10px -3px 6px 12px;background:repeating-linear-gradient(90deg,#F4EDDB 0 3px,#DFD5BB 3px 4px);box-shadow:inset -3px 0 5px rgba(34,27,18,.3)}
+.bcover{position:absolute;inset:0;background:var(--bc,#35473F);color:#EFE7D2;padding:18px 18px 16px 22px;display:flex;flex-direction:column;transform-origin:left center;transition:transform .55s cubic-bezier(.22,.8,.24,1);box-shadow:0 18px 30px -16px rgba(34,27,18,.55)}
+.bcard:hover .bcover{transform:rotateY(-24deg)}
+.bcover::before{content:'';position:absolute;inset:9px;border:1px solid rgba(239,231,210,.38);pointer-events:none}
+.bcover .sp{position:absolute;left:10px;top:0;bottom:0;width:1px;background:rgba(0,0,0,.3);box-shadow:2px 0 0 rgba(239,231,210,.14)}
+.press{font:500 8.5px var(--mono);letter-spacing:.24em;opacity:.72;text-transform:uppercase}
+.bcover h3{font:600 26px/1.14 var(--serif);margin:auto 0;text-transform:uppercase;letter-spacing:.02em}
+.bauthor{font:500 9px var(--mono);letter-spacing:.26em;opacity:.8;text-align:right}
+.card-meta{margin-top:15px;font:500 10px var(--mono);letter-spacing:.14em;color:var(--ink2);display:flex;justify-content:space-between;gap:8px}
+.card-stats{display:flex;gap:16px;margin-top:8px;font:500 11px var(--mono);color:var(--ink2)}
+.card-stats span{display:flex;align-items:center;gap:6px}
+.bcard:hover .card-meta .rt{color:var(--red)}
+
+.pcard{position:relative;background:#F9F3E4;border:1px solid rgba(34,27,18,.28);box-shadow:0 14px 24px -14px rgba(34,27,18,.45);cursor:pointer;transition:transform .4s}
+.pcard:hover{transform:rotate(0) translateY(-5px) !important}
+.fold{position:absolute;top:-1px;right:-1px;width:26px;height:26px;background:linear-gradient(225deg,var(--paper) 0 49%,#E6DCC3 50% 100%);border-left:1px solid rgba(34,27,18,.22);border-bottom:1px solid rgba(34,27,18,.22)}
+.manu{width:252px;height:318px;padding:22px 20px 18px;background-image:repeating-linear-gradient(transparent 0 25px,rgba(34,27,18,.12) 25px 26px)}
+.manu .kind,.pcard .kind{font:500 8.5px var(--mono);letter-spacing:.24em;color:var(--red);text-transform:uppercase}
+.manu h3{font:600 14.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin:12px 0 6px}
+.undl{display:inline-block;border-bottom:2px solid var(--red);padding-bottom:2px;transform:rotate(-.6deg)}
+.manu .peek{font:italic 500 13.5px/25px var(--serif);color:var(--ink2)}
+.slip{width:238px;height:252px;padding:20px 22px;background:#FBF5E6;border:1px solid rgba(34,27,18,.45);outline:1px solid rgba(34,27,18,.25);outline-offset:5px;display:flex;flex-direction:column}
+.slip .qm{font:700 58px/.55 var(--serif);color:var(--red);opacity:.85}
+.slip blockquote{font:italic 500 17px/1.5 var(--serif);margin:14px 0 10px}
+.slip blockquote.ar-t{font-size:16.5px;line-height:1.9}
+.slip .src{margin-top:auto;font:500 9px var(--mono);letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
+.poem{width:302px;height:330px;padding:22px 24px;background:#F8F2E2;border:1px solid rgba(34,27,18,.32)}
+.poem h3{font:600 29px var(--serif);margin:6px 0 14px}
+.poem .ln{font:italic 500 15px/1.55 var(--serif)}
+.poem .lna{font:400 12.5px/1.6 var(--ar);color:var(--ink2);margin:0 0 9px}
+.folder{width:286px;height:206px;background:#DCCFA8;border:1px solid rgba(34,27,18,.32);padding:16px 20px}
+.folder::before{content:'';position:absolute;top:-14px;left:24px;width:100px;height:15px;background:#D9CBA5;border:1px solid rgba(34,27,18,.32);border-bottom:none}
+.folder h3{font:600 16px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin:8px 0 6px}
+.folder .fnotes{font:italic 500 13px/1.6 var(--serif);color:var(--ink2);max-width:150px}
+
+.ledger-sec{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin:72px 0 10px;padding-top:44px;border-top:1px solid var(--ink)}
+.rank-head{font:600 11px var(--mono);letter-spacing:.26em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.rank-head .rno{color:var(--red)}
+.rankrow{display:flex;align-items:baseline;width:100%;padding:13px 0;background:none;border:none;cursor:pointer;text-align:left;border-bottom:1px dotted rgba(34,27,18,.25)}
+.rankrow .rk{font:600 26px var(--serif);color:rgba(34,27,18,.28);width:44px}
+.rankrow .rt{font:600 19px var(--serif)}
+.rankrow .rt:hover{color:var(--red)}
+.rankrow .rv{font:600 13px var(--mono);white-space:nowrap}
+.rankrow .sub{display:block;font:500 9px var(--mono);letter-spacing:.18em;color:var(--faint);margin-top:3px;text-transform:uppercase}
+
+.recent{margin:64px 0 0;padding:36px 0 44px;border-top:1px solid var(--rule)}
+.recent .row{display:flex;align-items:baseline;width:100%;padding:11px 0;background:none;border:none;cursor:pointer;text-align:left}
+.recent .dt{font:500 10px var(--mono);letter-spacing:.16em;color:var(--faint);width:110px;text-transform:uppercase}
+.recent .t{font:600 19px var(--serif)}
+.recent .t:hover{color:var(--red)}
+.newtag{font:700 8.5px var(--mono);letter-spacing:.18em;color:var(--paper);background:var(--red);padding:3px 7px;margin-left:12px;vertical-align:middle}
+
+/* بطاقة Daily Drop */
+.drop-card{border:1px solid var(--ink);display:grid;grid-template-columns:1.55fr 1fr;margin:56px 0 30px;background:var(--paper2)}
+.pc-l{padding:46px 48px}
+.pc-tag{font:700 10px var(--mono);letter-spacing:.26em;color:var(--red);text-transform:uppercase}
+.dropq{font:italic 600 clamp(23px,3.2vw,32px)/1.5 var(--serif);margin:20px 0 8px}
+.dropq.ar-t{line-height:1.85;font-size:clamp(21px,2.8vw,29px)}
+.pc-src{font:500 10px var(--mono);letter-spacing:.18em;color:var(--faint);text-transform:uppercase;margin-bottom:26px}
+.pc-r{border-left:1px dashed rgba(34,27,18,.45);padding:32px 26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.postmark{width:132px;height:132px;color:var(--red);transform:rotate(-11deg);opacity:.85}
+.cd{font:600 20px var(--mono);letter-spacing:.06em}
+.cd-l{font:500 9px var(--mono);letter-spacing:.22em;color:var(--faint);text-transform:uppercase;margin-top:-10px}
+.pastd{margin:34px 0 0}
+.pastd .row{display:flex;align-items:baseline;width:100%;padding:12px 0;background:none;border:none;cursor:pointer;text-align:left;border-bottom:1px dotted rgba(34,27,18,.25)}
+.pastd .no{font:600 12px var(--mono);color:var(--red);width:72px}
+.pastd .q{font:italic 500 17px var(--serif)}
+.pastd .q:hover{color:var(--red)}
+.pastd .d{font:500 9.5px var(--mono);color:var(--faint);letter-spacing:.12em;white-space:nowrap}
+.footnote{font:500 9.5px var(--mono);letter-spacing:.12em;color:var(--faint);margin-top:18px;text-transform:uppercase}
+
+/* ── صفحة القصة ─────────────────────────── */
+.art{max-width:760px;margin:0 auto;padding:58px 0 84px}
+.crumb{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font:500 10px var(--mono);letter-spacing:.2em;color:var(--faint);text-transform:uppercase}
+.crumb a:hover{color:var(--red)}
+.chip{border:1px solid var(--ink);padding:5px 11px;font:600 9.5px var(--mono);letter-spacing:.22em;text-transform:uppercase;margin-right:10px}
+.art h1{font:600 clamp(40px,7vw,66px)/1.05 var(--serif);margin:20px 0 10px}
+.byline{font:italic 500 20px var(--serif);color:var(--ink2)}
+.accept{font:500 10px var(--mono);letter-spacing:.16em;color:var(--faint);margin-top:16px;text-transform:uppercase}
+.statbar{display:flex;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:32px 0 46px;flex-wrap:wrap}
+.statbar>div{flex:1 1 140px;display:flex;align-items:center;gap:11px;padding:17px 18px;font:600 13.5px var(--mono)}
+.statbar>div+div{border-left:1px solid var(--rule)}
+.statlab{font:500 9px var(--mono);letter-spacing:.18em;color:var(--faint);text-transform:uppercase;display:block;margin-top:4px;font-weight:500}
+.likebtn{background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:11px;font:600 13.5px var(--mono);padding:0}
+.likebtn:hover{color:var(--red)}
+.likebtn.liked{color:var(--red)}
+.likebtn.liked svg{animation:pop .35s}
+@keyframes pop{40%{transform:scale(1.4)}}
+.once{font:500 9px var(--mono);letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin:-30px 0 40px}
+.prose{font:500 21px/1.95 var(--serif)}
+.prose p{margin:0 0 30px}
+.prose.en p.dp::first-letter{float:left;font-size:78px;line-height:.78;padding:8px 14px 0 0;font-weight:600}
+.prose blockquote{margin:42px 0;padding:4px 0 4px 28px;border-left:3px solid var(--red);font:italic 600 25px/1.55 var(--serif)}
+.prose blockquote.ar-t{font-size:24px;line-height:2;padding:4px 28px 4px 0;border-left:none;border-right:3px solid var(--red)}
+.prose .ln{display:block;font:italic 500 24px/1.7 var(--serif)}
+.prose .lna{display:block;font:400 19px/1.9 var(--ar);color:var(--ink2)}
+.endfile{margin:60px 0 8px;text-align:center}
+.endline{font:500 10px var(--mono);letter-spacing:.34em;color:var(--faint);text-transform:uppercase}
+.bigstamp{margin-top:26px;font-size:15px;padding:13px 24px;border-width:3px;opacity:0}
+.bigstamp.in{animation:stampIn .55s cubic-bezier(.2,1.4,.3,1) both}
+@keyframes stampIn{0%{transform:rotate(-16deg) scale(2.4);opacity:0}55%{transform:rotate(-7deg) scale(.94);opacity:1}100%{transform:rotate(-7deg) scale(1);opacity:.92}}
+.rate{border-top:1px solid var(--ink);padding:36px 0;margin-top:24px}
+.rate h4,.notes-sec h4{font:600 11px var(--mono);letter-spacing:.26em;text-transform:uppercase;margin-bottom:16px}
+.stars{display:flex;gap:5px}
+.starb{background:none;border:none;cursor:pointer;padding:2px;line-height:0}
+.starb:hover{transform:scale(1.12)}
+.rate-out{font:500 12px var(--mono);letter-spacing:.06em;margin-top:16px;color:var(--ink2)}
+.rate-out b{color:var(--red)}
+.sealed-note{font:italic 500 17px var(--serif);color:var(--ink2);border-left:3px solid var(--red);padding-left:16px}
+.notes-sec{border-top:1px solid var(--ink);padding:36px 0}
+.nform{margin:6px 0 30px}
+.nform label{font:500 9.5px var(--mono);letter-spacing:.18em;color:var(--faint);text-transform:uppercase;display:block;margin:16px 0 7px}
+.field{width:100%;background:#F9F3E4;border:1px solid rgba(34,27,18,.38);padding:13px 15px;font:400 17px/1.7 var(--ar);resize:vertical}
+.field:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 1px var(--red)}
+.ferr{color:var(--red);font:500 11px var(--mono);letter-spacing:.08em;margin-top:8px;display:none}
+.note{position:relative;background:#F7F1E1;border:1px solid rgba(34,27,18,.22);border-left:3px solid var(--red);padding:16px 18px;margin:14px 0}
+.note .who{font:600 10px var(--mono);letter-spacing:.18em;color:var(--ink2);text-transform:uppercase}
+.note .txt{font:400 18px/1.9 var(--ar);margin-top:8px}
+.note .when{float:right;font:500 9px var(--mono);color:var(--faint);letter-spacing:.1em}
+.pinflag{display:inline-block;margin-left:10px;color:var(--red);font:700 8.5px var(--mono);letter-spacing:.2em;border:1px solid var(--red);padding:2px 6px;vertical-align:middle}
+.note.hid{opacity:.45;border-style:dashed}
+.ntools{position:absolute;top:10px;right:10px;display:flex;gap:6px;opacity:0;transition:opacity .2s}
+.note:hover .ntools{opacity:1}
+.tbtn{border:1px solid var(--rule);background:transparent;font:600 8.5px var(--mono);letter-spacing:.12em;padding:4px 8px;cursor:pointer}
+.tbtn:hover{background:var(--ink);color:var(--paper)}
+.tbtn.danger:hover{background:var(--red);border-color:var(--red)}
+.nextfile{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--ink);padding-top:26px;gap:16px;flex-wrap:wrap}
+.nextfile .t{font:600 24px var(--serif)}
+.nextfile:hover .t{color:var(--red)}
+
+/* ── Hall ─────────────────────────── */
+.hall{padding:64px 0 90px}
+.hall h1{font:600 clamp(40px,6.5vw,64px) var(--serif);text-transform:uppercase}
+.hall .hsub{font:italic 500 20px var(--serif);color:var(--ink2);margin:10px 0 50px}
+.hall-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
+.hcol{border-top:2px solid var(--ink);padding-top:18px}
+.hcol .hr{display:flex;align-items:baseline;width:100%;padding:12px 0;background:none;border:none;cursor:pointer;text-align:left;border-bottom:1px dotted rgba(34,27,18,.25)}
+.hcol .rk{font:600 24px var(--serif);color:rgba(34,27,18,.25);width:40px}
+.hcol .rt{font:600 17px var(--serif);line-height:1.25}
+.hcol .rt:hover{color:var(--red)}
+.hcol .rv{font:600 12.5px var(--mono);white-space:nowrap}
+.hcol .hs{font:500 9px var(--mono);letter-spacing:.16em;color:var(--faint);text-transform:uppercase;display:block;margin-top:3px}
+.hnote{font:italic 500 16px var(--serif);color:var(--ink2);margin-top:44px;border-left:3px solid var(--red);padding-left:18px}
+
+/* ── Dashboard ─────────────────────────── */
+.dash{padding:60px 0 90px}
+.dash h1{font:600 clamp(38px,5.5vw,56px) var(--serif);text-transform:uppercase}
+.dash .dsub{font:500 10px var(--mono);letter-spacing:.2em;color:var(--faint);text-transform:uppercase;margin:10px 0 46px}
+.dsub b{color:var(--red)}
+.grid2{display:grid;grid-template-columns:1.45fr 1fr;gap:56px;align-items:start}
+.ledger-row{display:flex;align-items:baseline;padding:16px 0;border-bottom:1px dotted rgba(34,27,18,.32)}
+.ledger-row .ll{font:500 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
+.ledger-row .ln{font:600 30px var(--mono);letter-spacing:-.02em;white-space:nowrap}
+.wk{border:1px solid var(--ink);padding:26px;background:var(--paper2)}
+.wk h5,.panel h5{font:700 11px var(--mono);letter-spacing:.26em;text-transform:uppercase;margin-bottom:14px}
+.wk .wr{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dotted rgba(34,27,18,.28);font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.wk .wr:last-child{border:none}
+.up{color:#2F5B33;font-weight:700;display:flex;align-items:center;gap:5px}
+.panel{border:1px solid var(--ink);padding:26px;background:var(--paper2)}
+.panel+.panel{margin-top:26px}
+.frow{padding:11px 0;border-bottom:1px dotted rgba(34,27,18,.28)}
+.frow:last-child{border:none}
+.frow .fl{display:flex;justify-content:space-between;font:500 10px var(--mono);letter-spacing:.16em;text-transform:uppercase;margin-bottom:7px}
+.fbar{height:8px;background:rgba(34,27,18,.14)}
+.fbar i{display:block;height:100%;background:var(--ink)}
+.fbar i.r{background:var(--red)}
+.chartbox{border:1px solid var(--ink);margin-top:56px;padding:28px;background:var(--paper2)}
+.chart-head{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:20px}
+.chart-head h5{font:700 11px var(--mono);letter-spacing:.26em;text-transform:uppercase}
+.seg{margin-left:auto;display:flex;border:1px solid var(--ink)}
+.seg button{font:600 10px var(--mono);letter-spacing:.14em;padding:8px 15px;background:transparent;border:none;cursor:pointer}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button.on{background:var(--ink);color:var(--paper)}
+.chartwrap{position:relative}
+.chartwrap svg{display:block;width:100%;height:auto}
+.ctip{position:absolute;background:var(--ink);color:var(--paper);font:500 10.5px var(--mono);letter-spacing:.06em;padding:8px 11px;pointer-events:none;display:none;white-space:nowrap;z-index:5}
+.cline{position:absolute;top:0;bottom:0;width:1px;background:var(--red);display:none;pointer-events:none}
+.tblwrap{margin-top:56px;overflow-x:auto}
+.trow{display:grid;grid-template-columns:72px 1.7fr .8fr .7fr .8fr .6fr 118px;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(34,27,18,.25);font:500 12px var(--mono);min-width:780px}
+.trow.thead{font:600 9.5px var(--mono);letter-spacing:.18em;color:var(--faint);border-bottom:1px solid var(--ink);text-transform:uppercase}
+.trow .t{font:600 19px var(--serif);letter-spacing:0;font-family:var(--serif)}
+.trow .t:hover{color:var(--red)}
+.trow .cid{color:var(--faint);font-size:10.5px;letter-spacing:.12em}
+.spark{display:flex;gap:3px;align-items:flex-end;height:34px}
+.spark i{width:9px;background:rgba(34,27,18,.35)}
+.spark i:last-child{background:var(--red)}
+
+/* ── Toast + Footer ─────────────────────────── */
+.toasts{position:fixed;bottom:24px;right:24px;z-index:100;display:flex;flex-direction:column;gap:10px}
+.toast{background:var(--ink);color:var(--paper);font:500 11px var(--mono);letter-spacing:.06em;padding:15px 18px;display:flex;gap:16px;align-items:center;animation:tin .3s both;max-width:360px}
+.toast button{background:none;border:1px solid rgba(239,231,210,.5);color:var(--paper);font:600 9px var(--mono);letter-spacing:.14em;padding:5px 10px;cursor:pointer}
+.toast button:hover{background:var(--red);border-color:var(--red)}
+@keyframes tin{from{transform:translateY(14px);opacity:0}}
+footer{border-top:1px solid var(--ink);margin-top:44px;padding:36px 0 48px}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font:500 9.5px var(--mono);letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
+.fin a:hover{color:var(--red)}
+
+@media(max-width:900px){
+  .grid2,.hall-grid,.ledger-sec{grid-template-columns:1fr;gap:36px}
+  .drop-card{grid-template-columns:1fr}
+  .pc-r{border-left:none;border-top:1px dashed rgba(34,27,18,.45)}
+  .pc-l{padding:34px 28px}
+  .statbar>div{flex:1 1 46%}
+  .statbar>div:nth-child(3){border-left:none;border-top:1px solid var(--rule)}
+  .statbar>div:nth-child(4){border-top:1px solid var(--rule)}
+  .sdesc{display:none}
+  .mast{padding:56px 0 36px}
+}
+</style>
+</head>
+<body>
+
+<div class="abar"><span><b>WRITER MODE</b> — editing tools are visible</span><button onclick="exitDesk()">EXIT THE DESK</button></div>
+
+<nav class="nav"><div class="wrap nav-in">
+  <a class="brand" href="#/"><span class="brand-mark">WA</span>THE WRITER'S ARCHIVE</a>
+  <div class="nav-links">
+    <button class="nl" data-nav="home" onclick="go('#/')">Index</button>
+    <button class="nl" data-nav="hall" onclick="go('#/hall')">Hall of Stories</button>
+    <button class="nl" data-nav="drop" onclick="go('#/drop')">Daily Drop</button>
+    <button class="nl" data-nav="dashboard" onclick="go('#/dashboard')">Writer's Desk</button>
+  </div>
+</div></nav>
+
+<main id="app"></main>
+
+<footer><div class="wrap fin">
+  <span>The Writer's Archive — all files belong to their author</span>
+  <span>Set in Cormorant Garamond &amp; IBM Plex Mono</span>
+  <span><a href="#/hall">Hall of Stories</a> · <a href="#/drop">Daily Drop</a></span>
+  <span>This archive keeps no cookies. It keeps your letters.</span>
+</div></footer>
+
+<div class="toasts"></div>
+
+<script>
+/* ════════════════════════════════════════════
+   الإعدادات والداتا — كل الأرقام والمحتوى من هنا
+   ════════════════════════════════════════════ */
+const WRITER = { name:'Noor Kamar', short:'N. KAMAR' };
+const SUBSCRIBERS = 846;
+
+const SECTIONS = [
+  {key:'stories', num:'I',   title:'Stories',            code:'FIC', desc:'Novels & short stories — the long files.'},
+  {key:'writings',num:'II',  title:'Short Writings',     code:'ESS', desc:'Fragments, essays & three-a.m. notes.'},
+  {key:'quotes',  num:'III', title:'Quotes',             code:'QUO', desc:'Lines that asked to be kept.'},
+  {key:'poetry',  num:'IV',  title:'Poetry',             code:'VER', desc:'Verse, kept in the back drawer.'},
+  {key:'drafts',  num:'V',   title:'Drafts & Unfinished',code:'DFT', desc:'Files still being written.'}
+];
+
+/* lang: 'en'|'ar' يحدد اتجاه Drop Cap والحروف — kind يحدد شكل الـ Archive Card */
+const FILES = [
+ {id:1, sec:'stories', kind:'novel', catalog:'FIC-001', kindLabel:'NOVEL',
+  title:'The Last Letter', lang:'en', added:'2024-03-14', date:'14 Mar 2024',
+  views:12483, likes:1283, rating:4.7, ratings:384, bc:'#35473F', bw:218, bh:322,
+  excerpt:[
+   "They found the letter folded twice, exactly the way he folded everything — receipts, maps, apologies. The paper had gone soft at the creases, as if it had been opened and refolded many times before it was ever sent.",
+   "My dearest L. By the time you read this, the house will have learned to sound like an empty one. Don't be alarmed by the quiet. I have left the radio in the kitchen tuned to your station, and I have paid the bill through the spring.",
+   "«You once asked me why I never said the important things out loud. I said them, L. I said them to the kettle, to the garden, to the rear window of the 7:15 train. I was a man who practiced in private.",
+   "There is a tin on top of the wardrobe. In it: your mother's brooch, the ticket stubs from Brighton, and forty-two years of Tuesdays. Forgive me for counting. A man my age counts the things he is about to leave.",
+   "Do not look for the letter I mention in paragraph three. Some things are ended by being written, not by being read."
+  ]},
+ {id:2, sec:'stories', kind:'manuscript', catalog:'FIC-002', kindLabel:'SHORT STORY',
+  title:'آخر صيف', lang:'ar', added:'2024-06-02', date:'02 Jun 2024',
+  views:9842, likes:980, rating:4.8, ratings:212,
+  excerpt:[
+   "في آخر صيف، تعلمنا أن البيوت لا تنهار دفعة واحدة، بل تُفقد غرفةً كل عام: غرفة الجدّ، ثم الهاتف الأرضي، ثم صوت أمي وهي تنادي لأخي الأصغر من الشرفة.",
+   "كنتُ أظن أن العودة إلى البيت رحلةٌ في الزمن، حتى اكتشفت أن الزمن هو الذي يعود إلينا، جالسًا على طاولة المطبخ، يفكّ حزام ساعته ويقول: بقيت أربعة عشر يومًا فقط.",
+   "«الناس لا يغادرون الأماكن. الأماكن هي التي تُخرجنا بلطف، واحدةً واحدة، حتى نعتقد أننا اخترنا الرحيل.",
+   "في ليلة الرحيل، وجدتُ خلف المكتبة صورةً قديمة لنا كلنا، واقفين أمام شجرة لم يعد لها أثر. أحدٌ في الصورة لا يعرف أن الشجرة ستُقتطع، وكلُّنا يبتسم."
+  ]},
+ {id:3, sec:'stories', kind:'novel', catalog:'FIC-003', kindLabel:'NOVELLA',
+  title:'الغرفة 204', lang:'ar', added:'2024-09-21', date:'21 Sep 2024',
+  views:7204, likes:754, rating:4.6, ratings:158, bc:'#55372C', bw:186, bh:278,
+  excerpt:[
+   "الفندق كان يواجه محطة القطار، وكلاهما كان يعيش على الانصرافات: واحد يبيعها، والآخر يشتريها.",
+   "غرفة 204 لم تكن أفضل غرفة هناك، لكنها كانت الوحيدة التي يطلّ شباكها على الساعة الكبيرة. قلت للعامل إنني أحب أن أرى الوقت يمشي، فنظر إليّ نظرة من يعرف أنني سأبقى شهرًا كاملًا.",
+   "«بعض الغرف تحفظك أكثر مما تحفظك الذاكرة.",
+   "كتبت في دفتري تلك الجملة، ثم شربت الشاي وأنا أراقب رجلًا في الساحة يودّع امرأةً بطريقةٍ تجعل المودعة أطول من اللقاء كله."
+  ]},
+ {id:4, sec:'writings', kind:'manuscript', catalog:'ESS-001', kindLabel:'SHORT WRITING',
+  title:'On Leaving Quietly', lang:'en', added:'2025-01-18', date:'18 Jan 2025',
+  views:4381, likes:402, rating:4.9, ratings:96,
+  excerpt:[
+   "There is an art to leaving quietly. Not sneaking out — leaving with such composure that the door barely registers your weight. I have been practising it for years: at parties, at jobs, at versions of myself.",
+   "The trick is not to want the goodbye. Goodbyes are negotiations, and I am done negotiating with rooms.",
+   "«Leaving quietly is not the same as leaving without sound. It means the sound stays yours.",
+   "What they don't tell you: the quiet leaver is remembered longest. People forgive the ones who slam the door; they romanticise the ones who close it like a librarian."
+  ]},
+ {id:5, sec:'writings', kind:'manuscript', catalog:'ESS-002', kindLabel:'SHORT WRITING',
+  title:'مقاطع من دفترٍ ممزق', lang:'ar', added:'2025-04-07', date:'07 Apr 2025',
+  views:3922, likes:511, rating:4.7, ratings:121,
+  excerpt:[
+   "مقطع أول — لا شيء يُغلق الجروح مثل عناوين الأنباء. العالم يصرخ، وأنت تحاول أن تتذكر فين حطيت مفاتيحك.",
+   "«أمي تقول إن الحزن زائر محترم: يدق الباب، يجلس، يشرب قهوتك، ويرحل. لم تخبرني يومًا ماذا أفعل حين يقرر أن يقيم.",
+   "مقطع سادس — كتبتُ رسالةً ولم أرسلها. ليس خوفًا؛ لكن بعض الكلمات تؤدي غرضها بمجرد أن تخرج من الصدر، حتى لو حبسها الظرف."
+  ]},
+ {id:6, sec:'writings', kind:'manuscript', catalog:'ESS-003', kindLabel:'SHORT WRITING',
+  title:'Three A.M. Thoughts', lang:'en', added:'2025-07-30', date:'30 Jul 2025',
+  views:2867, likes:289, rating:4.4, ratings:64,
+  excerpt:[
+   "One. The ceiling is a cinema for people who can't sleep. Two. Every lamp left on in the dark is a small decision still burning. Three. My grandmother kept a drawer of buttons cut from old coats. She called it 'the family'. I think about that more than is reasonable.",
+   "Four. Somewhere a kettle is being filled by someone who will forget to switch it on. Five. That is tomorrow's problem, and tomorrow's problem is asleep, and I am jealous of it."
+  ]},
+ {id:7, sec:'quotes', kind:'quote', catalog:'QUO-001', kindLabel:'QUOTE',
+  title:'هناك أشياء لا تنتهي', lang:'ar', added:'2025-02-11', date:'11 Feb 2025',
+  views:6118, likes:1412, rating:4.9, ratings:302, src:'FROM THE FILE: THE LAST LETTER',
+  quote:'هناك أشياء لا تنتهي حين نتركها، بل تبدأ حين نتوقف عن انتظارها.'},
+ {id:8, sec:'quotes', kind:'quote', catalog:'QUO-002', kindLabel:'QUOTE',
+  title:'Some doors close so softly', lang:'en', added:'2025-05-19', date:'19 May 2025',
+  views:2455, likes:388, rating:4.5, ratings:58, src:'FROM THE FILE: ON LEAVING QUIETLY',
+  quote:'Some doors close so softly you only hear them years later.'},
+ {id:9, sec:'quotes', kind:'quote', catalog:'QUO-003', kindLabel:'QUOTE',
+  title:'على كل جسرٍ بائس', lang:'ar', added:'2025-08-03', date:'03 Aug 2025',
+  views:1903, likes:245, rating:4.6, ratings:41, src:'FROM THE FILE: الغرفة 204',
+  quote:'على كل جسرٍ بائسٍ يمشي عليه، هناك شخصٌ قرر أن يظل إنسانًا.'},
+ {id:10, sec:'poetry', kind:'poem', catalog:'VER-001', kindLabel:'POETRY',
+  title:'Late Rain — مطر متأخر', lang:'en', added:'2025-03-27', date:'27 Mar 2025',
+  views:5237, likes:640, rating:4.8, ratings:173,
+  poem:[['The rain came late this year —','مثل اعتذارٍ تأخّرت صياغته'],
+        ['it did not fall so much as confess,','لم ينزل مطرًا، بل اعترف'],
+        ['each drop a sentence the sky had drafted','كل قطرةٍ مسوّدةٌ كتبتها السماء'],
+        ['and was ashamed to send.','وكانت خجلى أن ترسل'],
+        ['when it wet the forehead of the city,','ولمّا بلّل جبين المدينة،'],
+        ['I understood: not everything late','فهمتُ: ليس كل ما يتأخر'],
+        ['has missed something.','يفوته شيء.']]},
+ {id:11, sec:'drafts', kind:'folder', catalog:'DFT-001', kindLabel:'DRAFT — UNFINISHED',
+  title:'Chapter One — Untitled', lang:'en', added:'2025-10-12', date:'12 Oct 2025',
+  views:1244, likes:96, rating:0, ratings:0, sealed:true,
+  excerpt:[
+   "[ Draft — chapter one. The fragment begins mid-sentence, as I found it in my notes. ]",
+   "The harbour gave up its secrets the way old men give up directions: reluctantly, out of order, and only after they've decided you're going the wrong way anyway.",
+   "There was a boat in it that everyone called the Saint, though no one could remember why, and a woman on the Saint whom everyone called Madame, though everyone knew her name."
+  ]},
+ {id:12, sec:'drafts', kind:'folder', catalog:'DFT-002', kindLabel:'DRAFT — NOTES',
+  title:'Notes for a Novel I May Never Write', lang:'en', added:'2025-11-25', date:'25 Nov 2025',
+  views:980, likes:71, rating:4.3, ratings:22,
+  excerpt:[
+   "Opening line candidates: 'The town kept its dead the way other towns keep their archives.' / 'My father drowned twice: once in the lake, once in every conversation I've had since.'",
+   "Structure: three summers, one winter. The winter is the narrator.",
+   "Characters so far: a librarian who reads only endings; a ferryman with a lighthouse keeper's pension; the town itself, which is the antagonist.",
+   "I may never write this. I am writing it anyway."
+  ]}
+];
+
+const SEED_NOTES = [
+ {id:'c1', file:1, name:'Anonymous reader', text:'النهاية فضلت في دماغي طول اليوم.', date:'02 Dec 2025', pinned:true, hidden:false},
+ {id:'c2', file:1, name:'Malak A.', text:'قرأتها مرتين وخفت أقرأها تالتة. مش عارفة أوقفها إزاي.', date:'28 Nov 2025', pinned:false, hidden:false},
+ {id:'c3', file:1, name:'A reader from Cairo', text:'Forty-two years of Tuesdays. I had to put the phone down for a minute.', date:'20 Nov 2025', pinned:false, hidden:true},
+ {id:'c4', file:2, name:'Farah', text:'حاسس إني عشت الصيف ده فعلاً. البيت اللي بيفقد غرفة كل عام… ده بيتنا.', date:'14 Nov 2025', pinned:false, hidden:false},
+ {id:'c5', file:10, name:'Anonymous reader', text:'السطر الرابع كسرني. ده اعتراف مش مطر.', date:'09 Nov 2025', pinned:false, hidden:false},
+ {id:'c6', file:7, name:'Youssef', text:'حفظتها حبة ورق جنب سريري. بتقريها كل يوم الصبح.', date:'01 Nov 2025', pinned:false, hidden:false}
+];
+
+const PAST_DROPS = [
+ {no:'083', q:'Some doors close so softly you only hear them years later.', d:'12 DEC', file:8},
+ {no:'082', q:'I may never write this. I am writing it anyway.', d:'11 DEC', file:12},
+ {no:'081', q:'الناس لا يغادرون الأماكن. الأماكن هي التي تُخرجنا بلطف.', d:'10 DEC', file:2},
+ {no:'080', q:'Leaving quietly is not the same as leaving without sound.', d:'09 DEC', file:4},
+ {no:'079', q:'بعض الغرف تحفظك أكثر مما تحفظك الذاكرة.', d:'08 DEC', file:3},
+ {no:'078', q:'The ceiling is a cinema for people who can\'t sleep.', d:'07 DEC', file:6}
+];
+
+/* ════════════════════════════════════════════
+   الحالة والتخزين المحلي (يحاكي الـ sessions في الإنتاج)
+   ════════════════════════════════════════════ */
+const store = {
+  get(k,d){ try{ const v=JSON.parse(localStorage.getItem('wa_'+k)); return v===null||v===undefined?d:v }catch(e){ return d } },
+  set(k,v){ try{ localStorage.setItem('wa_'+k,JSON.stringify(v)) }catch(e){} }
+};
+const VD   = store.get('vd', {});            // زيادات المشاهدات
+const LIKED= new Set(store.get('likes', []));// ملفات أعجبت القارئ
+const UR   = store.get('ur', {});            // تقييم القارئ لكل ملف
+let NOTES  = store.get('notes', null) || JSON.parse(JSON.stringify(SEED_NOTES));
+let DROP   = store.get('drop', {text:FILES[6].quote, no:'084', last:''});
+const saveNotes=()=>store.set('notes',NOTES);
+
+const F   = id => FILES.find(f=>f.id===+id);
+const fV  = f  => f.views + (VD[f.id]||0);
+const fL  = f  => f.likes + (LIKED.has(f.id)?1:0);
+const fR  = f  => { if(f.sealed) return null;
+  const ur=UR[f.id]||0, n=f.ratings+(ur?1:0), s=Math.round(f.rating*f.ratings)+ur;
+  return {avg:n? s/n :0, n}; };
+const TOTALS = {
+  views: FILES.reduce((a,f)=>a+fV(f),0),
+  likes: FILES.reduce((a,f)=>a+fL(f),0),
+  ratings: FILES.reduce((a,f)=>a+(f.sealed?0:f.ratings+(UR[f.id]?1:0)),0)
+};
+
+/* تسجيل مشاهدة واحدة لكل قارئ — الـ refresh لا يضخّم الرقم.
+   في الإنتاج: جدول View(user_id, story_id, session/IP) + فحص قبل الإضافة. */
+function countView(id){
+  const seen = store.get('seen',{});
+  if(!seen['s'+id]){ seen['s'+id]=Date.now(); store.set('seen',seen); VD[id]=(VD[id]||0)+1; store.set('vd',VD); }
+}
+
+/* ════════════════════════════════════════════
+   أدوات مساعدة
+   ════════════════════════════════════════════ */
+const $  = s=>document.querySelector(s);
+const app = $('#app');
+const MONTHS=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+const DAYS=['SUN','MON','TUE','WED','THU','FRI','SAT'];
+const fmt = n => n.toLocaleString('en-US');
+const fmtK = n => n>=1000 ? (n/1000).toFixed(1).replace(/\.0$/,'')+'K' : ''+n;
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+function rng(seed){ let s=(seed>>>0)||1; return ()=>{ s=(Math.imul(s,1664525)+1013904223)>>>0; return s/4294967296 } }
+
+const P = {
+  eye:'<path d="M1 12s4-7.5 11-7.5S23 12 23 12s-4 7.5-11 7.5S1 12 1 12z"/><circle cx="12" cy="12" r="3"/>',
+  heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/>',
+  star:'<path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01z"/>',
+  up:'<path d="M12 19V5M5 12l7-7 7 7"/>',
+  right:'<path d="M5 12h14M12 5l7 7-7 7"/>',
+  left:'<path d="M19 12H5M12 19l-7-7 7-7"/>',
+  x:'<path d="M18 6L6 18M6 6l12 12"/>',
+  pin:'<path d="M12 17v5M8.5 3.5h7l-.6 7.5 2.6 2.5v1.8H6.5v-1.8l2.6-2.5z"/>',
+  pen:'<path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/>'
+};
+const icon = (n,s=16,fill=false)=>`<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="${fill?'currentColor':'none'}" stroke="currentColor" stroke-width="${fill?0:1.7}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`;
+const starIcon=(s,filled)=>icon('star',s,filled);
+
+function go(h){ location.hash=h }
+function toast(msg, action){
+  const t=document.createElement('div'); t.className='toast';
+  t.innerHTML=`<span>${msg}</span>${action?'<button>UNDO</button>':''}`;
+  if(action) t.querySelector('button').onclick=()=>{ action(); t.remove() };
+  $('.toasts').append(t);
+  setTimeout(()=>{ t.style.transition='opacity .4s'; t.style.opacity='0'; setTimeout(()=>t.remove(),420) }, action?6000:3400);
+}
+
+/* ════════════════════════════════════════════
+   سلسلة المشاهدات اليومية (seeded — ثابتة كل مرة)
+   مجموع السنة = مجموع مشاهدات كل الملفات فعليًا
+   ════════════════════════════════════════════ */
+const CANON = (()=>{
+  const vals=[];
+  for(let i=0;i<365;i++){
+    const r=rng(i*2654435761+7);
+    const wave=Math.sin(i/9.3)*.16+Math.sin(i/23.7+.8)*.2+Math.sin(i/61+2.2)*.26;
+    let v=.34+i/365*.78+wave*.5+(r()-.5)*.3;
+    if(i>355) v+=.14;
+    vals.push(Math.max(.06,v));
+  }
+  const tot=vals.reduce((a,b)=>a+b,0), target=FILES.reduce((a,f)=>a+f.views,0);
+  return vals.map(v=>Math.round(v/tot*target));
+})();
+const niceMax = v => { const p=Math.pow(10,Math.floor(Math.log10(v))); const m=v/p; return (m<=1?1:m<=2?2:m<=2.5?2.5:m<=5?5:10)*p };
+const fk = v => v>=1000 ? (v/1000).toFixed(v>=10000?0:1)+'K' : ''+Math.round(v);
+
+/* ════════════════════════════════════════════
+   بناء الـ Archive Cards — شكل مختلف لكل نوع
+   ════════════════════════════════════════════ */
+function cardStats(f){
+  const r=fR(f);
+  return `<div class="card-stats">
+    <span>${icon('eye',14)} ${fmtK(fV(f))}</span>
+    <span>${icon('heart',14)} ${fmtK(fL(f))}</span>
+    <span>${f.sealed?'<i style="font-style:normal;color:var(--red)">SEALED</i>':starIcon(13,true)+' '+(r.avg.toFixed(1))}</span>
+  </div>`;
+}
+function cardMeta(f){
+  return `<div class="card-meta"><span>${f.catalog} · ${f.kindLabel}</span><span class="rt">READ ${icon('right',11)}</span></div>`;
+}
+function cardHTML(f){
+  const arCls = f.lang==='ar' ? ' ar-t' : '';
+  if(f.kind==='novel') return `
+    <a class="bcard" href="#/story/${f.id}" data-rv>
+      <div class="book" style="width:${f.bw}px;height:${f.bh}px">
+        <div class="bpages"></div>
+        <div class="bcover" style="--bc:${f.bc}">
+          <span class="sp"></span>
+          <span class="press">The Archive · First Edition</span>
+          <h3 class="${f.lang==='ar'?'ar-t':''}">${esc(f.title)}</h3>
+          <span class="bauthor">${WRITER.short}</span>
+        </div>
+      </div>
+      ${cardMeta(f)}${cardStats(f)}
+    </a>`;
+  if(f.kind==='manuscript') return `
+    <a class="bcard" href="#/story/${f.id}" data-rv>
+      <div class="pcard manu" style="transform:rotate(-1.2deg)">
+        <span class="fold"></span>
+        <span class="kind">${f.kindLabel} · ${f.catalog}</span>
+        <h3><span class="undl ${arCls}">${esc(f.title)}</span></h3>
+        <div class="peek">${esc(f.excerpt[0]).slice(0,86)}…</div>
+      </div>
+      ${cardMeta(f)}${cardStats(f)}
+    </a>`;
+  if(f.kind==='quote') return `
+    <a class="bcard" href="#/story/${f.id}" data-rv>
+      <div class="pcard slip" style="transform:rotate(1.1deg)">
+        <span class="qm">«</span>
+        <blockquote class="${arCls}">${esc(f.quote)}</blockquote>
+        <span class="src">${f.src}</span>
+      </div>
+      ${cardMeta(f)}${cardStats(f)}
+    </a>`;
+  if(f.kind==='poem') return `
+    <a class="bcard" href="#/story/${f.id}" data-rv>
+      <div class="pcard poem" style="transform:rotate(.7deg)">
+        <span class="kind">Verse · ${f.catalog}</span>
+        <h3>Late Rain</h3>
+        ${f.poem.slice(0,3).map(l=>`<div class="ln">${esc(l[0])}</div><div class="lna">${esc(l[1])}</div>`).join('')}
+      </div>
+      ${cardMeta(f)}${cardStats(f)}
+    </a>`;
+  if(f.kind==='folder') return `
+    <a class="bcard" href="#/story/${f.id}" data-rv>
+      <div class="pcard folder" style="transform:rotate(-.6deg)">
+        <span class="kind">${f.catalog}</span>
+        <h3>${esc(f.title)}</h3>
+        <div class="fnotes">Kept in the bottom drawer. Opened, never finished.</div>
+        <div style="margin-top:14px"><span class="stamp">Unfinished</span></div>
+      </div>
+      ${cardMeta(f)}${cardStats(f)}
+    </a>`;
+}
+
+/* ════════════════════════════════════════════
+   الصفحة الرئيسية
+   ════════════════════════════════════════════ */
+function renderHome(){
+  document.title = "The Writer's Archive";
+  const dropQ = DROP.text;
+  const isAr = /[\u0600-\u06FF]/.test(dropQ);
+  const toc = SECTIONS.map(s=>{
+    const n=FILES.filter(f=>f.sec===s.key).length;
+    return `<button class="toc-row" data-goto="sec-${s.key}">
+      <span class="rn">${s.num}</span><span class="t">${s.title}</span><span class="dots"></span>
+      <span class="c">${n} FILE${n>1?'S':''} — ${s.code}</span></button>`;
+  }).join('');
+
+  const secs = SECTIONS.map(s=>{
+    const files=FILES.filter(f=>f.sec===s.key);
+    return `<section id="sec-${s.key}" class="wrap">
+      <div class="shead" data-rv><span class="snum">${s.num}</span><h2>${s.title}</h2><span class="sdesc">${s.desc}</span></div>
+      <div class="shelf ${s.key==='stories'?'floor':''}">${files.map(cardHTML).join('')}</div>
+    </section>`;
+  }).join('');
+
+  const rankRows = (list, valFn, subFn) => list.map((f,i)=>`
+    <button class="rankrow" onclick="go('#/story/${f.id}')">
+      <span class="rk">0${i+1}</span>
+      <span class="rt ${f.lang==='ar'?'ar-t':''}" style="font-style:${f.lang==='ar'?'normal':'italic'}">${esc(f.title)}
+        <span class="sub">${f.kindLabel} · ${f.catalog}${subFn?' — '+subFn(f):''}</span></span>
+      <span class="dots"></span><span class="rv">${valFn(f)}</span>
+    </button>`).join('');
+
+  const mostLoved=[...FILES].filter(f=>!f.sealed).sort((a,b)=>fL(b)-fL(a)).slice(0,4);
+  const mostRead =[...FILES].sort((a,b)=>fV(b)-fV(a)).slice(0,4);
+  const recent   =[...FILES].sort((a,b)=>new Date(b.added)-new Date(a.added)).slice(0,3);
+  const next=nextDropDate();
+
+  app.innerHTML = `
+  <header class="wrap mast">
+    <div class="mast-top"><span>Private collection</span><span>Reading open — interaction by invitation</span><span>Cat. No. WR-084</span></div>
+    <div class="over">The Writer's</div>
+    <h1>Archive</h1>
+    <div class="sub">A collection of stories, thoughts &amp; words.</div>
+    <div class="mast-stats">
+      <div class="ms"><div class="n" data-n="${TOTALS.views}">0</div><div class="l">Views recorded</div></div>
+      <div class="ms"><div class="n" data-n="${TOTALS.likes}">0</div><div class="l">Likes</div></div>
+      <div class="ms"><div class="n" data-n="${TOTALS.ratings}">0</div><div class="l">Ratings</div></div>
+      <div class="ms"><div class="n" data-n="${SUBSCRIBERS}">0</div><div class="l">Subscribers</div></div>
+      <div class="ms"><div class="n" data-n="${FILES.length}">0</div><div class="l">Files</div></div>
+    </div>
+  </header>
+
+  <div class="wrap toc">
+    <div class="toc-head">— Table of contents —</div>
+    ${toc}
+  </div>
+  ${secs}
+
+  <section class="wrap ledger-sec" data-rv>
+    <div><div class="rank-head"><span class="rno">♥</span>Most Loved</div>${rankRows(mostLoved,f=>fmtK(fL(f))+' likes')}</div>
+    <div><div class="rank-head"><span class="rno">◉</span>Most Read</div>${rankRows(mostRead,f=>fmtK(fV(f))+' views')}</div>
+  </section>
+
+  <section class="wrap recent" data-rv>
+    <div class="toc-head">— Recently added —</div>
+    ${recent.map(f=>`<button class="row" onclick="go('#/story/${f.id}')">
+      <span class="dt">${f.date}</span><span class="t ${f.lang==='ar'?'ar-t':''}">${esc(f.title)}</span><span class="dots"></span>
+      <span class="c" style="font:500 10px var(--mono);letter-spacing:.16em;color:var(--faint)">${f.catalog}</span>
+      <span class="newtag">New</span></button>`).join('')}
+  </section>
+
+  <section class="wrap">
+    <div class="drop-card" data-rv>
+      <div class="pc-l">
+        <span class="pc-tag">Daily Drop — No. ${DROP.no}</span>
+        <div class="dropq ${isAr?'ar-t':''}">«${esc(dropQ)}»</div>
+        <div class="pc-src">— from ${FILES[6].catalog} · ${esc(FILES[6].title)}</div>
+        <a class="btn" href="#/story/7">Read the full piece ${icon('right',13)}</a>
+      </div>
+      <div class="pc-r">
+        ${postmarkSVG()}
+        <div><div class="cd" id="cd">--:--:--</div><div class="cd-l">Next drop — 8:00 PM</div></div>
+        <div style="font:500 10px var(--mono);letter-spacing:.14em;color:var(--faint)">${SUBSCRIBERS} SUBSCRIBERS RECEIVE IT BY EMAIL</div>
+      </div>
+    </div>
+  </section>`;
+  bindReveal(); bindGotos(); countUps(); startCountdown('cd');
+}
+
+/* ════════════════════════════════════════════
+   Hall of Stories
+   ════════════════════════════════════════════ */
+function renderHall(){
+  document.title = 'Hall of Stories — The Writer\'s Archive';
+  const rated=FILES.filter(f=>!f.sealed && fR(f).n>0);
+  const mostV=[...FILES].sort((a,b)=>fV(b)-fV(a)).slice(0,5);
+  const mostL=[...FILES].sort((a,b)=>fL(b)-fL(a)).slice(0,5);
+  const mostR=[...rated].sort((a,b)=>fR(b).avg-fR(a).avg).slice(0,5);
+  const rows=(list,fn,sub)=>list.map((f,i)=>`
+    <button class="hr" onclick="go('#/story/${f.id}')"><span class="rk">0${i+1}</span>
+    <span class="rt" style="flex:1">${esc(f.title)}<span class="hs">${f.kindLabel} · ${f.catalog}${sub?' · '+sub(f):''}</span></span>
+    <span class="dots"></span><span class="rv">${fn(f)}</span></button>`).join('');
+  app.innerHTML=`<div class="wrap hall">
+    <h1>The Hall of Stories</h1>
+    <div class="hsub">Ranked by the numbers — not by competition.</div>
+    <div class="hall-grid">
+      <div class="hcol"><div class="rank-head">Most Viewed</div>${rows(mostV,f=>fmtK(fV(f)),f=>fV(f)+' views')}</div>
+      <div class="hcol"><div class="rank-head">Most Liked</div>${rows(mostL,f=>fmtK(fL(f)),f=>fL(f)+' likes')}</div>
+      <div class="hcol"><div class="rank-head">Highest Rated</div>${rows(mostR,f=>'★ '+fR(f).avg.toFixed(1),f=>fR(f).n+' ratings')}</div>
+    </div>
+    <p class="hnote">Rating appears here as an average, never as a contest — a file is measured, not defeated.</p>
+  </div>`;
+  setNav('hall');
+}
+
+/* ════════════════════════════════════════════
+   صفحة Daily Drop
+   ════════════════════════════════════════════ */
+function renderDrop(){
+  document.title = 'Daily Drop — The Writer\'s Archive';
+  const isAr=/[\u0600-\u06FF]/.test(DROP.text);
+  app.innerHTML=`<div class="wrap" style="padding-top:64px;padding-bottom:90px">
+    <div class="crumb"><span>ARCHIVE / DAILY DROP</span><span>${SUBSCRIBERS} SUBSCRIBERS</span></div>
+    <h1 style="font:600 clamp(40px,6.5vw,64px) var(--serif);text-transform:uppercase;margin-top:22px">Daily Drop</h1>
+    <div class="hsub" style="font:italic 500 20px var(--serif);color:var(--ink2);margin-top:8px">Every day, at eight in the evening, one line leaves the archive.</div>
+
+    <div class="drop-card">
+      <div class="pc-l">
+        <span class="pc-tag">Today's Drop — No. ${DROP.no}</span>
+        <div class="dropq ${isAr?'ar-t':''}">«${esc(DROP.text)}»</div>
+        <div class="pc-src">— from ${FILES[6].catalog} · ${esc(FILES[6].title)}</div>
+        <a class="btn" href="#/story/7">Read the full piece ${icon('right',13)}</a>
+      </div>
+      <div class="pc-r">
+        ${postmarkSVG()}
+        <div><div class="cd" id="cd">--:--:--</div><div class="cd-l">Drops in — 8:00 PM sharp</div></div>
+      </div>
+    </div>
+
+    <div class="pastd">
+      <div class="toc-head">— Past drops —</div>
+      ${PAST_DROPS.map(d=>`<button class="row" onclick="go('#/story/${d.file}')">
+        <span class="no">No. ${d.no}</span><span class="q ${/[\u0600-\u06FF]/.test(d.q)?'ar-t':''}">«${esc(d.q)}»</span>
+        <span class="dots"></span><span class="d">${d.d}</span></button>`).join('')}
+    </div>
+    <div class="footnote">Email delivery requires a backend (Resend / SMTP) — here, the drop is scheduled locally for preview.</div>
+  </div>`;
+  setNav('drop'); startCountdown('cd');
+}
+
+function postmarkSVG(){
+  return `<svg class="postmark" viewBox="0 0 140 140" aria-hidden="true">
+    <defs><path id="pmc" d="M70 70 m-47 0 a47 47 0 1 1 94 0 a47 47 0 1 1 -94 0"/></defs>
+    <circle cx="70" cy="70" r="61" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <circle cx="70" cy="70" r="34" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 4"/>
+    <text font-size="10" letter-spacing="1.6" fill="currentColor" font-family="IBM Plex Mono,monospace"><textPath href="#pmc">· THE WRITER'S ARCHIVE · DAILY AT EIGHT PM</textPath></text>
+    <text x="70" y="80" text-anchor="middle" font-family="Cormorant Garamond,serif" font-weight="600" font-size="34" fill="currentColor">${DROP.no}</text>
+  </svg>`;
+}
+
+/* ════════════════════════════════════════════
+   صفحة القصة
+   ════════════════════════════════════════════ */
+function renderStory(id){
+  const f=F(id); if(!f){ renderHome(); return }
+  countView(id);
+  document.title = f.title+" — The Writer's Archive";
+  const sec=SECTIONS.find(s=>s.key===f.sec);
+  const r=fR(f); const liked=LIKED.has(f.id);
+  const isAr=f.lang==='ar';
+  const nextFile=(()=>{ const list=FILES.filter(x=>x.sec===f.sec); const i=list.findIndex(x=>x.id===f.id); return list[(i+1)%list.length] })();
+
+  const prose = f.excerpt.map((p,i)=>{
+    if(p.startsWith('«')) return `<blockquote dir="auto" class="${isAr?'ar-t':''}">${esc(p.slice(1))}</blockquote>`;
+    return `<p class="${i===0?'dp':''}" dir="auto" ${isAr?'style="font-family:var(--ar);font-size:22px;line-height:2.2"':''}>${esc(p)}</p>`;
+  }).join('');
+  const poemBody = f.poem ? f.poem.map(l=>`<span class="ln">${esc(l[0])}</span><span class="lna">${esc(l[1])}</span>`).join('') : '';
+
+  const statRating = f.sealed
+    ? `<div><span style="color:var(--red)">SEALED</span><span class="statlab">Rating closed</span></div>`
+    : `<div>${starIcon(17,true)} ${r.avg.toFixed(1)}<span class="statlab">${fmt(r.n)} ratings</span></div>`;
+
+  const rateSection = f.sealed
+    ? `<div class="rate"><h4>Rate this story</h4><p class="sealed-note">This file is still being written — its rating is sealed until completion.</p></div>`
+    : `<div class="rate"><h4>Rate this story</h4>
+        <div class="stars" id="stars">${starsHTML(UR[f.id]||0)}</div>
+        <div class="rate-out" id="rateOut">${UR[f.id]
+          ? `You rated ${'★'.repeat(UR[f.id])}${'☆'.repeat(5-UR[f.id])} — the file now stands at <b>${r.avg.toFixed(1)}</b> · ${fmt(r.n)} ratings`
+          : 'Your rating is added to every other reader\'s, and the average recalculates instantly.'}</div>
+       </div>`;
+
+  const notes=NOTES.filter(n=>n.file===f.id && (!n.hidden || isAdmin()))
+    .sort((a,b)=>(b.pinned-a.pinned));
+  const notesHTML = notes.length ? notes.map(noteHTML).join('')
+    : `<p style="font:italic 500 17px var(--serif);color:var(--ink2)">No notes in the margins yet — yours would be the first.</p>`;
+
+  app.innerHTML=`<div class="wrap art">
+    <div class="crumb">
+      <span><a href="#/">ARCHIVE</a> / <a href="#/">${sec.title.toUpperCase()}</a> / ${f.catalog}</span>
+      <a href="#/" style="display:flex;align-items:center;gap:7px">${icon('left',13)} BACK TO INDEX</a>
+    </div>
+    <div style="margin-top:26px"><span class="chip">${f.kindLabel}</span><span class="chip" style="border-color:var(--red);color:var(--red)">${f.catalog}</span></div>
+    <h1 dir="auto">${esc(f.title)}</h1>
+    <div class="byline">Written by ${WRITER.name}</div>
+    <div class="accept">Accepted into the archive · ${f.date} · Last revised ${f.date}</div>
+
+    <div class="statbar">
+      <div>${icon('eye',18)} ${fmt(fV(f))}<span class="statlab">Views</span></div>
+      <div><button class="likebtn ${liked?'liked':''}" id="likeBtn">${icon('heart',18,liked)} ${liked?'Liked':'Like'} · <span id="likeN">${fmt(fL(f))}</span></button><span class="statlab">Reader's mark</span></div>
+      ${statRating}
+    </div>
+    <div class="once">Views are counted once per reader — refresh freely.</div>
+
+    <div class="prose ${isAr?'':'en'}">${f.poem?poemBody:prose}</div>
+
+    <div class="endfile" id="endfile">
+      <div class="endline">— You have reached the end of this file —</div>
+      <span class="stamp bigstamp" id="readStamp">Read · Archive · ${new Date().getFullYear()}</span>
+    </div>
+
+    ${rateSection}
+
+    <div class="notes-sec">
+      <h4>Leave a note for the writer</h4>
+      <div class="nform">
+        <label for="nName">Sign as (optional)</label>
+        <input class="field" id="nName" placeholder="Anonymous reader" style="font-family:var(--mono);font-size:13px">
+        <label for="nText">Your note</label>
+        <textarea class="field" id="nText" rows="3" placeholder="اكتب سطرًا صغيرًا يبقى في الهوامش…"></textarea>
+        <div class="ferr" id="nErr">Write at least a few words — the margins deserve them.</div>
+        <div style="margin-top:16px"><button class="btn" id="nSend">Leave it in the margins ${icon('pen',13)}</button></div>
+      </div>
+      <h4 style="margin-top:8px">Margin notes — <span style="color:var(--faint)">${notes.length}</span></h4>
+      <div id="notesList" data-file="${f.id}">${notesHTML}</div>
+    </div>
+
+    <div class="nextfile">
+      <div><div class="endline" style="margin-bottom:8px">Next file in this section</div>
+        <a href="#/story/${nextFile.id}" class="t">${esc(nextFile.title)} ${icon('right',18)}</a></div>
+      <a class="btn ghost" href="#/">${icon('left',13)} Return to the index</a>
+    </div>
+  </div>`;
+
+  setNav('home');
+  bindLike(f); if(!f.sealed) bindStars(f); bindNoteForm(f); bindAdminTools(f);
+  observeOnce($('#endfile'), ()=>$('#readStamp').classList.add('in'));
+}
+
+function starsHTML(v){
+  let h=''; for(let i=1;i<=5;i++) h+=`<button class="starb" data-v="${i}" aria-label="Rate ${i}">${starIcon(30,i<=v)}</button>`;
+  return h;
+}
+function bindStars(f){
+  const box=$('#stars'), out=$('#rateOut');
+  const paint=v=>box.querySelectorAll('.starb').forEach((b,i)=>b.innerHTML=starIcon(30,i<v));
+  box.addEventListener('mouseover',e=>{ const b=e.target.closest('.starb'); if(b) paint(+b.dataset.v) });
+  box.addEventListener('mouseleave',()=>paint(UR[f.id]||0));
+  box.addEventListener('click',e=>{
+    const b=e.target.closest('.starb'); if(!b) return;
+    UR[f.id]=+b.dataset.v; store.set('ur',UR); paint(UR[f.id]);
+    const r=fR(f);
+    out.innerHTML=`You rated ${'★'.repeat(UR[f.id])}${'☆'.repeat(5-UR[f.id])} — the file now stands at <b>${r.avg.toFixed(1)}</b> · ${fmt(r.n)} ratings`;
+    toast('Rating filed into the archive.');
+  });
+}
+function bindLike(f){
+  const btn=$('#likeBtn'); if(!btn) return;
+  btn.addEventListener('click',()=>{
+    const liked=LIKED.has(f.id);
+    if(liked){ LIKED.delete(f.id); toast('Like withdrawn — the writer will live.') }
+    else { LIKED.add(f.id); toast('Marked with a heart.') }
+    store.set('likes',[...LIKED]);
+    const l=LIKED.has(f.id);
+    btn.classList.toggle('liked',l);
+    btn.innerHTML=`${icon('heart',18,l)} ${l?'Liked':'Like'} · <span id="likeN">${fmt(fL(f))}</span>`;
+  });
+}
+function noteHTML(n){
+  return `<div class="note ${n.hidden?'hid':''}" data-cid="${n.id}">
+    <div class="when">${n.date}</div>
+    <div class="who">${esc(n.name)}${n.pinned?'<span class="pinflag">Pinned by the writer</span>':''}${n.hidden?'<span class="pinflag" style="color:var(--faint);border-color:var(--rule)">Hidden</span>':''}</div>
+    <div class="txt" dir="auto">${esc(n.text)}</div>
+    ${isAdmin()?`<div class="ntools">
+      <button class="tbtn" data-act="pin">${n.pinned?'UNPIN':'PIN'}</button>
+      <button class="tbtn" data-act="hide">${n.hidden?'SHOW':'HIDE'}</button>
+      <button class="tbtn danger" data-act="del">DELETE</button></div>`:''}
+  </div>`;
+}
+function bindNoteForm(f){
+  $('#nSend').addEventListener('click',()=>{
+    const t=$('#nText').value.trim();
+    if(t.length<2){ $('#nErr').style.display='block'; return }
+    $('#nErr').style.display='none';
+    const now=new Date();
+    NOTES.push({id:'c'+Date.now(), file:f.id, name:($('#nName').value.trim()||'Anonymous reader'),
+      text:t, date:`${now.getDate()} ${MONTHS[now.getMonth()]} ${now.getFullYear()}`, pinned:false, hidden:false});
+    saveNotes(); renderStory(f.id);
+    toast('Your note is kept in the margins.');
+  });
+}
+function bindAdminTools(f){
+  const list=$('#notesList'); if(!list) return;
+  list.addEventListener('click',e=>{
+    const b=e.target.closest('.tbtn'); if(!b) return;
+    const cid=b.closest('.note').dataset.cid;
+    const i=NOTES.findIndex(n=>n.id===cid); if(i<0) return;
+    const n=NOTES[i];
+    if(b.dataset.act==='pin'){ n.pinned=!n.pinned; saveNotes(); renderStory(f.id); toast(n.pinned?'Note pinned at the top.':'Note unpinned.') }
+    if(b.dataset.act==='hide'){ n.hidden=!n.hidden; saveNotes(); renderStory(f.id); toast(n.hidden?'Note hidden from readers.':'Note visible again.') }
+    if(b.dataset.act==='del'){
+      const removed=NOTES.splice(i,1)[0]; saveNotes(); renderStory(f.id);
+      toast('Note removed from the archive.',()=>{ NOTES.splice(i,0,removed); saveNotes(); if(location.hash.includes('story')) renderStory(f.id) });
+    }
+  });
+}
+
+/* ════════════════════════════════════════════
+   Writer's Dashboard
+   ════════════════════════════════════════════ */
+function weeklyPct(){
+  const sum=a=>a.reduce((x,y)=>x+y,0);
+  const wk=sum(CANON.slice(-7)), pw=sum(CANON.slice(-14,-7));
+  return Math.round((wk-pw)/pw*100);
+}
+function renderDash(){
+  document.title = "Writer's Desk — The Writer's Archive";
+  enterDesk();
+  const pct=weeklyPct();
+  const rated=FILES.reduce((a,f)=>a+(f.sealed?0:f.ratings+(UR[f.id]?1:0)),0);
+
+  const rows=FILES.map(f=>{
+    const r=fR(f), rr=rng(f.id*97+5);
+    const bars=Array.from({length:7},()=>Math.round(18+rr()*78));
+    return `<a class="trow" href="#/story/${f.id}">
+      <span class="cid">${f.catalog}</span>
+      <span class="t" dir="auto">${esc(f.title)}</span>
+      <span>${fmt(fV(f))}</span>
+      <span>${fmt(fL(f))}</span>
+      <span>${f.sealed?'—':'★ '+r.avg.toFixed(1)}</span>
+      <span>${f.sealed?'—':fmt(r.n)}</span>
+      <span class="spark" title="Views this week">${bars.map(h=>`<i style="height:${h}%"></i>`).join('')}</span>
+    </a>`;
+  }).join('');
+
+  app.innerHTML=`<div class="wrap dash">
+    <h1>Writer's Desk</h1>
+    <div class="dsub">Authenticated as <b>${WRITER.name.toUpperCase()}</b> — demo session (real build: Auth.js with roles)</div>
+
+    <div class="grid2">
+      <div>
+        <div class="ledger-row"><span class="ll">Total Stories</span><span class="dots"></span><span class="ln">${FILES.length}</span></div>
+        <div class="ledger-row"><span class="ll">Total Views</span><span class="dots"></span><span class="ln">${fmt(TOTALS.views)}</span></div>
+        <div class="ledger-row"><span class="ll">Total Likes</span><span class="dots"></span><span class="ln">${fmt(TOTALS.likes)}</span></div>
+        <div class="ledger-row"><span class="ll">Total Ratings</span><span class="dots"></span><span class="ln">${fmt(rated)}</span></div>
+        <div class="ledger-row"><span class="ll">Subscribers</span><span class="dots"></span><span class="ln">${fmt(SUBSCRIBERS)}</span></div>
+      </div>
+      <div class="wk">
+        <h5>This Week</h5>
+        <div class="wr"><span>Views</span><span class="up">${icon('up',13)} ${Math.abs(pct)}%</span></div>
+        <div class="wr"><span>Likes</span><span class="up">${icon('up',13)} 17%</span></div>
+        <div class="wr"><span>New Notes</span><span class="up">${icon('up',13)} 6</span></div>
+        <div class="wr"><span>Daily Drop Opens</span><span class="up">${icon('up',13)} 11%</span></div>
+      </div>
+    </div>
+
+    <div class="chartbox">
+      <div class="chart-head"><h5>Views over time</h5>
+        <div class="seg" id="seg">
+          <button data-r="7" class="on">7 Days</button><button data-r="30">30 Days</button><button data-r="365">1 Year</button>
+        </div>
+      </div>
+      <div class="chartwrap" id="chartwrap"></div>
+    </div>
+
+    <div class="tblwrap"><div class="trow thead">
+      <span>File</span><span>Title</span><span>Views</span><span>Likes</span><span>Rating</span><span>Ratings</span><span>Views this week</span>
+    </div>${rows}</div>
+
+    <div class="grid2" style="margin-top:60px">
+      <div class="panel">
+        <h5>Daily Drop — Today (No. ${DROP.no})</h5>
+        <textarea class="field" id="dropText" rows="3" style="font-size:16px">${esc(DROP.text)}</textarea>
+        <div style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <button class="btn" id="schedBtn">Save &amp; Schedule — 8:00 PM</button>
+          <span style="font:500 10px var(--mono);letter-spacing:.12em;color:var(--faint)">${DROP.last?DROP.last:'NOT SCHEDULED YET'}</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h5>Drop Analytics — last 30 days</h5>
+        ${[['Sent',SUBSCRIBERS,SUBSCRIBERS,''],['Opened',612,SUBSCRIBERS,'72%'],['Clicked',184,SUBSCRIBERS,'22%']].map(x=>`
+          <div class="frow"><div class="fl"><span>${x[0]}</span><span>${fmt(x[1])}${x[3]?' · '+x[3]:''}</span></div>
+          <div class="fbar"><i class="${x[0]==='Clicked'?'r':''}" style="width:${(x[1]/x[2]*100).toFixed(0)}%"></i></div></div>`).join('')}
+        <div style="font:500 9.5px var(--mono);letter-spacing:.12em;color:var(--faint);margin-top:14px">OPEN RATE &amp; CLICK-THROUGH — PER-RECIPIENT EVENTS IN PRODUCTION</div>
+      </div>
+    </div>
+  </div>`;
+
+  setNav('dashboard');
+  bindChart();
+  $('#schedBtn').addEventListener('click',()=>{
+    DROP.text=$('#dropText').value.trim()||DROP.text;
+    DROP.last='SCHEDULED — TONIGHT 8:00 PM · '+SUBSCRIBERS+' SUBSCRIBERS';
+    store.set('drop',DROP);
+    toast(`Drop No. ${DROP.no} scheduled — ${SUBSCRIBERS} subscribers will receive it at 8:00 PM.`);
+    renderDash();
+  });
+}
+
+function bindChart(){
+  const wrap=$('#chartwrap'), seg=$('#seg');
+  function draw(range){
+    let data,labels;
+    const today=new Date();
+    if(range===7){
+      data=CANON.slice(-7);
+      labels=data.map((_,i)=>{ const d=new Date(today); d.setDate(d.getDate()-(6-i)); return DAYS[d.getDay()] });
+    } else if(range===30){
+      data=CANON.slice(-30);
+      labels=data.map((v,i)=>i%5===4||i===0 ? (()=>{const d=new Date(today);d.setDate(d.getDate()-(29-i));return d.getDate()+' '+MONTHS[d.getMonth()]})() : '');
+    } else {
+      data=[]; for(let w=0;w<52;w++) data.push(CANON.slice(w*7,(w+1)*7).reduce((a,b)=>a+b,0));
+      labels=data.map((_,i)=> i%13===0 ? (()=>{const d=new Date(today);d.setDate(d.getDate()-(51-i)*7);return MONTHS[d.getMonth()]})() : '');
+    }
+    const W=720,H=230,pl=46,pr=12,pt=14,pb=28;
+    const max=niceMax(Math.max(...data)*1.15);
+    const step=(W-pl-pr)/Math.max(1,data.length-1);
+    const pts=data.map((v,i)=>[pl+i*step, H-pb-(v/max)*(H-pt-pb)]);
+    const line=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+    const area=line+` L${pts[pts.length-1][0].toFixed(1)} ${H-pb} L${pts[0][0].toFixed(1)} ${H-pb} Z`;
+    let grid=''; for(let g=0;g<=4;g++){ const y=pt+(H-pt-pb)*g/4, v=max*(1-g/4);
+      grid+=`<line x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}" stroke="rgba(34,27,18,.14)" stroke-width="1"/>
+             <text x="${pl-8}" y="${y+3}" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="#8A7E66">${fk(v)}</text>`; }
+    let xl=''; labels.forEach((l,i)=>{ if(!l) return; xl+=`<text x="${pts[i][0]}" y="${H-8}" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#8A7E66">${l}</text>`; });
+    wrap.innerHTML=`<svg viewBox="0 0 ${W} ${H}">
+      ${grid}${xl}
+      <path d="${area}" fill="rgba(34,27,18,.06)"/>
+      <path d="${line}" fill="none" stroke="#221B12" stroke-width="1.8"/>
+    </svg><div class="cline"></div><div class="ctip"></div>`;
+    const svg=wrap.querySelector('svg'), tip=wrap.querySelector('.ctip'), cl=wrap.querySelector('.cline');
+    svg.addEventListener('mousemove',e=>{
+      const r=svg.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width*W;
+      let i=Math.round((x-pl)/step); i=Math.max(0,Math.min(data.length-1,i));
+      const lx=pts[i][0]/W*r.width;
+      cl.style.display='block'; cl.style.left=lx+'px';
+      tip.style.display='block';
+      tip.style.left=Math.min(r.width-130,Math.max(4,lx+10))+'px';
+      tip.style.top=(pts[i][1]/H*r.height-38)+'px';
+      const d=new Date(today); d.setDate(d.getDate()-(data.length-1-i)*(range===365?7:1));
+      tip.innerHTML=`${d.getDate()} ${MONTHS[d.getMonth()]} — <b>${fmt(data[i])}</b> views`;
+    });
+    svg.addEventListener('mouseleave',()=>{ tip.style.display='none'; cl.style.display='none' });
+  }
+  draw(7);
+  seg.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    seg.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+    draw(+b.dataset.r);
+  });
+}
+
+/* ════════════════════════════════════════════
+   أدوات عامة: count-up, countdown, reveal, admin, router
+   ════════════════════════════════════════════ */
+function countUps(){
+  document.querySelectorAll('.ms .n').forEach(el=>{
+    const t=+el.dataset.n, st=performance.now(), dur=1500;
+    (function step(now){ const p=Math.min(1,(now-st)/dur), e=1-Math.pow(1-p,3);
+      el.textContent=fmt(Math.round(t*e)); if(p<1) requestAnimationFrame(step) })(st);
+  });
+}
+function nextDropDate(){ const d=new Date(); d.setHours(20,0,0,0); if(d<=new Date()) d.setDate(d.getDate()+1); return d }
+let tick=null;
+function startCountdown(id){
+  const el=document.getElementById(id); if(!el) return;
+  const target=nextDropDate();
+  const upd=()=>{ const s=Math.max(0,Math.floor((target-Date.now())/1000));
+    el.textContent=`${String(Math.floor(s/3600)).padStart(2,'0')}:${String(Math.floor(s%3600/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}` };
+  upd(); tick=setInterval(upd,1000);
+}
+let rvObs=null;
+function bindReveal(){
+  rvObs=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('v'); rvObs.unobserve(e.target) } }),{threshold:.12});
+  document.querySelectorAll('[data-rv]').forEach(el=>rvObs.observe(el));
+}
+function observeOnce(el,fn){ if(!el) return; const o=new IntersectionObserver(es=>{ if(es[0].isIntersecting){ fn(); o.disconnect() } },{threshold:.4}); o.observe(el) }
+function bindGotos(){ document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>{ const t=document.getElementById(b.dataset.goto); if(t) t.scrollIntoView({behavior:'smooth'}) })) }
+function setNav(k){ document.querySelectorAll('.nl').forEach(b=>b.classList.toggle('on',b.dataset.nav===k)) }
+function isAdmin(){ return sessionStorage.getItem('wa_admin')==='1' }
+function enterDesk(){ sessionStorage.setItem('wa_admin','1'); document.body.classList.add('admin') }
+function exitDesk(){ sessionStorage.removeItem('wa_admin'); document.body.classList.remove('admin'); toast('Writer mode off — you read as a visitor now.'); if(location.hash.includes('story')) route(); }
+
+let cObs=null;
+function cleanup(){ if(tick){clearInterval(tick);tick=null} if(rvObs){rvObs.disconnect();rvObs=null} }
+function route(){
+  cleanup();
+  const h=location.hash.replace(/^#\/?/,''); const [p,arg]=h.split('/');
+  if(p==='story') renderStory(+arg);
+  else if(p==='hall') renderHall();
+  else if(p==='drop') renderDrop();
+  else if(p==='dashboard') renderDash();
+  else { renderHome(); setNav('home') }
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+route();
+</script>
+</body>
+</html>
